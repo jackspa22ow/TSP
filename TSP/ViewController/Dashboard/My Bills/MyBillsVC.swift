@@ -162,6 +162,8 @@ extension MyBillsVC: UITableViewDelegate,UITableViewDataSource{
             fatalError("XIB doesn't exist.")
         }
         
+        cell.consDisplayRadioButton.priority = UILayoutPriority(250)
+        cell.viewRadioContainer.isHidden = true
         let json = self.homeViewModel.dicOfMyBillList.content[indexPath.row]
         
 //        let fileUrl = URL(string: json.customerParams)

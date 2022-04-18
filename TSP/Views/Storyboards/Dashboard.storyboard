@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1304,13 +1304,18 @@
                                     <action selector="buttonHandlerProceed:" destination="fYe-se-nhL" eventType="touchUpInside" id="t8U-av-yHA"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Bills Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkN-IJ-N56">
+                                <rect key="frame" x="133" y="312.5" width="109" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="1aU-yN-jld"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fa3-vO-rh8">
                                 <rect key="frame" x="16" y="60" width="343" height="530"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="fYe-se-nhL" id="FsH-sm-YLD"/>
-                                    <outlet property="delegate" destination="fYe-se-nhL" id="7Yl-4h-zeB"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" name="BackGroundColor"/>
@@ -1320,9 +1325,11 @@
                             <constraint firstItem="Fa3-vO-rh8" firstAttribute="leading" secondItem="RWe-a3-p8e" secondAttribute="leading" constant="16" id="8bI-gW-bTJ"/>
                             <constraint firstItem="DCH-S0-dUJ" firstAttribute="bottom" secondItem="1mu-8a-EDF" secondAttribute="bottom" id="BxD-Yn-Tv4"/>
                             <constraint firstItem="zOK-TF-9xY" firstAttribute="top" secondItem="Fa3-vO-rh8" secondAttribute="bottom" constant="16" id="FeZ-eo-Aq6"/>
+                            <constraint firstItem="WkN-IJ-N56" firstAttribute="centerX" secondItem="Fa3-vO-rh8" secondAttribute="centerX" id="H4a-n4-zfm"/>
                             <constraint firstItem="1mu-8a-EDF" firstAttribute="leading" secondItem="RWe-a3-p8e" secondAttribute="leading" id="I3u-NU-2fR"/>
                             <constraint firstItem="zOK-TF-9xY" firstAttribute="centerX" secondItem="RWe-a3-p8e" secondAttribute="centerX" id="MJ7-aj-n4v"/>
                             <constraint firstItem="1mu-8a-EDF" firstAttribute="trailing" secondItem="RWe-a3-p8e" secondAttribute="trailing" id="QM0-iG-MZv"/>
+                            <constraint firstItem="WkN-IJ-N56" firstAttribute="centerY" secondItem="Fa3-vO-rh8" secondAttribute="centerY" id="ZwV-Ar-GKY"/>
                             <constraint firstItem="DCH-S0-dUJ" firstAttribute="leading" secondItem="RWe-a3-p8e" secondAttribute="leading" id="ePv-gL-wLC"/>
                             <constraint firstItem="DCH-S0-dUJ" firstAttribute="top" secondItem="RWe-a3-p8e" secondAttribute="top" id="hla-dw-clw"/>
                             <constraint firstItem="DCH-S0-dUJ" firstAttribute="trailing" secondItem="RWe-a3-p8e" secondAttribute="trailing" id="nEq-SI-tRz"/>
@@ -1331,6 +1338,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblNoDataFound" destination="WkN-IJ-N56" id="HjR-An-gZv"/>
                         <outlet property="tblView" destination="Fa3-vO-rh8" id="BBe-BJ-nhd"/>
                     </connections>
                 </viewController>

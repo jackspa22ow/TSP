@@ -26,8 +26,8 @@ class LoginVC: UIViewController {
 //        self.txtUsername.text = "jack"
 //        self.txtPassword.text = "Pentagon@123"
         
-//        self.txtUsername.text = "TusharG"
-//        self.txtPassword.text = "!Tushar@25890"
+        self.txtUsername.text = "TusharG"
+        self.txtPassword.text = "!Tushar@25890"
 //        
 //        self.txtUsername.text = "tushargabani@gmail.com"
 //        self.txtPassword.text = "!Tushar@25890"
@@ -35,8 +35,8 @@ class LoginVC: UIViewController {
 //        self.txtUsername.text = "9876543210"
 //        self.txtPassword.text = "Test@123"
         
-        self.txtUsername.text = "Ankur.."
-        self.txtPassword.text = "Pentagon@123"
+//        self.txtUsername.text = "Ankur.."
+//        self.txtPassword.text = "Pentagon@123"
         
         
         //hide Keyboard on click of anywhere
