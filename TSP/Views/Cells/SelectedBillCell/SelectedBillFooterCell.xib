@@ -160,6 +160,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="btnCancel" destination="Jbl-wG-E1m" id="0bs-cL-j4n"/>
+                <outlet property="btnPay" destination="9qx-JZ-Tbn" id="rui-7C-Eu3"/>
                 <outlet property="lblTotalBillAcount" destination="EiR-Rn-j9t" id="okL-te-Wmb"/>
                 <outlet property="lblTotalBillAmount" destination="jDj-qU-R7u" id="rdt-PQ-lEq"/>
             </connections>

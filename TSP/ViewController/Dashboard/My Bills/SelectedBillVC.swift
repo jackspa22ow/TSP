@@ -60,6 +60,19 @@ class SelectedBillVC: UIViewController {
     }
     
 
+    @objc func btnBillPayAction(sender: UIButton) {
+        var totalAmount : Double = 0.0
+        for obj in selectedBills {
+            if let amount = obj.amount {
+                totalAmount = totalAmount + Double(amount)
+            }
+            print("Bill ID: \(obj.id!)")
+        }
+        print(totalAmount)
+    }
+    @objc func btnBillCancelAction(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
@@ -128,7 +141,8 @@ extension SelectedBillVC: UITableViewDelegate,UITableViewDataSource{
             }
         }
         header.lblTotalBillAmount.text = "₹ \(totalAmount)"
-
+        header.btnPay.addTarget(self, action: #selector(btnBillPayAction(sender:)), for: .touchUpInside)
+        header.btnCancel.addTarget(self, action: #selector(btnBillCancelAction(sender:)), for: .touchUpInside)
         return header.contentView
     }
     

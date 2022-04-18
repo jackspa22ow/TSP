@@ -14,6 +14,8 @@ class SelectedBillFooterCell: UITableViewCell {
 
     @IBOutlet weak var lblTotalBillAcount: UILabel!
     @IBOutlet weak var lblTotalBillAmount: UILabel!
+    @IBOutlet weak var btnPay: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
