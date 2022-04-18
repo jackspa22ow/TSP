@@ -33,7 +33,6 @@ class TSPService: NSObject {
                     case .success:
                         
                         print(response.result)
-                        print(response.response?.statusCode as Any)
                         
                         let responseData = ResponseHelper(responseData: response.data, error: response.error)
                         completion?(responseData)

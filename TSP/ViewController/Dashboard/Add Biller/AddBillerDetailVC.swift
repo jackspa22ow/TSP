@@ -137,11 +137,6 @@ class AddBillerDetailVC: UIViewController {
         let fUrl = "https://payuresponse.firebaseapp.com/failure"
         let cUrl = "https://payuresponse.firebaseapp.com/cancel"
         
-//        let sUrl = "https://api1.usprojects.co/tsp/bill-details/v1/api/payment/success"
-//        let fUrl = "https://api1.usprojects.co/tsp/bill-details/v1/api/payment/failure"
-//        let cUrl = "https://api1.usprojects.co/tsp/bill-details/v1/api/payment/cancel"
-        
-        
         let productInfo = self.addBillerViewModel.dicOfAddedBill.billerName ?? ""
         let amount = self.addBillerViewModel.dicOfAddedBill.amount ?? 0
         let billerId = self.addBillerViewModel.dicOfAddedBill.billerPayuId ?? ""

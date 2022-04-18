@@ -107,6 +107,7 @@ struct API {
     
     //Payment
     static let PREPARE_PAYMENT = baseURL + "tsp/bill-details/v1/api/payment/prepare_payment"
+    static let PREPARE_PAYMENT_MULTIPLE_BILL_ = baseURL + "tsp/bill-details/v1/api/payment/multi/prepare_payment"
     static let GENERATE_HASH = baseURL + "tsp/bill-details/v1/api/payment/generate/hash"
     static let VERIFY_PAYMENT = baseURL + "tsp/bill-details/v1/api/payment/verify_payment/"
     

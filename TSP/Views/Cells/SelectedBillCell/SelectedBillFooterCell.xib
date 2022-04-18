@@ -162,8 +162,12 @@
             <connections>
                 <outlet property="btnCancel" destination="Jbl-wG-E1m" id="0bs-cL-j4n"/>
                 <outlet property="btnPay" destination="9qx-JZ-Tbn" id="rui-7C-Eu3"/>
+                <outlet property="lblFooter" destination="2YJ-hG-l9B" id="gXY-HQ-51O"/>
+                <outlet property="lblHeader" destination="YI1-ls-Bin" id="mGC-vt-QIv"/>
                 <outlet property="lblTotalBillAcount" destination="EiR-Rn-j9t" id="okL-te-Wmb"/>
                 <outlet property="lblTotalBillAmount" destination="jDj-qU-R7u" id="rdt-PQ-lEq"/>
+                <outlet property="viewCancel" destination="YRx-sg-rNG" id="x9U-nz-nDi"/>
+                <outlet property="viewPay" destination="G6l-DM-oNF" id="ohj-Vx-Edf"/>
             </connections>
             <point key="canvasLocation" x="15.942028985507248" y="140.625"/>
         </tableViewCell>

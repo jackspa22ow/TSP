@@ -1338,6 +1338,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnProceed" destination="zOK-TF-9xY" id="oMk-TZ-rDW"/>
                         <outlet property="lblNoDataFound" destination="WkN-IJ-N56" id="HjR-An-gZv"/>
                         <outlet property="tblView" destination="Fa3-vO-rh8" id="BBe-BJ-nhd"/>
                     </connections>
