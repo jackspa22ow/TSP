@@ -53,7 +53,10 @@ class MultipleBillPaymentVC: UIViewController {
     }
     
     @IBAction func buttonHandlerProceed(_ sender: Any) {
+        let myBills = self.homeViewModel.dicOfMyBillList.content.filter{ $0.isSelected == false && ($0.billDue == true || $0.billDue == nil) }
+        
         let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "SelectedBillVC")as! SelectedBillVC
+        nextVC.selectedBills = myBills
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -100,6 +103,7 @@ extension MultipleBillPaymentVC: UITableViewDelegate,UITableViewDataSource{
 
         cell.imgDot.isHidden = true
 
+        cell.viewRadioContainer.isHidden = cell.imgDue.isHidden
         return cell
     }
     

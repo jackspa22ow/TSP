@@ -12,6 +12,8 @@ class SelectedBillFooterCell: UITableViewCell {
     class var identifier : String { return String(describing: self) }
     class var nib: UINib { return  UINib(nibName: identifier, bundle: nil) }
 
+    @IBOutlet weak var lblTotalBillAcount: UILabel!
+    @IBOutlet weak var lblTotalBillAmount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

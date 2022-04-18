@@ -30,6 +30,7 @@ struct MyBillsContent: Codable {
     let autoPay: Bool?
     var enableReminder: Bool?
     var isSelected: Bool?
+    var isColleps: Bool?
 }
 
 // MARK: - MYBILL DETAIL BY BILL ID

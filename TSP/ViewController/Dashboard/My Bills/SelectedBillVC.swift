@@ -26,14 +26,14 @@ class SelectedBillVC: UIViewController {
     @IBOutlet weak var tblView: UITableView!
     
     var arrayOfIcons = ["Credit_card_Bill","loan repayment","insurance premium"]
-    
-    var data : [SlideMenuSection] = [SlideMenuSection(title: "Airtel Postpaid", list: ["Airtel Postpaid"], isColleps: false),SlideMenuSection(title: "my_home_bill\nMSEDCL CO LTD", list: ["my_home_bill\nMSEDCL CO LTD"], isColleps: false),SlideMenuSection(title: "TATA Power", list: ["TATA Power"], isColleps: false)]
-        
+            
     var aryOfSubTitle = ["9984328711","8435279521","432154789"]
     
     var aryOfPrice = ["₹ 1250","₹ 800","₹ 1200"]
     
     var aryOfDue = [true,true,true]
+
+    var selectedBills: [MyBillsContent]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +53,9 @@ class SelectedBillVC: UIViewController {
     
     ///Button action arrow in header
     @objc func buttonHandlerSectionArrowTap(sender : UIButton)  {
-        let sectionData = data[sender.tag]
-        sectionData.isColleps = !sectionData.isColleps!
+        var sectionData = selectedBills[sender.tag]
+        sectionData.isColleps = !(sectionData.isColleps ?? false)
+        selectedBills[sender.tag] = sectionData
         self.tblView.reloadSections(IndexSet(integer: sender.tag), with: .automatic)
     }
     
@@ -65,7 +66,7 @@ class SelectedBillVC: UIViewController {
 extension SelectedBillVC: UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+        return selectedBills.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -73,7 +74,7 @@ extension SelectedBillVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if self.data.count-1 == section{
+        if self.selectedBills.count-1 == section{
             return 230
         }else{
             return 0
@@ -83,26 +84,32 @@ extension SelectedBillVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header : SelectedBillHeaderCell = tableView.dequeueReusableCell(withIdentifier: String(describing : SelectedBillHeaderCell.self)) as! SelectedBillHeaderCell
         
-        let sectionData = data[section]
-        header.lblTitle.text = sectionData.title
-        header.imgIcon.image = UIImage(named: self.arrayOfIcons[section])
-      
-        if sectionData.list != nil{
+        let sectionData = selectedBills[section]
+        header.lblTitle.text = sectionData.billerName
+        header.lblSubTitle.text = sectionData.billNickName
+        header.imgDue.isHidden = (sectionData.billDue == true || sectionData.billDue == nil) ? false : true
+        header.imgIcon.image = #imageLiteral(resourceName: "ic_bharatbillpay")
+        header.lblPrice.text = "₹ \(sectionData.amount!)"
+        
+        if sectionData.customerParams.count > 0 {
             ///arrow rotate
             header.imgArrow.isHidden = false
-            header.buttonHandlerAction.transform = CGAffineTransform(rotationAngle: (sectionData.isColleps)! ? 0.0 : .pi)
+            header.buttonHandlerAction.transform = CGAffineTransform(rotationAngle: (sectionData.isColleps ?? false) ? 0.0 : .pi)
             header.buttonHandlerAction.tag = section
             header.buttonHandlerAction.addTarget(self, action: #selector(buttonHandlerSectionArrowTap(sender:)), for: .touchUpInside)
-            
+
             ///change cell color and arrow to updown
             if sectionData.isColleps == true{
                 header.imgArrow.image = UIImage(named: "ic_up")
+                header.lblPrice.isHidden = true
             }else{
                 header.imgArrow.image = UIImage(named: "ic_down")
+                header.lblPrice.isHidden = false
             }
-            
+
         }else{
             header.imgArrow.isHidden = true
+            header.lblPrice.isHidden = false
         }
         
         return header.contentView
@@ -112,21 +119,43 @@ extension SelectedBillVC: UITableViewDelegate,UITableViewDataSource{
         
         let header : SelectedBillFooterCell = tableView.dequeueReusableCell(withIdentifier: String(describing : SelectedBillFooterCell.self)) as! SelectedBillFooterCell
 
+        header.lblTotalBillAcount.text = "(Total \(selectedBills.count) Billers"
+        
+        var totalAmount : Double = 0.0
+        for obj in selectedBills {
+            if let amount = obj.amount {
+                totalAmount = totalAmount + Double(amount)
+            }
+        }
+        header.lblTotalBillAmount.text = "₹ \(totalAmount)"
+
         return header.contentView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  data[section].isColleps ?? false ? (data[section].list?.count ?? 0) : 0
+        let sectionData = selectedBills[section]
+    
+        return  sectionData.isColleps ?? false ? 1 : 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        288
+        let sectionData = selectedBills[indexPath.section]
+
+        return CGFloat(sectionData.customerParams.count * 64) + 24 + 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SelectedBillContentCell.identifier, for: indexPath) as? SelectedBillContentCell else {
             fatalError("XIB doesn't exist.")
         }
+        
+
+        let sectionData = selectedBills[indexPath.section]
+
+        cell.customerParams = sectionData.customerParams
+        cell.amountValue = "₹ \(sectionData.amount!)"
+        
+        cell.setupData()
         
         return cell
     }
