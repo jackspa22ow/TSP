@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="198" id="KGk-i7-Jjw" customClass="HelpRecentOrderCell" customModule="TSP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="421" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="421" height="198"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PF-Dy-3z8">
+                        <rect key="frame" x="16" y="0.0" width="389" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Help with a recent Order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVt-t6-DAY">
+                                <rect key="frame" x="0.0" y="12" width="186" height="20"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npE-pa-hRx">
+                                <rect key="frame" x="325" y="12" width="64" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="iUi-fg-Brl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="View All" image="ic_arrow_right">
+                                    <color key="titleColor" red="0.0078431372550000003" green="0.0078431372550000003" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MVt-t6-DAY" firstAttribute="leading" secondItem="0PF-Dy-3z8" secondAttribute="leading" id="BCn-Ly-F6n"/>
+                            <constraint firstAttribute="trailing" secondItem="npE-pa-hRx" secondAttribute="trailing" id="DXb-Xu-qGi"/>
+                            <constraint firstItem="MVt-t6-DAY" firstAttribute="top" secondItem="npE-pa-hRx" secondAttribute="top" id="P97-vx-f0v"/>
+                            <constraint firstItem="npE-pa-hRx" firstAttribute="top" secondItem="0PF-Dy-3z8" secondAttribute="top" constant="12" id="dkI-kP-dqA"/>
+                            <constraint firstAttribute="bottom" secondItem="npE-pa-hRx" secondAttribute="bottom" constant="12" id="eZ5-Ug-DaG"/>
+                            <constraint firstItem="MVt-t6-DAY" firstAttribute="bottom" secondItem="npE-pa-hRx" secondAttribute="bottom" id="mFg-22-Y8L"/>
+                        </constraints>
+                    </view>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jrw-CA-HwS">
+                        <rect key="frame" x="16" y="44" width="389" height="138"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tableView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Transactions Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vC6-kL-mJo">
+                        <rect key="frame" x="16" y="100.5" width="389" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="T1x-GG-apA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="0PF-Dy-3z8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2bS-er-GE4"/>
+                    <constraint firstItem="vC6-kL-mJo" firstAttribute="trailing" secondItem="jrw-CA-HwS" secondAttribute="trailing" id="GAh-cq-j2M"/>
+                    <constraint firstItem="jrw-CA-HwS" firstAttribute="top" secondItem="0PF-Dy-3z8" secondAttribute="bottom" id="HCc-gl-Efm"/>
+                    <constraint firstAttribute="trailing" secondItem="0PF-Dy-3z8" secondAttribute="trailing" constant="16" id="Hcj-xh-FHc"/>
+                    <constraint firstItem="jrw-CA-HwS" firstAttribute="leading" secondItem="0PF-Dy-3z8" secondAttribute="leading" id="MMz-cA-Zg1"/>
+                    <constraint firstItem="jrw-CA-HwS" firstAttribute="trailing" secondItem="0PF-Dy-3z8" secondAttribute="trailing" id="arX-e4-Y90"/>
+                    <constraint firstItem="0PF-Dy-3z8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="mez-8x-cHo"/>
+                    <constraint firstItem="vC6-kL-mJo" firstAttribute="centerY" secondItem="jrw-CA-HwS" secondAttribute="centerY" id="pSC-n4-rym"/>
+                    <constraint firstAttribute="bottom" secondItem="jrw-CA-HwS" secondAttribute="bottom" constant="16" id="wZf-Vu-O61"/>
+                    <constraint firstItem="vC6-kL-mJo" firstAttribute="leading" secondItem="jrw-CA-HwS" secondAttribute="leading" id="y1o-Li-bni"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnViewAll" destination="npE-pa-hRx" id="Nmq-wo-oWG"/>
+                <outlet property="lblNoDataFound" destination="vC6-kL-mJo" id="C4v-XO-7pa"/>
+                <outlet property="tblView" destination="jrw-CA-HwS" id="JMM-Ga-Hle"/>
+            </connections>
+            <point key="canvasLocation" x="210.86956521739131" y="102.45535714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_arrow_right" width="8" height="14.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

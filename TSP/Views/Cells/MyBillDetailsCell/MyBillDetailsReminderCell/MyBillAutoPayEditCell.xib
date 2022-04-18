@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="261" id="KGk-i7-Jjw" customClass="MyBillAutoPayEditCell" customModule="TSP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="261"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="377" height="261"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gqX-ze-J06">
+                        <rect key="frame" x="128" y="25" width="49" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="tG8-xg-VFx"/>
+                            <constraint firstAttribute="width" constant="47" id="z0E-kL-ker"/>
+                        </constraints>
+                    </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Auto Pay" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4U-SH-e0B">
+                        <rect key="frame" x="16" y="33" width="96" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="gwQ-LT-Pv7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                        <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto pay option will automatically pay the bill on every due dat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHD-H4-fAE">
+                        <rect key="frame" x="16" y="76" width="345" height="36"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                        <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dq-ad-rMe">
+                        <rect key="frame" x="331" y="116" width="30" height="30"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Edit"/>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckA-kB-xmO">
+                        <rect key="frame" x="16" y="150" width="345" height="32"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VGB-Yt-jHM">
+                                <rect key="frame" x="0.0" y="31" width="345" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="1" id="EXp-vF-5wZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Amount" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHl-cP-LDC">
+                                <rect key="frame" x="0.0" y="0.0" width="168.5" height="32"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjf-ZT-iRd">
+                                <rect key="frame" x="176.5" y="0.0" width="168.5" height="32"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xjf-ZT-iRd" firstAttribute="leading" secondItem="yHl-cP-LDC" secondAttribute="trailing" constant="8" id="CQJ-Vg-SKK"/>
+                            <constraint firstAttribute="bottom" secondItem="yHl-cP-LDC" secondAttribute="bottom" id="FqZ-xD-gJF"/>
+                            <constraint firstAttribute="bottom" secondItem="Xjf-ZT-iRd" secondAttribute="bottom" id="HI6-kn-FEK"/>
+                            <constraint firstAttribute="trailing" secondItem="Xjf-ZT-iRd" secondAttribute="trailing" id="Noz-Ku-7LG"/>
+                            <constraint firstItem="yHl-cP-LDC" firstAttribute="width" secondItem="Xjf-ZT-iRd" secondAttribute="width" id="RjW-Ji-k08"/>
+                            <constraint firstItem="VGB-Yt-jHM" firstAttribute="leading" secondItem="ckA-kB-xmO" secondAttribute="leading" id="Xw1-ty-cli"/>
+                            <constraint firstItem="yHl-cP-LDC" firstAttribute="leading" secondItem="ckA-kB-xmO" secondAttribute="leading" id="YWu-14-lg6"/>
+                            <constraint firstItem="yHl-cP-LDC" firstAttribute="top" secondItem="ckA-kB-xmO" secondAttribute="top" id="ZZf-Y8-bOc"/>
+                            <constraint firstAttribute="height" priority="999" constant="32" id="chQ-rt-R3n"/>
+                            <constraint firstAttribute="trailing" secondItem="VGB-Yt-jHM" secondAttribute="trailing" id="mqW-Ma-a2y"/>
+                            <constraint firstAttribute="bottom" secondItem="VGB-Yt-jHM" secondAttribute="bottom" id="wbf-gV-c9M"/>
+                            <constraint firstItem="Xjf-ZT-iRd" firstAttribute="top" secondItem="ckA-kB-xmO" secondAttribute="top" id="yav-H1-etn"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Auto pay for bill amount greater than max limit will fail" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jr-sp-PCN">
+                        <rect key="frame" x="16" y="186" width="345" height="18"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                        <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EqN-pH-25l">
+                        <rect key="frame" x="16" y="220" width="345" height="32"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rni-Gi-eOx">
+                                <rect key="frame" x="0.0" y="31" width="345" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="1" id="aZ2-O4-BKq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxX-V9-2RL">
+                                <rect key="frame" x="0.0" y="0.0" width="168.5" height="32"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debit Card" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2h-pj-fmv">
+                                <rect key="frame" x="176.5" y="0.0" width="168.5" height="32"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Rni-Gi-eOx" firstAttribute="leading" secondItem="EqN-pH-25l" secondAttribute="leading" id="0fO-tc-Ehy"/>
+                            <constraint firstItem="d2h-pj-fmv" firstAttribute="leading" secondItem="mxX-V9-2RL" secondAttribute="trailing" constant="8" id="7hm-Wt-avt"/>
+                            <constraint firstAttribute="bottom" secondItem="Rni-Gi-eOx" secondAttribute="bottom" id="Iag-GR-ceP"/>
+                            <constraint firstItem="d2h-pj-fmv" firstAttribute="top" secondItem="EqN-pH-25l" secondAttribute="top" id="UFU-EV-FDa"/>
+                            <constraint firstAttribute="height" priority="999" constant="32" id="XfG-F8-F6c"/>
+                            <constraint firstAttribute="bottom" secondItem="mxX-V9-2RL" secondAttribute="bottom" id="gYw-I1-aa5"/>
+                            <constraint firstItem="mxX-V9-2RL" firstAttribute="leading" secondItem="EqN-pH-25l" secondAttribute="leading" id="hKI-FX-GxR"/>
+                            <constraint firstAttribute="trailing" secondItem="Rni-Gi-eOx" secondAttribute="trailing" id="jOA-8R-UrI"/>
+                            <constraint firstAttribute="trailing" secondItem="d2h-pj-fmv" secondAttribute="trailing" id="lHO-uq-xy5"/>
+                            <constraint firstAttribute="bottom" secondItem="d2h-pj-fmv" secondAttribute="bottom" id="mNW-5T-EMH"/>
+                            <constraint firstItem="mxX-V9-2RL" firstAttribute="width" secondItem="d2h-pj-fmv" secondAttribute="width" id="tzC-We-7Js"/>
+                            <constraint firstItem="mxX-V9-2RL" firstAttribute="top" secondItem="EqN-pH-25l" secondAttribute="top" id="yNr-pb-uyv"/>
+                        </constraints>
+                    </view>
+                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-dp-RgB">
+                        <rect key="frame" x="16" y="116" width="345" height="127"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Max Limit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhE-lg-PiF">
+                                <rect key="frame" x="0.0" y="16" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KPV-Vb-cMo"/>
+                                </constraints>
+                                <color key="textColor" red="0.2901960784" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                        <color key="value" name="BackGroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto pay for bill amount greater than max limit will fail" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLN-S6-Ram">
+                                <rect key="frame" x="0.0" y="56" width="345" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="yvR-lK-zic"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Payment Method" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CeL-iW-Uuw">
+                                <rect key="frame" x="0.0" y="87" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="v4G-oY-a7r"/>
+                                </constraints>
+                                <color key="textColor" red="0.2901960784" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                        <color key="value" name="BackGroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_down" translatesAutoresizingMaskIntoConstraints="NO" id="a2z-SP-v0g">
+                                <rect key="frame" x="313" y="99" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="Ev1-GE-3uD"/>
+                                    <constraint firstAttribute="height" constant="16" id="TT9-pg-ImU"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPc-V0-iyT">
+                                <rect key="frame" x="0.0" y="87" width="345" height="40"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="250" id="30F-f0-Jgh"/>
+                            <constraint firstItem="nhE-lg-PiF" firstAttribute="leading" secondItem="fq7-dp-RgB" secondAttribute="leading" id="A72-dY-gjs"/>
+                            <constraint firstItem="OLN-S6-Ram" firstAttribute="top" secondItem="nhE-lg-PiF" secondAttribute="bottom" id="E3o-S7-6vV"/>
+                            <constraint firstItem="CeL-iW-Uuw" firstAttribute="leading" secondItem="nhE-lg-PiF" secondAttribute="leading" id="Fqc-CE-8gm"/>
+                            <constraint firstItem="a2z-SP-v0g" firstAttribute="centerY" secondItem="CeL-iW-Uuw" secondAttribute="centerY" id="GD5-Tm-Jas"/>
+                            <constraint firstAttribute="bottom" secondItem="CeL-iW-Uuw" secondAttribute="bottom" priority="998" id="Gid-gn-jxv"/>
+                            <constraint firstItem="MPc-V0-iyT" firstAttribute="bottom" secondItem="CeL-iW-Uuw" secondAttribute="bottom" id="ILm-Ah-8Lc"/>
+                            <constraint firstItem="MPc-V0-iyT" firstAttribute="trailing" secondItem="CeL-iW-Uuw" secondAttribute="trailing" id="LJK-oQ-zMY"/>
+                            <constraint firstItem="nhE-lg-PiF" firstAttribute="top" secondItem="fq7-dp-RgB" secondAttribute="top" constant="16" id="NCj-II-1wf"/>
+                            <constraint firstAttribute="trailing" secondItem="nhE-lg-PiF" secondAttribute="trailing" id="UC6-Gf-gdg"/>
+                            <constraint firstItem="OLN-S6-Ram" firstAttribute="leading" secondItem="nhE-lg-PiF" secondAttribute="leading" id="UMg-ol-yku"/>
+                            <constraint firstItem="MPc-V0-iyT" firstAttribute="top" secondItem="CeL-iW-Uuw" secondAttribute="top" id="Vsd-7x-N1h"/>
+                            <constraint firstItem="CeL-iW-Uuw" firstAttribute="top" secondItem="OLN-S6-Ram" secondAttribute="bottom" constant="16" id="hbj-V7-rHh"/>
+                            <constraint firstItem="a2z-SP-v0g" firstAttribute="trailing" secondItem="CeL-iW-Uuw" secondAttribute="trailing" constant="-16" id="kJa-UI-Iko"/>
+                            <constraint firstItem="CeL-iW-Uuw" firstAttribute="trailing" secondItem="nhE-lg-PiF" secondAttribute="trailing" id="uFc-yM-zB7"/>
+                            <constraint firstItem="OLN-S6-Ram" firstAttribute="trailing" secondItem="nhE-lg-PiF" secondAttribute="trailing" id="y0E-QC-AA6"/>
+                            <constraint firstItem="MPc-V0-iyT" firstAttribute="leading" secondItem="CeL-iW-Uuw" secondAttribute="leading" id="y0p-MO-7Ys"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gqX-ze-J06" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="0jY-83-mv5"/>
+                    <constraint firstItem="ckA-kB-xmO" firstAttribute="leading" secondItem="KHD-H4-fAE" secondAttribute="leading" id="4GW-MC-wWY"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fq7-dp-RgB" secondAttribute="bottom" priority="999" constant="8" id="5G3-gE-4Tb"/>
+                    <constraint firstItem="fq7-dp-RgB" firstAttribute="trailing" secondItem="6dq-ad-rMe" secondAttribute="trailing" id="8Iw-K1-1YO"/>
+                    <constraint firstItem="EqN-pH-25l" firstAttribute="trailing" secondItem="ckA-kB-xmO" secondAttribute="trailing" id="95L-ua-Zvv"/>
+                    <constraint firstItem="6dq-ad-rMe" firstAttribute="trailing" secondItem="KHD-H4-fAE" secondAttribute="trailing" id="C86-Bs-S6Q"/>
+                    <constraint firstItem="e4U-SH-e0B" firstAttribute="centerY" secondItem="gqX-ze-J06" secondAttribute="centerY" id="Csh-vw-VuG"/>
+                    <constraint firstItem="6dq-ad-rMe" firstAttribute="top" secondItem="KHD-H4-fAE" secondAttribute="bottom" constant="4" id="HHX-3G-Q1L"/>
+                    <constraint firstItem="EqN-pH-25l" firstAttribute="leading" secondItem="ckA-kB-xmO" secondAttribute="leading" id="ItO-dF-fKx"/>
+                    <constraint firstItem="EqN-pH-25l" firstAttribute="top" secondItem="5jr-sp-PCN" secondAttribute="bottom" constant="16" id="JLd-aZ-hte"/>
+                    <constraint firstItem="5jr-sp-PCN" firstAttribute="trailing" secondItem="KHD-H4-fAE" secondAttribute="trailing" id="M3b-O0-58x"/>
+                    <constraint firstItem="gqX-ze-J06" firstAttribute="leading" secondItem="e4U-SH-e0B" secondAttribute="trailing" constant="16" id="Sfk-F0-syk"/>
+                    <constraint firstItem="ckA-kB-xmO" firstAttribute="top" secondItem="6dq-ad-rMe" secondAttribute="bottom" constant="4" id="UyP-sf-WoM"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="EqN-pH-25l" secondAttribute="bottom" constant="8" id="VSZ-eH-aww"/>
+                    <constraint firstItem="5jr-sp-PCN" firstAttribute="leading" secondItem="KHD-H4-fAE" secondAttribute="leading" id="VXM-um-79X"/>
+                    <constraint firstAttribute="trailing" secondItem="KHD-H4-fAE" secondAttribute="trailing" constant="16" id="a4M-1x-kIK"/>
+                    <constraint firstItem="e4U-SH-e0B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="btz-zJ-OLc"/>
+                    <constraint firstItem="5jr-sp-PCN" firstAttribute="top" secondItem="ckA-kB-xmO" secondAttribute="bottom" constant="4" id="fX5-Ez-nSX"/>
+                    <constraint firstItem="KHD-H4-fAE" firstAttribute="leading" secondItem="e4U-SH-e0B" secondAttribute="leading" id="huo-XQ-zhI"/>
+                    <constraint firstItem="KHD-H4-fAE" firstAttribute="top" secondItem="gqX-ze-J06" secondAttribute="bottom" constant="20" id="pBR-5f-HBy"/>
+                    <constraint firstItem="ckA-kB-xmO" firstAttribute="trailing" secondItem="KHD-H4-fAE" secondAttribute="trailing" id="pdK-Gp-hVv"/>
+                    <constraint firstItem="fq7-dp-RgB" firstAttribute="top" secondItem="6dq-ad-rMe" secondAttribute="top" id="wZ0-gz-3wF"/>
+                    <constraint firstItem="fq7-dp-RgB" firstAttribute="leading" secondItem="KHD-H4-fAE" secondAttribute="leading" id="zL1-5V-1t6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnEdit" destination="6dq-ad-rMe" id="NKA-Hp-XVb"/>
+                <outlet property="btnSelectPaymentMethod" destination="MPc-V0-iyT" id="ye0-k4-0XT"/>
+                <outlet property="lblMaxAmount" destination="Xjf-ZT-iRd" id="ucg-ZQ-van"/>
+                <outlet property="lblPaymentType" destination="d2h-pj-fmv" id="Zfr-A0-Vb6"/>
+                <outlet property="switchAutoPay" destination="gqX-ze-J06" id="luL-Oq-nkM"/>
+                <outlet property="txtMaxAmount" destination="nhE-lg-PiF" id="ZCx-ZW-PGV"/>
+                <outlet property="txtPaymentMethod" destination="CeL-iW-Uuw" id="8dh-Rf-HT3"/>
+                <outlet property="vwAutoPayEdit" destination="fq7-dp-RgB" id="A80-Cx-SP8"/>
+                <outlet property="vwAutopayAmount" destination="ckA-kB-xmO" id="JWl-yr-LN6"/>
+                <outlet property="vwPaymentType" destination="EqN-pH-25l" id="tC9-ef-YKJ"/>
+            </connections>
+            <point key="canvasLocation" x="178.98550724637681" y="137.61160714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_down" width="29" height="16"/>
+        <namedColor name="BackGroundColor">
+            <color red="0.92500001192092896" green="0.92900002002716064" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

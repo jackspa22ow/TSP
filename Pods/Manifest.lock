@@ -1,0 +1,150 @@
+PODS:
+  - ActionSheetPicker-3.0 (2.7.1)
+  - Alamofire (5.4.3)
+  - CocoaLumberjack (3.7.2):
+    - CocoaLumberjack/Core (= 3.7.2)
+  - CocoaLumberjack/Core (3.7.2)
+  - DXPopover (0.1.1)
+  - Fastis (1.0.13):
+    - JTAppleCalendar (~> 8.0.0)
+    - PrettyCards (~> 1.0.0)
+    - SnapKit (~> 5.0.0)
+  - FSPagerView (0.8.3)
+  - iOSDropDown (0.3.4)
+  - IQKeyboardManagerSwift (6.5.6)
+  - JTAppleCalendar (8.0.3)
+  - PayUIndia-Analytics (2.1.0):
+    - PayUIndia-NetworkReachability (~> 1.0)
+  - PayUIndia-AssetLibrary (3.1.0)
+  - PayUIndia-CheckoutPro (4.2.0):
+    - PayUIndia-AssetLibrary (~> 3.1)
+    - PayUIndia-CheckoutProBase (~> 4.2)
+    - PayUIndia-CrashReporter (~> 1.0)
+    - PayUIndia-Custom-Browser (~> 9.0)
+    - PayUIndia-NativeOtpAssist (~> 2.1)
+    - PayUIndia-NetworkReachability (~> 1.0)
+    - PayUIndia-PayUParams (~> 3.2)
+    - PayUIndia-PG-SDK (~> 8.1)
+    - PayUIndia-UPICore (~> 6.0)
+  - PayUIndia-CheckoutProBase (4.2.0):
+    - PayUIndia-PayUParams (~> 3.1)
+  - PayUIndia-CrashReporter (1.0.0)
+  - PayUIndia-Custom-Browser (9.0.0)
+  - PayUIndia-Logger (4.0.0)
+  - PayUIndia-NativeOtpAssist (2.1.0):
+    - PayUIndia-Analytics (= 2.1)
+    - PayUIndia-CrashReporter (~> 1.0)
+    - PayUIndia-NetworkReachability (~> 1.0)
+    - PayUIndia-PayUParams (~> 3.2)
+  - PayUIndia-Networking (4.0.0):
+    - PayUIndia-Logger (= 4.0.0)
+  - PayUIndia-NetworkReachability (1.0.1)
+  - PayUIndia-PayUParams (3.2.0)
+  - PayUIndia-PG-SDK (8.1.0):
+    - PayUIndia-CrashReporter (~> 1.0)
+    - PayUIndia-NetworkReachability (~> 1.0)
+    - PayUIndia-PayUParams (~> 3.2)
+  - PayUIndia-UPICore (6.0.0):
+    - PayUIndia-Networking (~> 4.0)
+    - PayUIndia-PayUParams (~> 3.1)
+    - Socket.IO-Client-Swift (= 15.1.0)
+  - Popover (1.3.0)
+  - PrettyCards (1.0.5)
+  - SDWebImage (5.6.0):
+    - SDWebImage/Core (= 5.6.0)
+  - SDWebImage/Core (5.6.0)
+  - SDWebImageSVGKitPlugin (1.2.0):
+    - SDWebImage/Core (~> 5.6)
+    - SVGKit (>= 2.1)
+  - SnapKit (5.0.1)
+  - Socket.IO-Client-Swift (15.1.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
+  - SVGKit (3.0.0):
+    - CocoaLumberjack (~> 3.0)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - Alamofire
+  - DXPopover
+  - Fastis
+  - FSPagerView
+  - iOSDropDown
+  - IQKeyboardManagerSwift
+  - PayUIndia-CheckoutPro
+  - Popover
+  - SDWebImage (= 5.6.0)
+  - SDWebImageSVGKitPlugin (= 1.2.0)
+  - SVProgressHUD
+
+SPEC REPOS:
+  trunk:
+    - ActionSheetPicker-3.0
+    - Alamofire
+    - CocoaLumberjack
+    - DXPopover
+    - Fastis
+    - FSPagerView
+    - iOSDropDown
+    - IQKeyboardManagerSwift
+    - JTAppleCalendar
+    - PayUIndia-Analytics
+    - PayUIndia-AssetLibrary
+    - PayUIndia-CheckoutPro
+    - PayUIndia-CheckoutProBase
+    - PayUIndia-CrashReporter
+    - PayUIndia-Custom-Browser
+    - PayUIndia-Logger
+    - PayUIndia-NativeOtpAssist
+    - PayUIndia-Networking
+    - PayUIndia-NetworkReachability
+    - PayUIndia-PayUParams
+    - PayUIndia-PG-SDK
+    - PayUIndia-UPICore
+    - Popover
+    - PrettyCards
+    - SDWebImage
+    - SDWebImageSVGKitPlugin
+    - SnapKit
+    - Socket.IO-Client-Swift
+    - Starscream
+    - SVGKit
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
+  DXPopover: 13e6bbd1a0da4e62b2190de51f43a94850769e0f
+  Fastis: 2af7d2c66bb8f82bdce24696bfd19f898a9d8261
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  JTAppleCalendar: 932cadea40b1051beab10f67843451d48ba16c99
+  PayUIndia-Analytics: 982bacc816cf6e847a479e6b597349489ca4527a
+  PayUIndia-AssetLibrary: cdc99061c0a3e27f252d51f0c66173432926e599
+  PayUIndia-CheckoutPro: f803873b216d41cee74aa6938067f7c607fc4671
+  PayUIndia-CheckoutProBase: 5a6ecec01c8a1c3c5f5b06ad3086c70137038207
+  PayUIndia-CrashReporter: e4e6a68b2a2f59fb826331db0799f0167f596593
+  PayUIndia-Custom-Browser: bdef9f030dbf86f9e144108517f8658803336dc6
+  PayUIndia-Logger: e353d9dd576bac593e428dfbadedf337cbb48b78
+  PayUIndia-NativeOtpAssist: c9308a1a0b64230d875a8c1f61a758abf8831fff
+  PayUIndia-Networking: bf53f743484256303e24d4e763e6097f04af769c
+  PayUIndia-NetworkReachability: 99e69781b3be99d7b713075ab7b73e6d73a153e4
+  PayUIndia-PayUParams: 64ddfd59161ec7ff16cab48e002f62d06060bfa3
+  PayUIndia-PG-SDK: e4d22355ec372bf9ae3bdb17a2640d76c92b87d6
+  PayUIndia-UPICore: 395264df6c90e704426f5b5616dfa7a79ad84cd0
+  Popover: 10e1d9528f81d9504df984b7b3f491292bc1822d
+  PrettyCards: 2b078f2396a42f7f0c4d6624b875149dcb49d3ed
+  SDWebImage: 21b19f56b4226cdfe3aefe4e6848dc43ed129a86
+  SDWebImageSVGKitPlugin: 06a811c05b9e839982baeb5251d15fe7a79abb82
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: d47599199be2c12bdbb86c0b19859fcf958eb56f
+
+COCOAPODS: 1.11.2

@@ -1,0 +1,6 @@
+framework module Pods_TSP {
+  umbrella header "Pods-TSP-umbrella.h"
+
+  export *
+  module * { export * }
+}

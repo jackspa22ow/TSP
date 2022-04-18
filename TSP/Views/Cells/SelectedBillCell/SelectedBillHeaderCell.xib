@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="SelectedBillHeaderCell" customModule="TSP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zTz-1B-PcU">
+                        <rect key="frame" x="16" y="17.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="a4h-WS-JFk"/>
+                            <constraint firstAttribute="height" constant="25" id="vFN-ty-xqa"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bihar State board of Electricity " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYi-st-gmp">
+                        <rect key="frame" x="57" y="12" width="183" height="17"/>
+                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                        <color key="textColor" red="0.36470588240000001" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9879671049" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="169" translatesAutoresizingMaskIntoConstraints="NO" id="ULc-nR-voS">
+                        <rect key="frame" x="57" y="33" width="152" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="M1V-dw-bA6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                        <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 982" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsx-8l-IIW">
+                        <rect key="frame" x="217" y="33" width="56" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="Si2-nr-eNc"/>
+                            <constraint firstAttribute="height" constant="15" id="Z5e-Hr-Udu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                        <color key="textColor" red="0.0078431372550000003" green="0.0078431372550000003" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_due" translatesAutoresizingMaskIntoConstraints="NO" id="scG-i0-S6W">
+                        <rect key="frame" x="248" y="12" width="25" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="1Dp-pZ-pwW"/>
+                            <constraint firstAttribute="height" constant="12" id="g5N-LJ-qZs"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_down" translatesAutoresizingMaskIntoConstraints="NO" id="geX-m6-Jqq">
+                        <rect key="frame" x="289" y="22.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="4Pj-iA-nAN"/>
+                            <constraint firstAttribute="width" constant="15" id="C5Y-Po-Zjs"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uL3-ce-hkW">
+                        <rect key="frame" x="5" y="59" width="310" height="1"/>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="v3b-1r-F68"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIe-BH-ciX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PYi-st-gmp" firstAttribute="leading" secondItem="zTz-1B-PcU" secondAttribute="trailing" constant="16" id="1av-bB-EkH"/>
+                    <constraint firstItem="XIe-BH-ciX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2LS-cr-McS"/>
+                    <constraint firstItem="uL3-ce-hkW" firstAttribute="top" secondItem="ULc-nR-voS" secondAttribute="bottom" constant="11" id="5nc-mV-U5O"/>
+                    <constraint firstAttribute="trailing" secondItem="XIe-BH-ciX" secondAttribute="trailing" id="7bL-Vp-40N"/>
+                    <constraint firstItem="uL3-ce-hkW" firstAttribute="top" secondItem="Zsx-8l-IIW" secondAttribute="bottom" constant="11" id="8iw-0U-Rtt"/>
+                    <constraint firstItem="zTz-1B-PcU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MNd-d6-o7i"/>
+                    <constraint firstItem="zTz-1B-PcU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NLP-Vx-eUr"/>
+                    <constraint firstItem="geX-m6-Jqq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NXk-7V-8Lj"/>
+                    <constraint firstAttribute="bottom" secondItem="XIe-BH-ciX" secondAttribute="bottom" id="Okg-K7-WVy"/>
+                    <constraint firstItem="ULc-nR-voS" firstAttribute="leading" secondItem="zTz-1B-PcU" secondAttribute="trailing" constant="16" id="Pe8-gw-2kL"/>
+                    <constraint firstAttribute="trailing" secondItem="uL3-ce-hkW" secondAttribute="trailing" constant="5" id="R1o-R0-IXe"/>
+                    <constraint firstItem="Zsx-8l-IIW" firstAttribute="leading" secondItem="ULc-nR-voS" secondAttribute="trailing" constant="8" symbolic="YES" id="RD8-64-RMo"/>
+                    <constraint firstItem="uL3-ce-hkW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="WHa-6L-Jx5"/>
+                    <constraint firstItem="XIe-BH-ciX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="a7U-rw-Vca"/>
+                    <constraint firstAttribute="trailing" secondItem="geX-m6-Jqq" secondAttribute="trailing" constant="16" id="aRI-dJ-7xz"/>
+                    <constraint firstItem="scG-i0-S6W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="cKX-zg-DQq"/>
+                    <constraint firstItem="PYi-st-gmp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ejM-nA-iIt"/>
+                    <constraint firstItem="ULc-nR-voS" firstAttribute="top" secondItem="PYi-st-gmp" secondAttribute="bottom" constant="4" id="i9H-pc-ANc"/>
+                    <constraint firstItem="scG-i0-S6W" firstAttribute="leading" secondItem="PYi-st-gmp" secondAttribute="trailing" constant="8" symbolic="YES" id="kfl-tf-CK4"/>
+                    <constraint firstAttribute="bottom" secondItem="uL3-ce-hkW" secondAttribute="bottom" id="trQ-Uw-vSb"/>
+                    <constraint firstItem="geX-m6-Jqq" firstAttribute="leading" secondItem="Zsx-8l-IIW" secondAttribute="trailing" constant="16" id="vHs-i2-iy4"/>
+                    <constraint firstItem="geX-m6-Jqq" firstAttribute="leading" secondItem="scG-i0-S6W" secondAttribute="trailing" constant="16" id="wCU-ma-z1k"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="buttonHandlerAction" destination="XIe-BH-ciX" id="5Y6-QS-Nh0"/>
+                <outlet property="imgArrow" destination="geX-m6-Jqq" id="Ya2-AM-hcL"/>
+                <outlet property="imgDue" destination="scG-i0-S6W" id="V5k-3N-5cY"/>
+                <outlet property="imgIcon" destination="zTz-1B-PcU" id="py6-a3-wGp"/>
+                <outlet property="lblPrice" destination="Zsx-8l-IIW" id="eIq-Bd-lz5"/>
+                <outlet property="lblSubTitle" destination="ULc-nR-voS" id="Mxs-Ys-ISc"/>
+                <outlet property="lblTitle" destination="PYi-st-gmp" id="T2e-ax-TgE"/>
+            </connections>
+            <point key="canvasLocation" x="13.043478260869566" y="89.732142857142847"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_down" width="29" height="16"/>
+        <image name="ic_due" width="66" height="30"/>
+    </resources>
+</document>

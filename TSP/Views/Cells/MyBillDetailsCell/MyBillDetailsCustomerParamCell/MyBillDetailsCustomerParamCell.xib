@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="64" id="KGk-i7-Jjw" customClass="MyBillDetailsCustomerParamCell" customModule="TSP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gky-UT-hc4">
+                        <rect key="frame" x="16" y="0.0" width="288" height="64"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consumer name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSr-6P-e7s">
+                                <rect key="frame" x="12" y="12" width="264" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="sGu-Wq-9Qp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
+                                <color key="textColor" red="0.56470588235294117" green="0.56862745098039214" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ashutosh Kumar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xns-Yt-j3N">
+                                <rect key="frame" x="12" y="32" width="264" height="20"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                <color key="textColor" red="0.0078431372549019607" green="0.0078431372549019607" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="0.19981808693993169" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xns-Yt-j3N" firstAttribute="top" secondItem="xSr-6P-e7s" secondAttribute="bottom" id="15j-tr-i0I"/>
+                            <constraint firstAttribute="trailing" secondItem="Xns-Yt-j3N" secondAttribute="trailing" constant="12" id="BZg-UW-FgL"/>
+                            <constraint firstItem="xSr-6P-e7s" firstAttribute="top" secondItem="gky-UT-hc4" secondAttribute="top" constant="12" id="BoG-va-AgM"/>
+                            <constraint firstItem="xSr-6P-e7s" firstAttribute="leading" secondItem="gky-UT-hc4" secondAttribute="leading" constant="12" id="GWK-km-lCT"/>
+                            <constraint firstItem="Xns-Yt-j3N" firstAttribute="leading" secondItem="gky-UT-hc4" secondAttribute="leading" constant="12" id="qHg-5c-PYR"/>
+                            <constraint firstAttribute="trailing" secondItem="xSr-6P-e7s" secondAttribute="trailing" constant="12" id="vpS-J8-OXi"/>
+                            <constraint firstAttribute="bottom" secondItem="Xns-Yt-j3N" secondAttribute="bottom" constant="12" id="x1A-7n-69f"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gky-UT-hc4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="AGi-hv-wah"/>
+                    <constraint firstAttribute="trailing" secondItem="gky-UT-hc4" secondAttribute="trailing" constant="16" id="LiF-vh-jvb"/>
+                    <constraint firstItem="gky-UT-hc4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="akv-ox-Aa7"/>
+                    <constraint firstAttribute="bottom" secondItem="gky-UT-hc4" secondAttribute="bottom" id="nxA-wd-h2O"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblDescription" destination="Xns-Yt-j3N" id="IBU-dW-Xkf"/>
+                <outlet property="lblName" destination="xSr-6P-e7s" id="YdD-kc-7X6"/>
+            </connections>
+            <point key="canvasLocation" x="5.7971014492753632" y="92.410714285714278"/>
+        </tableViewCell>
+    </objects>
+</document>
