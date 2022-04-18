@@ -23,6 +23,14 @@
 		207B58CE2742C549009D9306 /* MobileRechargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 207B58CC2742C549009D9306 /* MobileRechargeCell.xib */; };
 		207B58D52742D3A8009D9306 /* MobileRechargeTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207B58D32742D3A8009D9306 /* MobileRechargeTypeCell.swift */; };
 		207B58D62742D3A8009D9306 /* MobileRechargeTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 207B58D42742D3A8009D9306 /* MobileRechargeTypeCell.xib */; };
+		20B28942280DE7EE00136152 /* MultipleBillTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B28940280DE7EE00136152 /* MultipleBillTransactionCell.swift */; };
+		20B28943280DE7EE00136152 /* MultipleBillTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B28941280DE7EE00136152 /* MultipleBillTransactionCell.xib */; };
+		20B28946280DF02600136152 /* MultipleBilllTrasactionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B28944280DF02600136152 /* MultipleBilllTrasactionTitleCell.swift */; };
+		20B28947280DF02600136152 /* MultipleBilllTrasactionTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B28945280DF02600136152 /* MultipleBilllTrasactionTitleCell.xib */; };
+		20B2894A280DF26D00136152 /* MultipleBillTransactionAmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B28948280DF26D00136152 /* MultipleBillTransactionAmountCell.swift */; };
+		20B2894B280DF26D00136152 /* MultipleBillTransactionAmountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B28949280DF26D00136152 /* MultipleBillTransactionAmountCell.xib */; };
+		20B2894E280DF61000136152 /* MultipleBillTransactionFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2894C280DF61000136152 /* MultipleBillTransactionFooterCell.swift */; };
+		20B2894F280DF61000136152 /* MultipleBillTransactionFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B2894D280DF61000136152 /* MultipleBillTransactionFooterCell.xib */; };
 		20B3BB4027437A40007BDC94 /* MobileRechargePlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B3BB3E27437A40007BDC94 /* MobileRechargePlanCell.swift */; };
 		20B3BB4127437A40007BDC94 /* MobileRechargePlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B3BB3F27437A40007BDC94 /* MobileRechargePlanCell.xib */; };
 		20BA4E64274E8C3B00040E3B /* MyBillDetailsReminderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA4E62274E8C3B00040E3B /* MyBillDetailsReminderItemCell.swift */; };
@@ -230,6 +238,14 @@
 		207B58CC2742C549009D9306 /* MobileRechargeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileRechargeCell.xib; sourceTree = "<group>"; };
 		207B58D32742D3A8009D9306 /* MobileRechargeTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileRechargeTypeCell.swift; sourceTree = "<group>"; };
 		207B58D42742D3A8009D9306 /* MobileRechargeTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileRechargeTypeCell.xib; sourceTree = "<group>"; };
+		20B28940280DE7EE00136152 /* MultipleBillTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBillTransactionCell.swift; sourceTree = "<group>"; };
+		20B28941280DE7EE00136152 /* MultipleBillTransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleBillTransactionCell.xib; sourceTree = "<group>"; };
+		20B28944280DF02600136152 /* MultipleBilllTrasactionTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBilllTrasactionTitleCell.swift; sourceTree = "<group>"; };
+		20B28945280DF02600136152 /* MultipleBilllTrasactionTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleBilllTrasactionTitleCell.xib; sourceTree = "<group>"; };
+		20B28948280DF26D00136152 /* MultipleBillTransactionAmountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBillTransactionAmountCell.swift; sourceTree = "<group>"; };
+		20B28949280DF26D00136152 /* MultipleBillTransactionAmountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleBillTransactionAmountCell.xib; sourceTree = "<group>"; };
+		20B2894C280DF61000136152 /* MultipleBillTransactionFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBillTransactionFooterCell.swift; sourceTree = "<group>"; };
+		20B2894D280DF61000136152 /* MultipleBillTransactionFooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleBillTransactionFooterCell.xib; sourceTree = "<group>"; };
 		20B3BB3E27437A40007BDC94 /* MobileRechargePlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileRechargePlanCell.swift; sourceTree = "<group>"; };
 		20B3BB3F27437A40007BDC94 /* MobileRechargePlanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileRechargePlanCell.xib; sourceTree = "<group>"; };
 		20BA4E62274E8C3B00040E3B /* MyBillDetailsReminderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillDetailsReminderItemCell.swift; sourceTree = "<group>"; };
@@ -442,6 +458,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20B2893F280DE7D800136152 /* MultipleBillTransactionCell */ = {
+			isa = PBXGroup;
+			children = (
+				20B28940280DE7EE00136152 /* MultipleBillTransactionCell.swift */,
+				20B28941280DE7EE00136152 /* MultipleBillTransactionCell.xib */,
+				20B28944280DF02600136152 /* MultipleBilllTrasactionTitleCell.swift */,
+				20B28945280DF02600136152 /* MultipleBilllTrasactionTitleCell.xib */,
+				20B28948280DF26D00136152 /* MultipleBillTransactionAmountCell.swift */,
+				20B28949280DF26D00136152 /* MultipleBillTransactionAmountCell.xib */,
+				20B2894C280DF61000136152 /* MultipleBillTransactionFooterCell.swift */,
+				20B2894D280DF61000136152 /* MultipleBillTransactionFooterCell.xib */,
+			);
+			path = MultipleBillTransactionCell;
+			sourceTree = "<group>";
+		};
 		20E09EFC274FA8BD00BC92E9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +739,7 @@
 				FC7756EE26A82830003A80A6 /* MyBillsCell */,
 				FCF1FE0B26A995170072B964 /* MultipleBillCell */,
 				FCF1FE1226A9AD540072B964 /* SelectedBillCell */,
+				20B2893F280DE7D800136152 /* MultipleBillTransactionCell */,
 				FC7756F626A84DE0003A80A6 /* PopViewCell */,
 				FC6A376526E1682800DD4DEC /* SpendAnalysisCell */,
 				FCAB13A92714246A00B4244A /* MyBillDetailsCell */,
@@ -1245,7 +1277,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B28943280DE7EE00136152 /* MultipleBillTransactionCell.xib in Resources */,
 				FC2761DB269FFEDD006BBD38 /* readME in Resources */,
+				20B2894F280DF61000136152 /* MultipleBillTransactionFooterCell.xib in Resources */,
 				FCA50C6426FEE0B90087A3F6 /* SpendAnalysisCategoryFooterCell.xib in Resources */,
 				207B58D62742D3A8009D9306 /* MobileRechargeTypeCell.xib in Resources */,
 				20B3BB4127437A40007BDC94 /* MobileRechargePlanCell.xib in Resources */,
@@ -1287,7 +1321,9 @@
 				D970388327422D3C0073CD3A /* BillerCategoryListCell.xib in Resources */,
 				FCA50C6026FEE0160087A3F6 /* SpendAnalysisCategoryCell.xib in Resources */,
 				FC3E093F2693740E006113A4 /* Dashboard.storyboard in Resources */,
+				20B2894B280DF26D00136152 /* MultipleBillTransactionAmountCell.xib in Resources */,
 				FC7756FA26A84E4C003A80A6 /* MyBillsVCPopView.xib in Resources */,
+				20B28947280DF02600136152 /* MultipleBilllTrasactionTitleCell.xib in Resources */,
 				D9C03815274CCE4A0092B897 /* AutoPayPopView.xib in Resources */,
 				FCAB13AE2714290000B4244A /* MyBillDetailsHeaderCell.xib in Resources */,
 				20E6490E274364320060AE3C /* MobileOperatorOrCircleCell.xib in Resources */,
@@ -1476,6 +1512,7 @@
 				FC2E79FC27032DDD00A2CC62 /* SingleBillDetailsVC.swift in Sources */,
 				20E09F05274FD5BA00BC92E9 /* HelpChoosServiceCell.swift in Sources */,
 				FC3E096026945CBD006113A4 /* SpendAnalysisModel.swift in Sources */,
+				20B28946280DF02600136152 /* MultipleBilllTrasactionTitleCell.swift in Sources */,
 				FC3E094826945AA6006113A4 /* AddBillerVC.swift in Sources */,
 				20E6490A27435F090060AE3C /* MobileOperatorOrCircleVC.swift in Sources */,
 				FC14DCC027062082005734E6 /* RemindersListVC.swift in Sources */,
@@ -1484,6 +1521,7 @@
 				FC71414A26DFC40F006F5A64 /* HistoryPDFViewerVC.swift in Sources */,
 				FC0A47582726D77F00620070 /* TSPTextField.swift in Sources */,
 				D932E3FD27CCAE930057A477 /* NotificationListVC.swift in Sources */,
+				20B2894A280DF26D00136152 /* MultipleBillTransactionAmountCell.swift in Sources */,
 				FC29B98A26933AF6000098F5 /* SplashViewModel.swift in Sources */,
 				FCA50C6326FEE0B90087A3F6 /* SpendAnalysisCategoryFooterCell.swift in Sources */,
 				FC14DCC6270702B3005734E6 /* AutopayListViewModel.swift in Sources */,
@@ -1496,6 +1534,7 @@
 				FC6A375F26E11D9000DD4DEC /* PNGenericChart.swift in Sources */,
 				207B58C92742B1A8009D9306 /* ContactTableViewCell.swift in Sources */,
 				D932E40427CCE54B0057A477 /* NotificationListModel.swift in Sources */,
+				20B2894E280DF61000136152 /* MultipleBillTransactionFooterCell.swift in Sources */,
 				FC6A376226E11D9000DD4DEC /* PNValue.swift in Sources */,
 				FC29EB4F26F3544400553758 /* PaymentUtils.swift in Sources */,
 				5E217B65268F155B0092FE27 /* SplashVC.swift in Sources */,
@@ -1542,6 +1581,7 @@
 				FCF1FE0A26A98AA60072B964 /* MultipleBillPaymentVC.swift in Sources */,
 				FC0A475B2726DF2800620070 /* TSPService.swift in Sources */,
 				FC3E095A26945C3F006113A4 /* MyBillsModel.swift in Sources */,
+				20B28942280DE7EE00136152 /* MultipleBillTransactionCell.swift in Sources */,
 				FCE304F22695D55B00584C9F /* SlideMenuModel.swift in Sources */,
 				206BC2B22751019300C2F8BB /* RaiseComplaintViewModel.swift in Sources */,
 				FC29B99026933B37000098F5 /* LoginViewModel.swift in Sources */,

@@ -173,11 +173,12 @@ extension SelectedBillVC: PayUCheckoutProDelegate {
         if let transactionId = self.addBillerViewModel.dicOfPreparePayment.txnid{
             self.addBillerViewModel.verifyPayment(transactionID: transactionId) { response in
                 print("Verify Payment Done")
-//                let nextVC = BILLDETAILS_STORYBOARD.instantiateViewController(withIdentifier: "SingleBillDetailsVC")as! SingleBillDetailsVC
+                let nextVC = BILLDETAILS_STORYBOARD.instantiateViewController(withIdentifier: "MultipleBillDetailsVC")as! MultipleBillDetailsVC
 //                let obj = self.addBillerViewModel.aryOfVerifyPaymentModel[0]
+                nextVC.aryOfVerifyPaymentModel = self.addBillerViewModel.aryOfVerifyPaymentModel
 //                nextVC.transactionID = obj.txnId ?? ""
 //                nextVC.isFromAddBiller = true
-//                self.navigationController?.pushViewController(nextVC, animated: true)
+                self.navigationController?.pushViewController(nextVC, animated: true)
             }
         }else{
             showAlert(title: "Failure", message: "Payment is not verfied")
