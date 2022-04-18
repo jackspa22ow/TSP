@@ -168,7 +168,13 @@ extension RemindersListVC: UITableViewDelegate,UITableViewDataSource{
         
         cell.lblTitle.text = json.billerName
         //cell.lblSubTitle.text = json.billerShortName
-        cell.lblPrice.text = "₹ \(json.billAmount!)"
+        
+        if let billAmount = json.billAmount {
+            cell.lblPrice.text = "₹ \(billAmount)"
+        } else {
+            cell.lblPrice.text = ""
+        }
+        
         
         cell.btnMore.tag = indexPath.row
         cell.btnMore.addTarget(self, action: #selector(self.btnMore), for: .touchUpInside)
