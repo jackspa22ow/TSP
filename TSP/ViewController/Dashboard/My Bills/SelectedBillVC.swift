@@ -86,7 +86,7 @@ extension SelectedBillVC: UITableViewDelegate,UITableViewDataSource{
         
         let sectionData = selectedBills[section]
         header.lblTitle.text = sectionData.billerName
-        header.lblSubTitle.text = sectionData.billNickName
+        header.lblSubTitle.text = sectionData.billerPayuId
         header.imgDue.isHidden = (sectionData.billDue == true || sectionData.billDue == nil) ? false : true
         header.imgIcon.image = #imageLiteral(resourceName: "ic_bharatbillpay")
         header.lblPrice.text = "₹ \(sectionData.amount!)"
@@ -119,7 +119,7 @@ extension SelectedBillVC: UITableViewDelegate,UITableViewDataSource{
         
         let header : SelectedBillFooterCell = tableView.dequeueReusableCell(withIdentifier: String(describing : SelectedBillFooterCell.self)) as! SelectedBillFooterCell
 
-        header.lblTotalBillAcount.text = "(Total \(selectedBills.count) Billers"
+        header.lblTotalBillAcount.text = "(Total \(selectedBills.count) Billers)"
         
         var totalAmount : Double = 0.0
         for obj in selectedBills {
