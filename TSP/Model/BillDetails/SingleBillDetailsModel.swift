@@ -22,3 +22,21 @@ struct SingleBillDetails: Codable {
     let billerName: String?
     let paymentDate: String?
 }
+
+
+
+struct MultipleBillDetails: Codable {
+    let status: String?
+    let txnId: String?
+    let amount: Double?
+    let billId: String?
+    let paymentMode: String?
+    let customerName: String?
+    let billDate: String?
+    let billerId: String?
+    let email: String?
+    let noOfInstallment: Int?
+    let billToDueDate: String?
+    let billerName: String?
+    let paymentDate: String?
+}

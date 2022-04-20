@@ -49,8 +49,7 @@ struct API {
     //Bills
     static let GET_BILLS = baseURL + "tsp/bill-details/v1/api/bill/"
     static let DELETE_BILL = baseURL + "tsp/bill-details/v1/api/bill/"
-    static let GET_SINGLE_BILL_DETAILS = baseURL + "tsp/bill-details/v1/api/payment/transaction/"
-    static let POST_AUTO_PAY_FOR_BILL = baseURL + "tsp/bill-details/v1/api/si/"    
+    static let POST_AUTO_PAY_FOR_BILL = baseURL + "tsp/bill-details/v1/api/si/"
     static let GET_SINGLE_BILL_DETAILS_BY_BILL_ID_FOR_AUTOPAY = baseURL + "tsp/bill-details/v1/api/si/bill/"
     static let GET_SINGLE_BILL_DETAILS_BY_BILL_ID = baseURL + "tsp/bill-details/v1/api/bill/"
     
@@ -110,6 +109,9 @@ struct API {
     static let PREPARE_PAYMENT_MULTIPLE_BILL_ = baseURL + "tsp/bill-details/v1/api/payment/multi/prepare_payment"
     static let GENERATE_HASH = baseURL + "tsp/bill-details/v1/api/payment/generate/hash"
     static let VERIFY_PAYMENT = baseURL + "tsp/bill-details/v1/api/payment/verify_payment/"
+    static let GET_SINGLE_BILL_DETAILS = baseURL + "tsp/bill-details/v1/api/payment/transaction/"
+    static let GET_MULTIPLE_BILL_DETAILS = baseURL + "tsp/bill-details/v1/api/payment/transactions/list/"
+    
     
     //SSO
     static let SSO = baseURL + "tsp-auth/v1/api/custom-sso/login"

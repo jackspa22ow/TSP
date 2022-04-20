@@ -9,11 +9,13 @@ import UIKit
 
 class MultipleBillDetailsVC: UIViewController {
 
-    var aryOfVerifyPaymentModel : [VerifyPaymentModel] = []
+    let multipleBillDetailsViewModel = MultipleBillDetailsViewModel()
 
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var viewThumsUp: UIView!
     @IBOutlet weak var imgStatus: UIImageView!
+    
+    var transactionIDs = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,13 @@ class MultipleBillDetailsVC: UIViewController {
         self.tblView.rowHeight = UITableView.automaticDimension
 
         self.tblView.estimatedRowHeight = 70
+        
+        
+        
+        self.multipleBillDetailsViewModel.getMultipleBillDetails(transactionIDs: self.transactionIDs) { response in
+            print(response)
+        }
+        
         
         self.tblView.dataSource = self
         self.tblView.delegate = self

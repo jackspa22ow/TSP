@@ -95,6 +95,7 @@
 		D9C03811274CB1DB0092B897 /* ForgetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C03810274CB1DB0092B897 /* ForgetPasswordModel.swift */; };
 		D9C03813274CB2ED0092B897 /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C03812274CB2ED0092B897 /* ForgetPasswordViewModel.swift */; };
 		D9C03815274CCE4A0092B897 /* AutoPayPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C03814274CCE4A0092B897 /* AutoPayPopView.xib */; };
+		D9CE9C71280FD86B00A99F5C /* MultipleBillDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE9C70280FD86B00A99F5C /* MultipleBillDetailsViewModel.swift */; };
 		D9DF594B273EFDB700796515 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DF594A273EFDB700796515 /* SignUpModel.swift */; };
 		D9E530E1279054A900D38A7E /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E530E0279054A900D38A7E /* ValidationService.swift */; };
 		D9E530E32790752900D38A7E /* TSPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E530E22790752900D38A7E /* TSPTests.swift */; };
@@ -319,6 +320,7 @@
 		D9C03810274CB1DB0092B897 /* ForgetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordModel.swift; sourceTree = "<group>"; };
 		D9C03812274CB2ED0092B897 /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
 		D9C03814274CCE4A0092B897 /* AutoPayPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoPayPopView.xib; sourceTree = "<group>"; };
+		D9CE9C70280FD86B00A99F5C /* MultipleBillDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBillDetailsViewModel.swift; sourceTree = "<group>"; };
 		D9DF594A273EFDB700796515 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		D9E530E0279054A900D38A7E /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		D9E530E22790752900D38A7E /* TSPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSPTests.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 			isa = PBXGroup;
 			children = (
 				FC050CDA27037CAE00F5E4A1 /* SingleBillDetailsViewModel.swift */,
+				D9CE9C70280FD86B00A99F5C /* MultipleBillDetailsViewModel.swift */,
 			);
 			path = BillDetails;
 			sourceTree = "<group>";
@@ -1589,6 +1592,7 @@
 				D9C03813274CB2ED0092B897 /* ForgetPasswordViewModel.swift in Sources */,
 				FCFDF4FC269F03BC0099C044 /* HelpVC.swift in Sources */,
 				FC3E094E26945BD5006113A4 /* HomeViewModel.swift in Sources */,
+				D9CE9C71280FD86B00A99F5C /* MultipleBillDetailsViewModel.swift in Sources */,
 				FC0A47572726D77F00620070 /* TSPButton.swift in Sources */,
 				FCF1FE1D26A9C5B30072B964 /* SelectedBillFooterCell.swift in Sources */,
 				D970388727422D3C0073CD3A /* BillerCategoryListCell.swift in Sources */,
