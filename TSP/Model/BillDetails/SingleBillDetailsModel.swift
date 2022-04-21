@@ -26,17 +26,19 @@ struct SingleBillDetails: Codable {
 
 
 struct MultipleBillDetails: Codable {
-    let status: String?
-    let txnId: String?
-    let amount: Double?
-    let billId: String?
-    let paymentMode: String?
-    let customerName: String?
-    let billDate: String?
-    let billerId: String?
+    let status, txnID: String?
+    let amount: Int?
+    let billID, paymentMode, customerName, billerID: String?
     let email: String?
     let noOfInstallment: Int?
-    let billToDueDate: String?
-    let billerName: String?
-    let paymentDate: String?
+    let billerName, paymentDate, payuBillerID, gatewayTxnID: String?
+    let categoryName: String?
+    let customerParams: [MultipleBillDetailCustomerParam]?
+    var isExpand: Bool?
+}
+
+struct MultipleBillDetailCustomerParam: Codable {
+    let value: String
+    let primary: Bool
+    let paramName: String
 }

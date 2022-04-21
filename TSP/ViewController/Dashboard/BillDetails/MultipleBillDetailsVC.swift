@@ -16,7 +16,6 @@ class MultipleBillDetailsVC: UIViewController {
     @IBOutlet weak var imgStatus: UIImageView!
     
     var transactionIDs = String()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,26 +27,21 @@ class MultipleBillDetailsVC: UIViewController {
         self.tblView.rowHeight = UITableView.automaticDimension
 
         self.tblView.estimatedRowHeight = 70
-        
-        
-        
+                
         self.multipleBillDetailsViewModel.getMultipleBillDetails(transactionIDs: self.transactionIDs) { response in
-            print(response)
-        }
-        
-        
-        self.tblView.dataSource = self
-        self.tblView.delegate = self
-        self.tblView.reloadData()
-        
-        let status = self.aryOfVerifyPaymentModel[0].status
+            self.tblView.dataSource = self
+            self.tblView.delegate = self
+            self.tblView.reloadData()
+            
+            let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].status
 
-        if status == "success" || status == "Success" || status == "SUCCESS"{
-            self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-            self.imgStatus.image = UIImage(named: "ic_thumbsup")
-        }else{
-            self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: "EB0202")
-            self.imgStatus.image = UIImage(named: "ic_thumbsup_down")
+            if status == "success" || status == "Success" || status == "SUCCESS"{
+                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+                self.imgStatus.image = UIImage(named: "ic_thumbsup")
+            }else{
+                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: "EB0202")
+                self.imgStatus.image = UIImage(named: "ic_thumbsup_down")
+            }
         }
         // Do any additional setup after loading the view.
     }
@@ -61,13 +55,13 @@ class MultipleBillDetailsVC: UIViewController {
 extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return aryOfVerifyPaymentModel.count + 3
+        return self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 3
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == (self.aryOfVerifyPaymentModel.count + 1) {
+        if section == (self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 1) {
             return 212
-        } else if section == (self.aryOfVerifyPaymentModel.count + 2) {
+        } else if section == (self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 2) {
             return 235
         }
         return 64
@@ -79,17 +73,17 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
             
             return header.contentView
 
-        } else if section == self.aryOfVerifyPaymentModel.count + 1 {
+        } else if section == self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 1 {
             let header : MultipleBillTransactionAmountCell = tableView.dequeueReusableCell(withIdentifier: String(describing : MultipleBillTransactionAmountCell.self)) as! MultipleBillTransactionAmountCell
             
             var totalAmount : Double = 0.0
-            for obj in self.aryOfVerifyPaymentModel {
+            for obj in self.multipleBillDetailsViewModel.aryOfMultipleBillDetails {
                 if let amount = obj.amount {
                     totalAmount = totalAmount + Double(amount)
                 }
             }
             var billDatee = String()
-            if let str = self.aryOfVerifyPaymentModel[0].paymentDate{
+            if let str = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].paymentDate{
                 if str.contains("T"){
                     let vall = str.components(separatedBy: "T")
                     billDatee = self.convertDateFormater(vall[0])
@@ -100,7 +94,7 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
                 billDatee = ""
             }
             
-            let status = self.aryOfVerifyPaymentModel[0].status
+            let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].status
 
             if status == "success" || status == "Success" || status == "SUCCESS"{
                 header.setupDate(status: "Completed", dateValue: billDatee)
@@ -115,17 +109,20 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
             }
             header.lblTotalAmount.text = "₹ \(totalAmount)"
             return header.contentView
-        } else if section == self.aryOfVerifyPaymentModel.count + 2 {
+        } else if section == self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 2 {
             let header : MultipleBillTransactionFooterCell = tableView.dequeueReusableCell(withIdentifier: String(describing : MultipleBillTransactionFooterCell.self)) as! MultipleBillTransactionFooterCell
     
             return header.contentView
         }
         else {
             let header : MultipleBillTransactionCell = tableView.dequeueReusableCell(withIdentifier: String(describing : MultipleBillTransactionCell.self)) as! MultipleBillTransactionCell
-            
-            let obj = aryOfVerifyPaymentModel[section - 1]
-            header.lblTitle.text = obj.billerName
-            header.lblSubTitle.text = obj.billerId
+            header.lblTitle.text = ""
+            header.lblSubTitle.text = ""
+            let obj = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[section - 1]
+            print("BillerName: \(obj.billerName ?? "")")
+            print("BillerID: \(obj.billerID ?? "")")
+//            header.lblTitle.text = obj.billerName
+//            header.lblSubTitle.text = obj.billerID
             header.imgIcon.image = #imageLiteral(resourceName: "ic_bharatbillpay")
             //        let sectionData = selectedBills[section]
             //        header.lblTitle.text = sectionData.billerName
