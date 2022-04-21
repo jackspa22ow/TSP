@@ -200,7 +200,7 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
         cell.amountValue = "₹ \(sectionData.amount!)"
 
         var billDatee = String()
-        if let str = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].paymentDate{
+        if let str = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[indexPath.section - 1].paymentDate{
             if str.contains("T"){
                 let vall = str.components(separatedBy: "T")
                 billDatee = self.convertDateFormater(vall[0])
@@ -212,7 +212,9 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
         }
         
         cell.trasactionDate = billDatee
-        let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].status
+        cell.trasactionID = sectionData.txnId ?? ""
+        
+        let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[indexPath.section - 1].status
 
         if status == "success" || status == "Success" || status == "SUCCESS"{
             cell.trasactionStatus = "Completed"

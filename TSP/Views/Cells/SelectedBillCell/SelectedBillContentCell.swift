@@ -18,6 +18,7 @@ class SelectedBillContentCell: UITableViewCell {
     var amountValue: String = ""
     var trasactionDate: String = ""
     var trasactionStatus: String = ""
+    var trasactionID: String = ""
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,10 @@ class SelectedBillContentCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @objc func btnCopyAction(sender: UIButton) {
+        
     }
 }
 
@@ -57,7 +62,7 @@ extension SelectedBillContentCell: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if trasactionDate.count > 0 {
-            if indexPath.row == customerParams.count + 1 {
+            if indexPath.row == customerParams.count + 2 {
                 return 70
             }
         } else {
@@ -79,6 +84,17 @@ extension SelectedBillContentCell: UITableViewDelegate,UITableViewDataSource{
                 
                 return cell
             } else if indexPath.row == customerParams.count + 1 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsCustomerParamCell.identifier, for: indexPath) as? MyBillDetailsCustomerParamCell else {
+                    fatalError("XIB doesn't exist.")
+                }
+                
+                cell.lblName.text = "Transaction Ref ID"
+                cell.lblDescription.text = trasactionID
+                cell.imgCopyIcon.isHidden = false
+                cell.btnCopy.isHidden = false
+                cell.btnCopy.addTarget(self, action: #selector(btnCopyAction(sender:)), for: .touchUpInside)
+                return cell
+            }else if indexPath.row == customerParams.count + 2 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBillerDetailsTotalAmountCell.identifier, for: indexPath) as? AddBillerDetailsTotalAmountCell else {
                     fatalError("XIB doesn't exist.")
                 }
