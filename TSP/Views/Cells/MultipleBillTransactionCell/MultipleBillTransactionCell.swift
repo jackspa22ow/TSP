@@ -16,6 +16,8 @@ class MultipleBillTransactionCell: UITableViewCell {
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var imgIcon: UIImageView!
     
+    @IBOutlet weak var btnExpandCollaps: UIButton!
+    @IBOutlet weak var ingArrow: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

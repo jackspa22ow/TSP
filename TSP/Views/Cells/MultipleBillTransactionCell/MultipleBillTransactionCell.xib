@@ -53,11 +53,17 @@
                             <constraint firstAttribute="height" constant="15" id="f5y-12-fcv"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBK-ux-BEZ">
+                        <rect key="frame" x="0.0" y="0.0" width="303" height="69"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="EBK-ux-BEZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1DP-8K-cQo"/>
                     <constraint firstItem="G8l-Jb-LIG" firstAttribute="trailing" secondItem="oYg-xD-3oj" secondAttribute="trailing" id="5IS-Yb-fuW"/>
                     <constraint firstItem="p8Y-2P-U3k" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="83d-7E-PGl"/>
                     <constraint firstAttribute="bottom" secondItem="G8l-Jb-LIG" secondAttribute="bottom" id="8iO-XK-R7K"/>
+                    <constraint firstItem="EBK-ux-BEZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="AQA-wL-wv6"/>
                     <constraint firstItem="ZeQ-fe-0Ju" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="GHU-wk-JEc"/>
                     <constraint firstItem="NNe-PY-gAf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OOL-jh-Z4k"/>
                     <constraint firstItem="oYg-xD-3oj" firstAttribute="top" secondItem="ZeQ-fe-0Ju" secondAttribute="bottom" id="Rvt-gB-Fyh"/>
@@ -67,14 +73,18 @@
                     <constraint firstItem="G8l-Jb-LIG" firstAttribute="leading" secondItem="oYg-xD-3oj" secondAttribute="leading" id="cbq-WJ-1cD"/>
                     <constraint firstItem="ZeQ-fe-0Ju" firstAttribute="leading" secondItem="NNe-PY-gAf" secondAttribute="trailing" constant="16" id="juX-cH-Liw"/>
                     <constraint firstAttribute="trailing" secondItem="p8Y-2P-U3k" secondAttribute="trailing" constant="32" id="lqi-RH-oHN"/>
+                    <constraint firstAttribute="trailing" secondItem="EBK-ux-BEZ" secondAttribute="trailing" id="ng9-ro-Ivo"/>
+                    <constraint firstAttribute="bottom" secondItem="EBK-ux-BEZ" secondAttribute="bottom" id="rrw-S9-yll"/>
                     <constraint firstItem="oYg-xD-3oj" firstAttribute="trailing" secondItem="ZeQ-fe-0Ju" secondAttribute="trailing" id="wgD-Di-vvI"/>
                     <constraint firstItem="p8Y-2P-U3k" firstAttribute="leading" secondItem="ZeQ-fe-0Ju" secondAttribute="trailing" constant="16" id="x6Q-m5-Lb1"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="btnExpandCollaps" destination="EBK-ux-BEZ" id="auR-ql-JI8"/>
                 <outlet property="imgIcon" destination="NNe-PY-gAf" id="PxU-ph-EgI"/>
-                <outlet property="lblSubTitle" destination="ZeQ-fe-0Ju" id="3xd-DY-Luj"/>
+                <outlet property="ingArrow" destination="p8Y-2P-U3k" id="14O-Vd-oSo"/>
+                <outlet property="lblSubTitle" destination="oYg-xD-3oj" id="VJy-xC-mfy"/>
                 <outlet property="lblTitle" destination="ZeQ-fe-0Ju" id="cI6-E4-Und"/>
             </connections>
             <point key="canvasLocation" x="125.36231884057972" y="90.066964285714278"/>

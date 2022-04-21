@@ -33,12 +33,6 @@ struct MultipleBillDetails: Codable {
     let noOfInstallment: Int?
     let billerName, paymentDate, payuBillerID, gatewayTxnID: String?
     let categoryName: String?
-    let customerParams: [MultipleBillDetailCustomerParam]?
+    let customerParams: [MyBillsCustomerParam]?
     var isExpand: Bool?
-}
-
-struct MultipleBillDetailCustomerParam: Codable {
-    let value: String
-    let primary: Bool
-    let paramName: String
 }

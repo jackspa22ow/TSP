@@ -23,6 +23,8 @@ class MultipleBillDetailsVC: UIViewController {
         self.tblView.register(MultipleBilllTrasactionTitleCell.nib, forCellReuseIdentifier: MultipleBilllTrasactionTitleCell.identifier)
         self.tblView.register(MultipleBillTransactionAmountCell.nib, forCellReuseIdentifier: MultipleBillTransactionAmountCell.identifier)
         self.tblView.register(MultipleBillTransactionFooterCell.nib, forCellReuseIdentifier: MultipleBillTransactionFooterCell.identifier)
+        self.tblView.register(SelectedBillContentCell.nib, forCellReuseIdentifier: SelectedBillContentCell.identifier)
+
         
         self.tblView.rowHeight = UITableView.automaticDimension
 
@@ -50,6 +52,13 @@ class MultipleBillDetailsVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc func btnExpandCollapsAction(sender : UIButton)  {
+        var obj = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[sender.tag - 1]
+        obj.isExpand = !(obj.isExpand ?? false)
+        self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[sender.tag - 1] = obj
+        
+        self.tblView.reloadSections(IndexSet(integer: sender.tag), with: .automatic)
+    }
 }
 
 extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
@@ -116,41 +125,27 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
         }
         else {
             let header : MultipleBillTransactionCell = tableView.dequeueReusableCell(withIdentifier: String(describing : MultipleBillTransactionCell.self)) as! MultipleBillTransactionCell
-            header.lblTitle.text = ""
-            header.lblSubTitle.text = ""
+
             let obj = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[section - 1]
-            print("BillerName: \(obj.billerName ?? "")")
-            print("BillerID: \(obj.billerID ?? "")")
-//            header.lblTitle.text = obj.billerName
-//            header.lblSubTitle.text = obj.billerID
+            header.lblTitle.text = obj.billerName
+            header.lblSubTitle.text = obj.billerID
+            header.btnExpandCollaps.tag = section
             header.imgIcon.image = #imageLiteral(resourceName: "ic_bharatbillpay")
-            //        let sectionData = selectedBills[section]
-            //        header.lblTitle.text = sectionData.billerName
-            //        header.lblSubTitle.text = sectionData.billerPayuId
-            //        header.imgDue.isHidden = (sectionData.billDue == true || sectionData.billDue == nil) ? false : true
-            //        header.imgIcon.image = #imageLiteral(resourceName: "ic_bharatbillpay")
-            //        header.lblPrice.text = "₹ \(sectionData.amount!)"
-            //
-            //        if sectionData.customerParams.count > 0 {
-            //            ///arrow rotate
-            //            header.imgArrow.isHidden = false
-            //            header.buttonHandlerAction.transform = CGAffineTransform(rotationAngle: (sectionData.isColleps ?? false) ? 0.0 : .pi)
-            //            header.buttonHandlerAction.tag = section
-            //            header.buttonHandlerAction.addTarget(self, action: #selector(buttonHandlerSectionArrowTap(sender:)), for: .touchUpInside)
-            //
-            //            ///change cell color and arrow to updown
-            //            if sectionData.isColleps == true{
-            //                header.imgArrow.image = UIImage(named: "ic_up")
-            //                header.lblPrice.isHidden = true
-            //            }else{
-            //                header.imgArrow.image = UIImage(named: "ic_down")
-            //                header.lblPrice.isHidden = false
-            //            }
-            //
-            //        }else{
-            //            header.imgArrow.isHidden = true
-            //            header.lblPrice.isHidden = false
-            //        }
+            header.btnExpandCollaps.addTarget(self, action: #selector(btnExpandCollapsAction(sender:)), for: .touchUpInside)
+
+            if (obj.customerParams?.count ?? 0) > 0 {
+                ///arrow rotate
+                header.imgIcon.isHidden = false
+                header.btnExpandCollaps.transform = CGAffineTransform(rotationAngle: (obj.isExpand ?? false) ? 0.0 : .pi)
+                ///change cell color and arrow to updown
+                if (obj.isExpand ?? false) == true{
+                    header.ingArrow.image = UIImage(named: "ic_up")
+                }else{
+                    header.ingArrow.image = UIImage(named: "ic_down")
+                }
+            }else{
+                header.imgIcon.isHidden = true
+            }
             
             return header.contentView
         }
@@ -164,17 +159,18 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
 //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-//        let sectionData = selectedBills[section]
-//
-//        return  sectionData.isColleps ?? false ? 1 : 0
+        if section == 0 || section == self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 1 || section == self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 2 {
+            return 0
+        }
+        let sectionData = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[section - 1]
+
+        return  (sectionData.isExpand ?? false) ? 1 : 0
     }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let sectionData = selectedBills[indexPath.section]
-//
-//        return CGFloat(sectionData.customerParams.count * 64) + 24 + 70
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let sectionData = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[indexPath.section - 1]
+
+        return CGFloat((sectionData.customerParams?.count ?? 0) * 64) + 24 + 70
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SelectedBillContentCell.identifier, for: indexPath) as? SelectedBillContentCell else {
@@ -182,12 +178,12 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
         }
         
 
-//        let sectionData = selectedBills[indexPath.section]
+        let sectionData = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[indexPath.section - 1]
 
-//        cell.customerParams = sectionData.customerParams
-//        cell.amountValue = "₹ \(sectionData.amount!)"
-//
-//        cell.setupData()
+        cell.customerParams = sectionData.customerParams ?? []
+        cell.amountValue = "₹ \(sectionData.amount!)"
+
+        cell.setupData()
         
         return cell
     }
