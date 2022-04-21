@@ -15,35 +15,42 @@ class MultipleBillDetailsVC: UIViewController {
     @IBOutlet weak var viewThumsUp: UIView!
     @IBOutlet weak var imgStatus: UIImageView!
     
+    @IBOutlet weak var viewLeft: UIView!
+    @IBOutlet weak var viewRight: UIView!
     var transactionIDs = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor)
+        self.viewLeft.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor)
+        self.viewRight.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor)
+
         self.tblView.register(MultipleBillTransactionCell.nib, forCellReuseIdentifier: MultipleBillTransactionCell.identifier)
         self.tblView.register(MultipleBilllTrasactionTitleCell.nib, forCellReuseIdentifier: MultipleBilllTrasactionTitleCell.identifier)
         self.tblView.register(MultipleBillTransactionAmountCell.nib, forCellReuseIdentifier: MultipleBillTransactionAmountCell.identifier)
         self.tblView.register(MultipleBillTransactionFooterCell.nib, forCellReuseIdentifier: MultipleBillTransactionFooterCell.identifier)
         self.tblView.register(SelectedBillContentCell.nib, forCellReuseIdentifier: SelectedBillContentCell.identifier)
-
+        if #available(iOS 15.0, *) {
+            UITableView.appearance().sectionHeaderTopPadding = 0
+        }
         
-        self.tblView.rowHeight = UITableView.automaticDimension
-
-        self.tblView.estimatedRowHeight = 70
+//        self.tblView.rowHeight = UITableView.automaticDimension
+//
+//        self.tblView.estimatedRowHeight = 70
                 
         self.multipleBillDetailsViewModel.getMultipleBillDetails(transactionIDs: self.transactionIDs) { response in
             self.tblView.dataSource = self
             self.tblView.delegate = self
             self.tblView.reloadData()
             
-            let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].status
+//            let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].status
 
-            if status == "success" || status == "Success" || status == "SUCCESS"{
-                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-                self.imgStatus.image = UIImage(named: "ic_thumbsup")
-            }else{
-                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: "EB0202")
-                self.imgStatus.image = UIImage(named: "ic_thumbsup_down")
-            }
+//            if status == "success" || status == "Success" || status == "SUCCESS"{
+//                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+//                self.imgStatus.image = UIImage(named: "ic_thumbsup")
+//            }else{
+//                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: "EB0202")
+//                self.imgStatus.image = UIImage(named: "ic_thumbsup_down")
+//            }
         }
         // Do any additional setup after loading the view.
     }
@@ -69,13 +76,15 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == (self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 1) {
-            return 212
+            return 145
         } else if section == (self.multipleBillDetailsViewModel.aryOfMultipleBillDetails.count + 2) {
             return 235
         }
         return 64
     }
-    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let header : MultipleBilllTrasactionTitleCell = tableView.dequeueReusableCell(withIdentifier: String(describing : MultipleBilllTrasactionTitleCell.self)) as! MultipleBilllTrasactionTitleCell
@@ -128,7 +137,14 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
 
             let obj = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[section - 1]
             header.lblTitle.text = obj.billerName
-            header.lblSubTitle.text = obj.billerID
+            
+            for params in obj.customerParams ?? []{
+                let val = params.primary
+                if val == true{
+                    header.lblSubTitle.text = params.value
+                    break
+                }
+            }
             header.btnExpandCollaps.tag = section
             header.imgIcon.image = #imageLiteral(resourceName: "ic_bharatbillpay")
             header.btnExpandCollaps.addTarget(self, action: #selector(btnExpandCollapsAction(sender:)), for: .touchUpInside)
@@ -169,7 +185,7 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sectionData = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[indexPath.section - 1]
 
-        return CGFloat((sectionData.customerParams?.count ?? 0) * 64) + 24 + 70
+        return CGFloat((sectionData.customerParams?.count ?? 0) * 64) + 24 + 70 + 64
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -183,6 +199,26 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
         cell.customerParams = sectionData.customerParams ?? []
         cell.amountValue = "₹ \(sectionData.amount!)"
 
+        var billDatee = String()
+        if let str = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].paymentDate{
+            if str.contains("T"){
+                let vall = str.components(separatedBy: "T")
+                billDatee = self.convertDateFormater(vall[0])
+            }else{
+                billDatee = ""
+            }
+        }else{
+            billDatee = ""
+        }
+        
+        cell.trasactionDate = billDatee
+        let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].status
+
+        if status == "success" || status == "Success" || status == "SUCCESS"{
+            cell.trasactionStatus = "Completed"
+        } else {
+            cell.trasactionStatus = "Faile"
+        }
         cell.setupData()
         
         return cell

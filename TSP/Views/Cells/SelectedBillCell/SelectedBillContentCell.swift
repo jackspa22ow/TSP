@@ -16,11 +16,15 @@ class SelectedBillContentCell: UITableViewCell {
     
     var customerParams: [MyBillsCustomerParam] = []
     var amountValue: String = ""
+    var trasactionDate: String = ""
+    var trasactionStatus: String = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.tblView.register(MyBillDetailsCustomerParamCell.nib, forCellReuseIdentifier: MyBillDetailsCustomerParamCell.identifier)
         self.tblView.register(AddBillerDetailsTotalAmountCell.nib, forCellReuseIdentifier: AddBillerDetailsTotalAmountCell.identifier)
+        self.tblView.register(MultipleBillTrancationDateCell.nib, forCellReuseIdentifier: MultipleBillTrancationDateCell.identifier)
     }
 
     func setupData() {
@@ -45,36 +49,76 @@ extension SelectedBillContentCell: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if trasactionDate.count > 0 {
+            return customerParams.count + 2
+        }
         return customerParams.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == customerParams.count {
-            return 70
+        if trasactionDate.count > 0 {
+            if indexPath.row == customerParams.count + 1 {
+                return 70
+            }
+        } else {
+            if indexPath.row == customerParams.count {
+                return 70
+            }
         }
         return 64
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == customerParams.count {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBillerDetailsTotalAmountCell.identifier, for: indexPath) as? AddBillerDetailsTotalAmountCell else {
-                fatalError("XIB doesn't exist.")
+        if trasactionDate.count > 0 {
+            if indexPath.row == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: MultipleBillTrancationDateCell.identifier, for: indexPath) as? MultipleBillTrancationDateCell else {
+                    fatalError("XIB doesn't exist.")
+                }
+                
+                cell.setupDate(status: trasactionStatus, dateValue: trasactionDate)
+                
+                return cell
+            } else if indexPath.row == customerParams.count + 1 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBillerDetailsTotalAmountCell.identifier, for: indexPath) as? AddBillerDetailsTotalAmountCell else {
+                    fatalError("XIB doesn't exist.")
+                }
+                
+                cell.lblName.text = "Bill Amount"
+                cell.lblValue.text = amountValue
+                
+                return cell
             }
-            
-            cell.lblName.text = "Bill Amount"
-            cell.lblValue.text = amountValue
-            
-            return cell
-        }
-        else{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsCustomerParamCell.identifier, for: indexPath) as? MyBillDetailsCustomerParamCell else {
-                fatalError("XIB doesn't exist.")
+            else{
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsCustomerParamCell.identifier, for: indexPath) as? MyBillDetailsCustomerParamCell else {
+                    fatalError("XIB doesn't exist.")
+                }
+                
+                cell.lblName.text = customerParams[indexPath.row - 1].paramName
+                cell.lblDescription.text = customerParams[indexPath.row - 1].value
+                cell.separatorInset = UIEdgeInsets()
+                return cell
             }
-            
-            cell.lblName.text = customerParams[indexPath.row].paramName
-            cell.lblDescription.text = customerParams[indexPath.row].value
-            cell.separatorInset = UIEdgeInsets()
-            return cell
+        } else {
+                if indexPath.row == customerParams.count {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBillerDetailsTotalAmountCell.identifier, for: indexPath) as? AddBillerDetailsTotalAmountCell else {
+                    fatalError("XIB doesn't exist.")
+                }
+                
+                cell.lblName.text = "Bill Amount"
+                cell.lblValue.text = amountValue
+                
+                return cell
+            }
+            else{
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsCustomerParamCell.identifier, for: indexPath) as? MyBillDetailsCustomerParamCell else {
+                    fatalError("XIB doesn't exist.")
+                }
+                
+                cell.lblName.text = customerParams[indexPath.row].paramName
+                cell.lblDescription.text = customerParams[indexPath.row].value
+                cell.separatorInset = UIEdgeInsets()
+                return cell
+            }
         }
     }
     

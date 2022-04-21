@@ -827,9 +827,17 @@
                                     <constraint firstItem="pRd-Cy-Xt0" firstAttribute="centerY" secondItem="vhO-Rm-apz" secondAttribute="centerY" id="ntN-Vr-MKy"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZCI-5K-br9">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIh-Gi-Nsi">
+                                <rect key="frame" x="25" y="84" width="325" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="O1b-mm-uxv"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZCI-5K-br9">
                                 <rect key="frame" x="25" y="84" width="325" height="691"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Kp-Iq-4OQ">
                                 <rect key="frame" x="164.5" y="61" width="46" height="46"/>
@@ -899,10 +907,13 @@
                             <constraint firstItem="X7d-J8-wFu" firstAttribute="leading" secondItem="ZCI-5K-br9" secondAttribute="leading" constant="-13" id="6LG-BC-bbU"/>
                             <constraint firstItem="Ohx-Xq-N4g" firstAttribute="trailing" secondItem="ZCI-5K-br9" secondAttribute="trailing" constant="13" id="9b7-y3-SQt"/>
                             <constraint firstAttribute="bottom" secondItem="ZCI-5K-br9" secondAttribute="bottom" constant="25" id="9qT-EH-o0M"/>
+                            <constraint firstItem="xIh-Gi-Nsi" firstAttribute="leading" secondItem="ZCI-5K-br9" secondAttribute="leading" id="AlD-zn-Qtf"/>
                             <constraint firstItem="LUx-v3-ZSs" firstAttribute="trailing" secondItem="ZCI-5K-br9" secondAttribute="trailing" constant="25" id="EMx-dl-WSx"/>
                             <constraint firstItem="vhO-Rm-apz" firstAttribute="top" secondItem="xej-1e-rGm" secondAttribute="bottom" id="PZw-sg-LSb"/>
                             <constraint firstItem="Ohx-Xq-N4g" firstAttribute="centerY" secondItem="X7d-J8-wFu" secondAttribute="centerY" id="RFA-j5-Yml"/>
                             <constraint firstItem="vhO-Rm-apz" firstAttribute="trailing" secondItem="d1r-tj-K4b" secondAttribute="trailing" id="TdW-DO-zZb"/>
+                            <constraint firstItem="xIh-Gi-Nsi" firstAttribute="trailing" secondItem="ZCI-5K-br9" secondAttribute="trailing" id="Zik-8q-wGi"/>
+                            <constraint firstItem="xIh-Gi-Nsi" firstAttribute="top" secondItem="ZCI-5K-br9" secondAttribute="top" id="bl2-lW-GEY"/>
                             <constraint firstItem="3Kp-Iq-4OQ" firstAttribute="top" secondItem="ZCI-5K-br9" secondAttribute="top" constant="-23" id="f6V-UE-JrE"/>
                             <constraint firstItem="ZCI-5K-br9" firstAttribute="leading" secondItem="LUx-v3-ZSs" secondAttribute="leading" constant="25" id="gwq-lY-d1J"/>
                             <constraint firstItem="eTa-oO-ujC" firstAttribute="trailing" secondItem="d1r-tj-K4b" secondAttribute="trailing" id="hKR-Qw-2AU"/>
@@ -914,12 +925,14 @@
                     <connections>
                         <outlet property="imgStatus" destination="MgC-fe-k3n" id="0lG-gP-gII"/>
                         <outlet property="tblView" destination="ZCI-5K-br9" id="oX4-xp-70i"/>
+                        <outlet property="viewLeft" destination="X7d-J8-wFu" id="xf3-tr-oDT"/>
+                        <outlet property="viewRight" destination="Ohx-Xq-N4g" id="DvN-qg-A8e"/>
                         <outlet property="viewThumsUp" destination="3Kp-Iq-4OQ" id="wlg-qz-bem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8A-wX-lrW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2524" y="1980"/>
+            <point key="canvasLocation" x="-2524" y="1979.9100449775115"/>
         </scene>
     </scenes>
     <resources>

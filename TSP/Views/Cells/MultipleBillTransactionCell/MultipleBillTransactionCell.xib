@@ -43,7 +43,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bihar State board of Electricity " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYg-xD-3oj">
                         <rect key="frame" x="73" y="45" width="167" height="13"/>
                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
-                        <color key="textColor" red="0.36470588240000001" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.56470588235294117" green="0.56862745098039214" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_down" translatesAutoresizingMaskIntoConstraints="NO" id="p8Y-2P-U3k">
@@ -58,6 +58,7 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="EBK-ux-BEZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1DP-8K-cQo"/>
                     <constraint firstItem="G8l-Jb-LIG" firstAttribute="trailing" secondItem="oYg-xD-3oj" secondAttribute="trailing" id="5IS-Yb-fuW"/>
@@ -80,6 +81,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="btnExpandCollaps" destination="EBK-ux-BEZ" id="auR-ql-JI8"/>
                 <outlet property="imgIcon" destination="NNe-PY-gAf" id="PxU-ph-EgI"/>

@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="338" height="205"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRV-8S-ioH">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRV-8S-ioH">
                         <rect key="frame" x="64" y="40" width="210" height="26"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7Q-nJ-l5Y">
@@ -78,7 +78,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G8v-dM-Yib">
-                        <rect key="frame" x="0.0" y="57" width="338" height="97"/>
+                        <rect key="frame" x="0.0" y="84" width="338" height="97"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEc-1p-ysh">
                                 <rect key="frame" x="30" y="16" width="278" height="0.5"/>
@@ -125,8 +125,9 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="G8v-dM-Yib" firstAttribute="top" secondItem="lRV-8S-ioH" secondAttribute="bottom" constant="32" id="S4V-k7-I8e"/>
+                    <constraint firstItem="G8v-dM-Yib" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="M4s-gL-5fk"/>
                     <constraint firstItem="lRV-8S-ioH" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aI2-eq-XmC"/>
                     <constraint firstAttribute="bottom" secondItem="G8v-dM-Yib" secondAttribute="bottom" constant="24" id="bLY-6k-PrJ"/>
                     <constraint firstItem="lRV-8S-ioH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="e7W-Pd-0fQ"/>
@@ -135,13 +136,15 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="imgCheckUnCheck" destination="s9e-1g-0oy" id="PaS-eG-RIp"/>
                 <outlet property="lblTotalAmount" destination="sqr-fi-yMS" id="z7c-EA-H7a"/>
                 <outlet property="lblTransactionDate" destination="Vwc-Hb-85o" id="tl1-vz-Tif"/>
+                <outlet property="vwAmount" destination="G8v-dM-Yib" id="N9a-Lg-RTd"/>
                 <outlet property="vwCheck" destination="x7Q-nJ-l5Y" id="TgR-jr-whb"/>
             </connections>
-            <point key="canvasLocation" x="150.72463768115944" y="108.81696428571428"/>
+            <point key="canvasLocation" x="133" y="69"/>
         </tableViewCell>
     </objects>
     <resources>

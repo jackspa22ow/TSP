@@ -17,19 +17,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="447" height="143"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNq-in-CY8">
+                        <rect key="frame" x="0.0" y="0.0" width="447" height="143"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your transaction is successful" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5I-GH-vgJ">
                         <rect key="frame" x="118.5" y="70.5" width="210" height="22"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                         <color key="textColor" red="0.0078431372550000003" green="0.0078431372550000003" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="q5I-GH-vgJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="LH9-Ef-PNg"/>
+                    <constraint firstItem="JNq-in-CY8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WP7-4N-GFL"/>
+                    <constraint firstAttribute="bottom" secondItem="JNq-in-CY8" secondAttribute="bottom" id="gic-Ua-j83"/>
                     <constraint firstItem="q5I-GH-vgJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="10" id="nJb-ly-AYN"/>
+                    <constraint firstAttribute="trailing" secondItem="JNq-in-CY8" secondAttribute="trailing" id="sNh-Yn-p9q"/>
+                    <constraint firstItem="JNq-in-CY8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xFt-y7-irB"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <point key="canvasLocation" x="223.91304347826087" y="88.727678571428569"/>
         </tableViewCell>
     </objects>

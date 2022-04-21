@@ -33,6 +33,8 @@
 		20B2894F280DF61000136152 /* MultipleBillTransactionFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B2894D280DF61000136152 /* MultipleBillTransactionFooterCell.xib */; };
 		20B3BB4027437A40007BDC94 /* MobileRechargePlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B3BB3E27437A40007BDC94 /* MobileRechargePlanCell.swift */; };
 		20B3BB4127437A40007BDC94 /* MobileRechargePlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B3BB3F27437A40007BDC94 /* MobileRechargePlanCell.xib */; };
+		20B782522811405C0033B34E /* MultipleBillTrancationDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B782502811405C0033B34E /* MultipleBillTrancationDateCell.swift */; };
+		20B782532811405C0033B34E /* MultipleBillTrancationDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B782512811405C0033B34E /* MultipleBillTrancationDateCell.xib */; };
 		20BA4E64274E8C3B00040E3B /* MyBillDetailsReminderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA4E62274E8C3B00040E3B /* MyBillDetailsReminderItemCell.swift */; };
 		20BA4E65274E8C3B00040E3B /* MyBillDetailsReminderItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20BA4E63274E8C3B00040E3B /* MyBillDetailsReminderItemCell.xib */; };
 		20E09EFF274FA8EB00BC92E9 /* HelpRecentOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E09EFD274FA8EB00BC92E9 /* HelpRecentOrderCell.swift */; };
@@ -249,6 +251,8 @@
 		20B2894D280DF61000136152 /* MultipleBillTransactionFooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleBillTransactionFooterCell.xib; sourceTree = "<group>"; };
 		20B3BB3E27437A40007BDC94 /* MobileRechargePlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileRechargePlanCell.swift; sourceTree = "<group>"; };
 		20B3BB3F27437A40007BDC94 /* MobileRechargePlanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileRechargePlanCell.xib; sourceTree = "<group>"; };
+		20B782502811405C0033B34E /* MultipleBillTrancationDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBillTrancationDateCell.swift; sourceTree = "<group>"; };
+		20B782512811405C0033B34E /* MultipleBillTrancationDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleBillTrancationDateCell.xib; sourceTree = "<group>"; };
 		20BA4E62274E8C3B00040E3B /* MyBillDetailsReminderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillDetailsReminderItemCell.swift; sourceTree = "<group>"; };
 		20BA4E63274E8C3B00040E3B /* MyBillDetailsReminderItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyBillDetailsReminderItemCell.xib; sourceTree = "<group>"; };
 		20E09EFD274FA8EB00BC92E9 /* HelpRecentOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRecentOrderCell.swift; sourceTree = "<group>"; };
@@ -471,6 +475,8 @@
 				20B28949280DF26D00136152 /* MultipleBillTransactionAmountCell.xib */,
 				20B2894C280DF61000136152 /* MultipleBillTransactionFooterCell.swift */,
 				20B2894D280DF61000136152 /* MultipleBillTransactionFooterCell.xib */,
+				20B782502811405C0033B34E /* MultipleBillTrancationDateCell.swift */,
+				20B782512811405C0033B34E /* MultipleBillTrancationDateCell.xib */,
 			);
 			path = MultipleBillTransactionCell;
 			sourceTree = "<group>";
@@ -1286,6 +1292,7 @@
 				FCA50C6426FEE0B90087A3F6 /* SpendAnalysisCategoryFooterCell.xib in Resources */,
 				207B58D62742D3A8009D9306 /* MobileRechargeTypeCell.xib in Resources */,
 				20B3BB4127437A40007BDC94 /* MobileRechargePlanCell.xib in Resources */,
+				20B782532811405C0033B34E /* MultipleBillTrancationDateCell.xib in Resources */,
 				5E217B4E268F08A90092FE27 /* Authorization.storyboard in Resources */,
 				FCFDF4F9269F03370099C044 /* Help.storyboard in Resources */,
 				FC6093CB2721822800C52A8A /* ComplaintsCell.xib in Resources */,
@@ -1472,6 +1479,7 @@
 				FC38B51F27101D5000F7CD3D /* HomeDetailsVC.swift in Sources */,
 				FC29B98C26933B12000098F5 /* SplashModel.swift in Sources */,
 				FCD06A9126AAB9D5004E0A0E /* ViewAllCategoryVC.swift in Sources */,
+				20B782522811405C0033B34E /* MultipleBillTrancationDateCell.swift in Sources */,
 				FC3E094A26945ABA006113A4 /* HistoryVC.swift in Sources */,
 				FCE304F42695D56B00584C9F /* SlideMenuViewModel.swift in Sources */,
 				D970387B27422D3C0073CD3A /* BillerCategorySelectHeaderCell.swift in Sources */,
