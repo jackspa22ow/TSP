@@ -55,7 +55,7 @@ extension SelectedBillContentCell: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if trasactionDate.count > 0 {
-            return customerParams.count + 2
+            return customerParams.count + 3
         }
         return customerParams.count + 1
     }
@@ -109,6 +109,9 @@ extension SelectedBillContentCell: UITableViewDelegate,UITableViewDataSource{
                     fatalError("XIB doesn't exist.")
                 }
                 
+                cell.imgCopyIcon.isHidden = true
+                cell.btnCopy.isHidden = true
+                
                 cell.lblName.text = customerParams[indexPath.row - 1].paramName
                 cell.lblDescription.text = customerParams[indexPath.row - 1].value
                 cell.separatorInset = UIEdgeInsets()
@@ -129,6 +132,9 @@ extension SelectedBillContentCell: UITableViewDelegate,UITableViewDataSource{
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsCustomerParamCell.identifier, for: indexPath) as? MyBillDetailsCustomerParamCell else {
                     fatalError("XIB doesn't exist.")
                 }
+                
+                cell.imgCopyIcon.isHidden = true
+                cell.btnCopy.isHidden = true
                 
                 cell.lblName.text = customerParams[indexPath.row].paramName
                 cell.lblDescription.text = customerParams[indexPath.row].value

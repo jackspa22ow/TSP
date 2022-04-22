@@ -18,7 +18,6 @@ class MultipleBillTrancationDateCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        vwCheckBoxWithDate.layer.borderColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor).cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,6 +28,8 @@ class MultipleBillTrancationDateCell: UITableViewCell {
     
     func setupDate(status:String,dateValue:String){
         if status == "Completed"{
+            vwCheckBoxWithDate.layer.borderColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor).cgColor
+
             let attrs1 = [NSAttributedString.Key.font : UIFont.init(name: "Avenir-Book", size: 10.0), NSAttributedString.Key.foregroundColor : Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)]
             
             let attrs2 = [NSAttributedString.Key.font : UIFont.init(name: "Avenir-Book", size: 10.0), NSAttributedString.Key.foregroundColor : Utilities.sharedInstance.hexStringToUIColor(hex: "909196")]
@@ -43,6 +44,8 @@ class MultipleBillTrancationDateCell: UITableViewCell {
             self.imgCheckUnCheck.image = UIImage(named: "ic_check_white")
             self.vwCheck.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
         }else{
+            vwCheckBoxWithDate.layer.borderColor = UIColor.red.cgColor
+
             let attrs1 = [NSAttributedString.Key.font : UIFont.init(name: "Avenir-Book", size: 10.0), NSAttributedString.Key.foregroundColor : Utilities.sharedInstance.hexStringToUIColor(hex: "EB0202")]
             
             let attrs2 = [NSAttributedString.Key.font : UIFont.init(name: "Avenir-Book", size: 10.0), NSAttributedString.Key.foregroundColor : Utilities.sharedInstance.hexStringToUIColor(hex: "909196")]

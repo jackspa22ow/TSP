@@ -21,7 +21,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Fy-rF-JlN">
                         <rect key="frame" x="0.0" y="0.0" width="345" height="20"/>
-                        <color key="backgroundColor" red="0.76078431372549016" green="0.94117647058823528" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="iD7-Kr-UqX"/>
                         </constraints>
@@ -146,7 +146,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dOX-Jt-f1T" firstAttribute="top" secondItem="Gf9-P7-S5S" secondAttribute="bottom" constant="10" id="2ci-Ki-zcg"/>
                             <constraint firstItem="Gf9-P7-S5S" firstAttribute="leading" secondItem="q9d-Of-N1b" secondAttribute="leading" constant="25" id="4t6-NK-2gF"/>
@@ -165,6 +165,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="1Fy-rF-JlN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5je-tF-OF0"/>
                     <constraint firstItem="q9d-Of-N1b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="CPm-zN-yF8"/>
@@ -176,6 +177,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <point key="canvasLocation" x="155.79710144927537" y="124.88839285714285"/>
         </tableViewCell>
     </objects>

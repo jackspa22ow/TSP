@@ -45,7 +45,7 @@ class MultipleBillDetailsVC: UIViewController {
 //            let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[0].status
 
 //            if status == "success" || status == "Success" || status == "SUCCESS"{
-//                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
 //                self.imgStatus.image = UIImage(named: "ic_thumbsup")
 //            }else{
 //                self.viewThumsUp.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: "EB0202")
@@ -137,11 +137,11 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
 
             let obj = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[section - 1]
             header.lblTitle.text = obj.billerName
-            
+            header.lblSubTitle.text = ""
             for params in obj.customerParams ?? []{
                 let val = params.primary
                 if val == true{
-                    header.lblSubTitle.text = params.value
+//                    header.lblSubTitle.text = params.value
                     break
                 }
             }
@@ -185,7 +185,7 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sectionData = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[indexPath.section - 1]
 
-        return CGFloat((sectionData.customerParams?.count ?? 0) * 64) + 24 + 70 + 64
+        return CGFloat((sectionData.customerParams?.count ?? 0) * 64) + 24 + 70 + 64 + 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -203,7 +203,8 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
         if let str = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[indexPath.section - 1].paymentDate{
             if str.contains("T"){
                 let vall = str.components(separatedBy: "T")
-                billDatee = self.convertDateFormater(vall[0])
+                let timeFromDate = vall[1].components(separatedBy: ".")[0]
+                billDatee = self.convertDateFormater(vall[0]) + ", " + convertDateFormaterForTime(timeFromDate)
             }else{
                 billDatee = ""
             }
@@ -213,7 +214,7 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
         
         cell.trasactionDate = billDatee
         cell.trasactionID = sectionData.txnId ?? ""
-        
+        cell.amountValue = "\(sectionData.amount ?? 0)"
         let status = self.multipleBillDetailsViewModel.aryOfMultipleBillDetails[indexPath.section - 1].status
 
         if status == "success" || status == "Success" || status == "SUCCESS"{
@@ -230,6 +231,13 @@ extension MultipleBillDetailsVC: UITableViewDelegate,UITableViewDataSource{
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from: date)
         dateFormatter.dateFormat = "dd/MMM/yyyy"
+        return dateFormatter.string(from: date!)
+    }
+    func convertDateFormaterForTime(_ date: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "hh:mma"
         return dateFormatter.string(from: date!)
     }
 }
