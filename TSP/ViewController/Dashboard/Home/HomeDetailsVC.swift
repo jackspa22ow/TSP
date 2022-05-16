@@ -58,7 +58,7 @@ class HomeDetailsVC: UIViewController {
        
        
         
-        self.myBillsViewModel.getBillDetailByID(billID: self.billID) { response in
+        self.myBillsViewModel.getBillDetailByID(billID: self.billID ?? "") { response in
             self.json = self.myBillsViewModel.dicOfBillDetail
             
             if self.isAutoPayHide == false && !self.isReminderEdit{
@@ -122,7 +122,7 @@ class HomeDetailsVC: UIViewController {
                 }
                 
                 self.homeViewModel.getBillAutoPayDetailByBillID(billID: "\(billID)") { response in
-                    
+
                     if let autoPay = self.homeViewModel.dicOfMyBillAutoPayDetail, (autoPay.id ?? 0) > 0 {
                         self.isAutoPay = true
                         self.isAutoPayOnForBill = true

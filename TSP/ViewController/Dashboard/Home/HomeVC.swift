@@ -28,6 +28,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var consBtnAutoPayHeight: NSLayoutConstraint!
     @IBOutlet weak var consBtnSetReminderHeight: NSLayoutConstraint!
 
+    var isViewWillDisappear = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +57,17 @@ class HomeVC: UIViewController {
                 self.tblView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
             }
         }
+        if isViewWillDisappear {
+            self.isViewWillDisappear = false
+            self.getListOfMyBills {
+                self.tblView.reloadData()
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.isViewWillDisappear = true
     }
     
     func fetchContactPermision() {

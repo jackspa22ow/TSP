@@ -103,6 +103,8 @@ struct API {
     static let GET_PLAN_TYPES = baseURL + "tsp/bill-details/v1/api/mobile-prepaid/plans/types"
     static let GET_RECHARGE_PLANS = baseURL + "tsp/bill-details/v1/api/mobile-prepaid/plans"
     static let ADD_MOBILE_PREPAID_RECHARGE_BILL = baseURL + "tsp/bill-details/v1/api/bill/mobile-prepaid?isUserBill="
+    static let ADD_BILLER_DATA_VALIDATION = baseURL + "tsp/bill-details/v1/api/bill/?isUserBill="
+
     static let GET_PLAN_DETAIL_BY_PLAN_ID = baseURL + "tsp/bill-details/v1/api/mobile-prepaid/plans/"
     
     //Payment

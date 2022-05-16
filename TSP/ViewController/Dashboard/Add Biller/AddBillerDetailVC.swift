@@ -20,6 +20,8 @@ class AddBillerDetailVC: UIViewController {
     var addBillerViewModel = AddBillerViewModel()
     var shortName : String = ""
     var addBillerModel : AddBillerModelContent!
+    var addBillerModelAfterValidation : AddBillModel!
+
     
     var planID : String?
     var arrayOfPlanDetail : [PlanInfo] = []
@@ -81,6 +83,15 @@ class AddBillerDetailVC: UIViewController {
                 let shortNameObj = PlanInfo(itemName: "Short Name", itemValue: self.shortName)
                 self.arrayOfPlanDetail.append(shortNameObj)
             }
+            
+            if let amount = self.addBillerModelAfterValidation.amount {
+                let planBillAmount = PlanInfo(itemName: "Bill Amount", itemValue: "\(amount)")
+                self.arrayOfPlanDetail.append(planBillAmount)
+            } else {
+                let planBillAmount = PlanInfo(itemName: "Bill Amount", itemValue: "")
+                self.arrayOfPlanDetail.append(planBillAmount)
+            }
+            
             self.tblView.dataSource = self
             self.tblView.delegate = self
             self.tblView.reloadData()
@@ -93,7 +104,71 @@ class AddBillerDetailVC: UIViewController {
     }
     
     @objc func buttonConfirm(){
-        self.addToMyBills()
+        let cell = self.tblView.cellForRow(at: IndexPath(row: arrayOfPlanDetail.count - 1, section: 0)) as! AddBillerDetailsTotalAmountCell
+        
+        var minimumValue : Int?
+        var maximumValue : Int?
+        if let arrayOfPaymentChannels = self.addBillerModelAfterValidation.paymentChannelsAllowed {
+            let array = arrayOfPaymentChannels.filter{
+                $0.paymentMode == "MOB"
+            }
+            if array.count > 0 {
+                if let objPaymentChannel = array.first {
+                    if let minValue = objPaymentChannel.minLimit {
+                        minimumValue = Int(minValue)
+                    }
+                    
+                    if let maxValue = objPaymentChannel.maxLimit {
+                        maximumValue = Int(maxValue)
+                    }
+                }
+            }
+        }
+        
+        if let amount = addBillerModelAfterValidation.amount {
+            if let amountExact = addBillerModelAfterValidation.paymentAmountExactness {
+                if amountExact == "EXACT_AND_ABOVE" {
+                    let enteredAmount: Int? = Int(cell.txtAmount.text!)
+                    let actualAmount: Int? = Int(amount)
+                    if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let maxVal = maximumValue {
+                        if enteredAmt >= actualAmt && enteredAmt <= maxVal {
+                            
+                        } else {
+                            Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(actualAmt) and \(maxVal)")
+                        }
+                    }
+                } else if amountExact == "EXACT_AND_BELOW" {
+                    let enteredAmount: Int? = Int(cell.txtAmount.text!)
+                    let actualAmount: Int? = Int(amount)
+                    if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let minVal = minimumValue {
+                        if enteredAmt <= actualAmt && enteredAmt >= minVal {
+                            
+                        } else {
+                            Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(actualAmt)")
+                        }
+                    }
+                } else if (amountExact == "EXACT") {
+                    
+                }
+                print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
+            } else {
+                print("Entered Amount: \(amount) , IsValueAmount: \("\(amount)".isNumber)")
+            }
+        } else {
+            let enteredAmount: Int? = Int(cell.txtAmount.text!)
+            if let enteredAmt = enteredAmount, let minVal = minimumValue, let maxVal = maximumValue {
+                if enteredAmt >= minVal && enteredAmt <= maxVal {
+                    
+                } else {
+                    Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(maxVal)")
+                }
+            }
+            print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
+            
+        }
+//        self.preparePayment(isRechargeBill: isRecharge)
+
+//        self.addToMyBills()
     }
     
     @objc func buttonCancel(){
@@ -295,7 +370,6 @@ extension AddBillerDetailVC: UITableViewDelegate,UITableViewDataSource{
                 fatalError("XIB doesn't exist.")
             }
             
-            
             cell.lblTitle.text = arrayOfPlanDetail[0].name
             cell.lblDescription.text = arrayOfPlanDetail[0].value
             
@@ -328,8 +402,20 @@ extension AddBillerDetailVC: UITableViewDelegate,UITableViewDataSource{
             }
             
             cell.lblName.text = arrayOfPlanDetail[indexPath.row].name
-            cell.lblValue.text = arrayOfPlanDetail[indexPath.row].value
             
+            if let amount = addBillerModelAfterValidation.amount {
+                if let amountExact = addBillerModelAfterValidation.paymentAmountExactness, amountExact != "Exact" {
+                    cell.vwTxtAmount.isHidden = false
+                    cell.vwTxtAmountHeight.constant = 40
+                } else {
+                    cell.lblValue.text = arrayOfPlanDetail[indexPath.row].value
+                    cell.vwTxtAmount.isHidden = true
+                    cell.vwTxtAmountHeight.constant = 20
+                }
+            } else {
+                cell.vwTxtAmount.isHidden = false
+                cell.vwTxtAmountHeight.constant = 40
+            }
             return cell
         }
         else{

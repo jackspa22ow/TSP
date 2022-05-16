@@ -14,7 +14,7 @@ class HistoryViewModel: NSObject {
     var aryOfServiceGroupList : [ServiceGroupModel] = []
     var aryOfServiceQuestionList : [ServiceQuestionModel] = []
     
-    var dicOfComplaintsList : ComplaintsModel!
+    var dicOfComplaintsList : ComplaintsModel?
     
     //Remain
     func getListOfTransactions(categoryId:String, fromDate:String, status:String, toDate:String, transactionRefId:String, completion : @escaping (_ response:Bool) -> Void){

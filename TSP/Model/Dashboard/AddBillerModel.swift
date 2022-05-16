@@ -223,6 +223,14 @@ struct AddBillModel: Codable {
     let operatorId: String?
     let autoPay: Bool?
     let enableReminder: Bool?
+    let paymentAmountExactness: String?
+    let paymentChannelsAllowed: [AddBillerModelPaymentSAllowed]?
+}
+
+struct AddBillPaymentChannel: Codable {
+    let paymentMode: String?
+    let minLimit: String?
+    let maxLimit: String?
 }
 
 // MARK: - AddBill CustomerParam

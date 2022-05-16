@@ -87,6 +87,7 @@ extension BillerCategoryStep3Cell: UITableViewDelegate, UITableViewDataSource{
             } else {
                 cell.txtBillerDetail.placeholder = placeholder
             }
+            cell.txtBillerDetail.text = self.shorNameValue
         } else {
             cell.setUpData(objAddBiller: aryOfBillerDetailList[indexPath.row])
         }

@@ -422,24 +422,48 @@ extension AddBillerVC : UITableViewDelegate, UITableViewDataSource{
                     }
                 }
                 
-                cell.rechargePlanSelect = { index in
-                    let vc = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "AddBillerDetailVC")as! AddBillerDetailVC
-                    
+                cell.rechargePlanSelect = { (index, isAddToBill) in
                     if let planId = self.addBillerViewModel.dicOfRechargePlans.content[index].id {
-                        vc.planID = "\(planId)"
+                        self.addBillerViewModel.getPlanDetailByPlanID(planId: "\(planId)") { response in
+                            
+                            let name = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
+                            let amount = self.addBillerViewModel.dicOfPlanDetailByPlanID?.price ?? ""
+                            let circleID = self.addBillerViewModel.dicOfPlanDetailByPlanID?.circleId ?? ""
+                            let operatorID = self.addBillerViewModel.dicOfPlanDetailByPlanID?.operatorId ?? ""
+                            let mobileNumber = dicOfUserProfile.phoneNumber ?? ""
+                            let isUserBillValue = self.isUserBill == true ? "true" : "false"
+                            
+                            let param = ["accountHolderName":name,"amount":amount,"autoPay":true,"billDue":true,"customerParams":["CircleId":circleID,"Mobile Number":self.self.contactsFiltered[self.selectedBillerIndex].telephone,"Operator":operatorID],"customerPhoneNumber":mobileNumber,"enableReminder":false,"operatorId":operatorID ] as [String : Any]
+                            
+                            self.addBillerViewModel.addMobilePrepeaidBill(isUserBill: isAddToBill ? "true" : "false", param: param) { response in
+                                var isRechargeBill = false
+                                for j in self.addBillerViewModel.dicOfAddedBill.customerParams{
+                                    if j.paramName == "Mobile Number"{
+                                        isRechargeBill = true
+                                        break
+                                    }
+                                }
+                                let vc = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "AddBillerDetailVC")as! AddBillerDetailVC
+                                
+                                if let planId = self.addBillerViewModel.dicOfRechargePlans.content[index].id {
+                                    vc.planID = "\(planId)"
+                                }
+                                if self.unknowContact.count > 0 {
+                                    vc.contactName = "Contact Number"
+                                    vc.contactNumber = self.unknowContact
+                                    vc.isUserBill = self.isUserBill
+                                } else {
+                                    vc.contactName = self.contactsFiltered[self.selectedBillerIndex].firstName + " " + self.contactsFiltered[self.selectedBillerIndex].firstName
+                                    vc.contactNumber = self.contactsFiltered[self.selectedBillerIndex].telephone
+                                    vc.isUserBill = self.isUserBill
+                                }
+                                self.isPushedToDetailScreen = true
+                                vc.isRecharge = true
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        }
+                        
                     }
-                    if self.unknowContact.count > 0 {
-                        vc.contactName = "Contact Number"
-                        vc.contactNumber = self.unknowContact
-                        vc.isUserBill = self.isUserBill
-                    } else {
-                        vc.contactName = self.contactsFiltered[self.selectedBillerIndex].firstName + " " + self.contactsFiltered[self.selectedBillerIndex].firstName
-                        vc.contactNumber = self.contactsFiltered[self.selectedBillerIndex].telephone
-                        vc.isUserBill = self.isUserBill
-                    }
-                    self.isPushedToDetailScreen = true
-                    vc.isRecharge = true
-                    self.navigationController?.pushViewController(vc, animated: true)
                 }
                 if showAddToBillerCheckbox {
                     cell.consAddToMyBillsHightZero.priority = UILayoutPriority(250)
@@ -479,6 +503,7 @@ extension AddBillerVC : UITableViewDelegate, UITableViewDataSource{
     @objc func btnConfirmAction(){
         var isInvalidData : Bool = false
         
+        var customeParam : [String : Any] = [:]
         for obj in aryOfBillerDetailList{
             if obj.optional == "false"{
                 if (obj.inputedValue?.isEmpty == true || obj.inputedValue == nil) {
@@ -516,46 +541,74 @@ extension AddBillerVC : UITableViewDelegate, UITableViewDataSource{
                     }
                 }
             }
+            if let paramName = obj.paramName {
+                customeParam[paramName] = obj.inputedValue
+            }
         }
+        print(customeParam)
         
         if isInvalidData{
             
         }else{
             let cell = self.tblBiller.cellForRow(at: IndexPath(row: 0, section: 2)) as! BillerCategoryStep3Cell
-            if cell.isAddToMyBill {
-                self.isUserBill = true
-                if cell.shorNameValue.count == 0{
-                    Utilities.sharedInstance.showAlertView(title: "", message: "Please enter short name")
-                }else{
-                    print("shot name:\(cell.shorNameValue)")
-                    
-                    let vc = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "AddBillerDetailVC")as! AddBillerDetailVC
+            
+            let adhoc = "false"
+            let agentId = "BBPSUAT0001"
+            let billerNickName = cell.shorNameValue
+            let billerID = self.aryOfFilteredBillerList[self.selectedBillerIndex].billerId ?? ""
+            
+            let customerName = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
+            let customerPhoneNumber = "\(dicOfUserProfile.phoneNumber ?? "")"
+            let refId = "12AUG1003250Thx1339483939" + "\(Date().timeIntervalSince1970)".replacingOccurrences(of: ".", with: "")
+            let timeStamp = Date().string(format: "yyyy-MM-dd hh:mm:ss")
+            let param : [String : Any] = ["customerParams" : customeParam, "deviceDetails": [
+                "APP": "ANDROID",
+                "IMEI": "866409033986700",
+                "INITIATING_CHANNEL": "MOB",
+                "IP": "0.0.0.0",
+                "OS": "android"
+            ], "adhoc": adhoc, "agentId": agentId, "billNickName": billerNickName, "billerId": billerID, "customerName": customerName, "customerPhoneNumber": customerPhoneNumber, "refId": refId, "timeStamp": timeStamp]
+            
+            self.addBillerViewModel.addBillerDataValidation(isUserBill: cell.isAddToMyBill ? "true" : "false", param: param) { [self] response in
                 
+                if cell.isAddToMyBill {
+                    self.isUserBill = true
+                    if cell.shorNameValue.count == 0{
+                        Utilities.sharedInstance.showAlertView(title: "", message: "Please enter short name")
+                    }else{
+                        print("shot name:\(cell.shorNameValue)")
+                        
+                        let vc = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "AddBillerDetailVC")as! AddBillerDetailVC
+                        
+                        self.isPushedToDetailScreen = true
+                        vc.addBillerModel = self.aryOfFilteredBillerList[self.selectedBillerIndex]
+                        vc.aryOfBillerDetailList = self.aryOfBillerDetailList
+                        vc.shortName = self.shortName
+                        vc.addBillerModelAfterValidation = self.addBillerViewModel.dicOfAddedBill
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }else{
+                    self.isUserBill = false
+                    let vc = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "AddBillerDetailVC")as! AddBillerDetailVC
+                    
                     self.isPushedToDetailScreen = true
-                    vc.addBillerModel = self.aryOfFilteredBillerList[selectedBillerIndex]
-                    vc.aryOfBillerDetailList = aryOfBillerDetailList
+                    vc.addBillerModel = self.aryOfFilteredBillerList[self.selectedBillerIndex]
+                    vc.aryOfBillerDetailList = self.aryOfBillerDetailList
                     vc.shortName = self.shortName
+                    vc.addBillerModelAfterValidation = self.addBillerViewModel.dicOfAddedBill
                     self.navigationController?.pushViewController(vc, animated: true)
+                    
+                    print("shot name:\(cell.shorNameValue)")
                 }
-            }else{
-                self.isUserBill = false
-                let vc = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "AddBillerDetailVC")as! AddBillerDetailVC
-            
-                self.isPushedToDetailScreen = true
-                vc.addBillerModel = self.aryOfFilteredBillerList[selectedBillerIndex]
-                vc.aryOfBillerDetailList = aryOfBillerDetailList
-                vc.shortName = self.shortName
-                self.navigationController?.pushViewController(vc, animated: true)
-                print("shot name:\(cell.shorNameValue)")
+                
+                for obj in self.aryOfBillerDetailList {
+                    print("\(obj.paramName ?? "") value: \(obj.inputedValue ?? "")")
+                }
+                
+                print("all data are valid")
+                print("Input valid data")
+                
             }
-            
-            for obj in aryOfBillerDetailList {
-                print("\(obj.paramName ?? "") value: \(obj.inputedValue ?? "")")
-            }
-            
-            print("all data are valid")
-            print("Input valid data")
-            
         }
     }
     

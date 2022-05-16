@@ -38,9 +38,9 @@ class LoginVC: UIViewController {
 //        self.txtUsername.text = "Ankur.."
 //        self.txtPassword.text = "Pentagon@123"
         
-//        self.txtUsername.text = "ankurjack"
-//        self.txtPassword.text = "Pentagon@123"
-        
+//        self.txtUsername.ext = "Pentagon@123"
+//        text = "ankurjack"
+        //        self.txtPassword.t
         
         //hide Keyboard on click of anywhere
         self.hideKeyboardWhenTappedAround()

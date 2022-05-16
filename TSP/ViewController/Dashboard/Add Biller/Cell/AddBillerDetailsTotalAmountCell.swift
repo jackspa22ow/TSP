@@ -14,6 +14,9 @@ class AddBillerDetailsTotalAmountCell: UITableViewCell {
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblValue: UILabel!
+    @IBOutlet weak var vwTxtAmountHeight: NSLayoutConstraint!
+    @IBOutlet weak var vwTxtAmount: TSPView!
+    @IBOutlet weak var txtAmount: TSPTextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

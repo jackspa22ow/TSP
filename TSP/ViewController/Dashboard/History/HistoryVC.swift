@@ -213,7 +213,7 @@ class HistoryVC: UIViewController {
     
     func fetchComplaints(){
         self.historyViewModel.getListOfComplaints { success in
-            if self.historyViewModel.dicOfComplaintsList.payload?.count ?? 0 > 0{
+            if self.historyViewModel.dicOfComplaintsList?.payload?.count ?? 0 > 0{
                 self.tblView.isHidden = false
                 self.tblView.dataSource = self
                 self.tblView.delegate = self
@@ -277,7 +277,7 @@ extension HistoryVC: UITableViewDelegate,UITableViewDataSource{
         if self.isTransaction{
             return self.historyViewModel.aryOfTransactionsList.count
         }else{
-            return self.historyViewModel.dicOfComplaintsList.payload?.count ?? 0
+            return self.historyViewModel.dicOfComplaintsList?.payload?.count ?? 0
         }
     }
     
@@ -316,36 +316,37 @@ extension HistoryVC: UITableViewDelegate,UITableViewDataSource{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ComplaintsCell.identifier, for: indexPath) as? ComplaintsCell else {
                 fatalError("XIB doesn't exist.")
             }
-            
-            let obj = self.historyViewModel.dicOfComplaintsList.payload?[indexPath.row]
-            
-            cell.lblSortName.text = obj?.billNickName
-            cell.lblTitle.text = obj?.billerName
-            cell.lblTitle.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-            cell.lblDescription.text = obj?.customerParams?[0].value
-            
-            cell.lblPrice.text = "₹ \(obj?.billAmount ?? 0)"
-            
-            if let str = obj?.paymentDate{
-                let dateAry = str.components(separatedBy: "T")
-                let dateValue = dateAry[0]
-                cell.lblDate.text = self.convertDateFormater(dateValue)
-            }else{
-                cell.lblDate.text = ""
+            if let payload = self.historyViewModel.dicOfComplaintsList?.payload {
+                let obj = payload[indexPath.row]
+                
+                cell.lblSortName.text = obj.billNickName ?? ""
+                cell.lblTitle.text = obj.billerName ?? ""
+                cell.lblTitle.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+                cell.lblDescription.text = obj.customerParams?[0].value
+                
+                cell.lblPrice.text = "₹ \(obj.billAmount ?? 0)"
+                
+                if let str = obj.paymentDate{
+                    let dateAry = str.components(separatedBy: "T")
+                    let dateValue = dateAry[0]
+                    cell.lblDate.text = self.convertDateFormater(dateValue)
+                }else{
+                    cell.lblDate.text = ""
+                }
+                
+                let status = obj.complaintStatus
+                
+                cell.lblStatus.text = status
+                if status == "SUCCESS"{
+                    cell.lblStatus.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+                    cell.subView.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor).withAlphaComponent(0.6)
+                }else{
+                    cell.lblStatus.textColor = UIColor.red
+                    cell.subView.backgroundColor = UIColor.red.withAlphaComponent(0.6)
+                }
+                
+                cell.mainView.roundCorners(corners: [.bottomLeft], radius: 10)
             }
-            
-            let status = obj?.complaintStatus
-            cell.lblStatus.text = status
-            if status == "SUCCESS"{
-                cell.lblStatus.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-                cell.subView.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor).withAlphaComponent(0.6)
-            }else{
-                cell.lblStatus.textColor = UIColor.red
-                cell.subView.backgroundColor = UIColor.red.withAlphaComponent(0.6)
-            }
-            
-            cell.mainView.roundCorners(corners: [.bottomLeft], radius: 10)
-            
             return cell
         }
     }

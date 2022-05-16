@@ -194,6 +194,29 @@ class AddBillerViewModel: NSObject {
         }
     }
     
+    // MARK: - Call api to Add Biller data validation
+    func addBillerDataValidation(isUserBill:String, param:[String:Any], completion : @escaping (_ response:Bool) -> Void){
+        let token = UserDefaults.standard.value(forKey: Constant.Access_Token)as! String
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
+                                    HeaderValue.ContentType:HeaderValue.ContentValue,
+                                    HeaderValue.TenantName:HeaderValue.TenantValue]
+        
+        let data = try! JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
+        let body : ParameterEncoding = Utilities.MyCustomEncoding(data: data)
+        
+        let urlString = API.ADD_BILLER_DATA_VALIDATION + isUserBill
+        let requestHelper = RequestHelper(url: urlString, method: .post, encoding: body, headers: headers)
+        TSPService.sharedInstance.request(with: requestHelper) { response in
+            if response.error != nil{
+                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
+            }else{
+                let json = try? JSONDecoder().decode(AddBillModel.self, from: response.responseData!)
+                self.dicOfAddedBill = json
+                completion(true)
+            }
+        }
+    }
+    
     
     //Remain
     // MARK: - Call api to Add Mobile Prepaid Bill

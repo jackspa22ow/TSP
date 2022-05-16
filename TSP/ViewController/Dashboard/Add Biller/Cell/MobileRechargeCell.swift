@@ -27,7 +27,7 @@ class MobileRechargeCell: UITableViewCell {
     var isOperatorSelected:((_ isOperator : Bool) -> ())?
     var selectedPlanType:((_ planType : String) -> ())?
     var rechargePlanTableHeight:((_ height : Float) -> ())?
-    var rechargePlanSelect:((_ index : Int) -> ())?
+    var rechargePlanSelect:((_ index : Int,_ isAddToMyBill : Bool) -> ())?
 
     var rechargePlans: [GetRechargePlansContent] = []
     @IBOutlet weak var consAddToMyBillsHightZero: NSLayoutConstraint!
@@ -110,7 +110,7 @@ extension MobileRechargeCell: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        rechargePlanSelect?(indexPath.row)
+        rechargePlanSelect?(indexPath.row, isAddToMyBill)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
