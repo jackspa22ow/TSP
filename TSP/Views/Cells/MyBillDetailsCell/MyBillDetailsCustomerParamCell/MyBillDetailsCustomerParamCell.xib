@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,34 +30,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ashutosh Kumar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xns-Yt-j3N">
-                                <rect key="frame" x="12" y="32" width="109.5" height="20"/>
+                                <rect key="frame" x="12" y="32" width="264" height="20"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
                                 <color key="textColor" red="0.0078431372549019607" green="0.0078431372549019607" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_copy_text" translatesAutoresizingMaskIntoConstraints="NO" id="YEG-O5-eCa">
-                                <rect key="frame" x="125.5" y="34" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="n3t-eo-9uP"/>
-                                    <constraint firstAttribute="width" secondItem="YEG-O5-eCa" secondAttribute="height" id="sJE-eH-w6a"/>
-                                </constraints>
-                            </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnX-8R-tqY">
-                                <rect key="frame" x="121.5" y="30" width="24" height="24"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="0.19981808693993169" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Xns-Yt-j3N" firstAttribute="top" secondItem="xSr-6P-e7s" secondAttribute="bottom" id="15j-tr-i0I"/>
-                            <constraint firstItem="WnX-8R-tqY" firstAttribute="top" secondItem="YEG-O5-eCa" secondAttribute="top" constant="-4" id="AMr-Cf-aC1"/>
+                            <constraint firstAttribute="trailing" secondItem="Xns-Yt-j3N" secondAttribute="trailing" constant="12" id="BZg-UW-FgL"/>
                             <constraint firstItem="xSr-6P-e7s" firstAttribute="top" secondItem="gky-UT-hc4" secondAttribute="top" constant="12" id="BoG-va-AgM"/>
-                            <constraint firstItem="WnX-8R-tqY" firstAttribute="trailing" secondItem="YEG-O5-eCa" secondAttribute="trailing" constant="4" id="D4g-kV-6cN"/>
                             <constraint firstItem="xSr-6P-e7s" firstAttribute="leading" secondItem="gky-UT-hc4" secondAttribute="leading" constant="12" id="GWK-km-lCT"/>
-                            <constraint firstItem="YEG-O5-eCa" firstAttribute="centerY" secondItem="Xns-Yt-j3N" secondAttribute="centerY" id="Tb1-P4-yKo"/>
-                            <constraint firstItem="WnX-8R-tqY" firstAttribute="bottom" secondItem="YEG-O5-eCa" secondAttribute="bottom" constant="4" id="amT-bJ-6gp"/>
-                            <constraint firstItem="YEG-O5-eCa" firstAttribute="leading" secondItem="Xns-Yt-j3N" secondAttribute="trailing" constant="4" id="ao9-ng-MVr"/>
-                            <constraint firstItem="WnX-8R-tqY" firstAttribute="leading" secondItem="YEG-O5-eCa" secondAttribute="leading" constant="-4" id="pci-Ym-A9n"/>
                             <constraint firstItem="Xns-Yt-j3N" firstAttribute="leading" secondItem="gky-UT-hc4" secondAttribute="leading" constant="12" id="qHg-5c-PYR"/>
                             <constraint firstAttribute="trailing" secondItem="xSr-6P-e7s" secondAttribute="trailing" constant="12" id="vpS-J8-OXi"/>
                             <constraint firstAttribute="bottom" secondItem="Xns-Yt-j3N" secondAttribute="bottom" constant="12" id="x1A-7n-69f"/>
@@ -73,15 +57,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="btnCopy" destination="WnX-8R-tqY" id="X6d-Hj-gl4"/>
-                <outlet property="imgCopyIcon" destination="YEG-O5-eCa" id="J6i-44-1Jv"/>
                 <outlet property="lblDescription" destination="Xns-Yt-j3N" id="IBU-dW-Xkf"/>
                 <outlet property="lblName" destination="xSr-6P-e7s" id="YdD-kc-7X6"/>
             </connections>
             <point key="canvasLocation" x="5.7971014492753632" y="92.410714285714278"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ic_copy_text" width="512" height="512"/>
-    </resources>
 </document>

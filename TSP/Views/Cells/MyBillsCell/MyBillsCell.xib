@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,57 +21,21 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jay-dF-J3P">
                         <rect key="frame" x="0.0" y="5" width="322" height="73"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-q0-lDm">
-                                <rect key="frame" x="12" y="26" width="20" height="20"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yx1-C1-yR9">
-                                        <rect key="frame" x="3" y="3" width="14" height="14"/>
-                                        <color key="backgroundColor" name="ThemeColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="UAv-DS-kq2"/>
-                                            <constraint firstAttribute="width" constant="14" id="ZM4-Jn-V14"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
-                                                <real key="value" value="7"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="Xb6-ki-d5q"/>
-                                    <constraint firstAttribute="height" constant="20" id="g2r-B1-UcU"/>
-                                    <constraint firstItem="yx1-C1-yR9" firstAttribute="centerY" secondItem="tkV-q0-lDm" secondAttribute="centerY" id="h3o-p6-vVT"/>
-                                    <constraint firstItem="yx1-C1-yR9" firstAttribute="centerX" secondItem="tkV-q0-lDm" secondAttribute="centerX" id="lmR-Tc-mY5"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
-                                        <color key="value" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V1Q-ou-Ntt">
-                                <rect key="frame" x="44" y="24" width="25" height="25"/>
+                                <rect key="frame" x="16" y="24" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="9zb-hy-jMd"/>
                                     <constraint firstAttribute="height" constant="25" id="bpo-u5-UbZ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Bihar State board of Electricity " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hL-0J-7zp">
-                                <rect key="frame" x="85" y="12.5" width="171" height="27.5"/>
+                                <rect key="frame" x="57" y="12.5" width="199" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.36470588240000001" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bihar State board of Electricity " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-nW-nZ7">
-                                <rect key="frame" x="85" y="42" width="171" height="0.0"/>
+                                <rect key="frame" x="57" y="31" width="199" height="11"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.36470588240000001" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -88,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="9879671049" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="169" translatesAutoresizingMaskIntoConstraints="NO" id="0Fs-eb-77B">
-                                <rect key="frame" x="85" y="44" width="126" height="16.5"/>
+                                <rect key="frame" x="57" y="44" width="154" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -145,14 +108,11 @@
                             <constraint firstAttribute="trailing" secondItem="cpL-sX-CNe" secondAttribute="trailing" constant="8" id="SYL-91-jvl"/>
                             <constraint firstAttribute="bottom" secondItem="0Fs-eb-77B" secondAttribute="bottom" constant="12.5" id="TMe-Uf-vYF"/>
                             <constraint firstItem="65B-oJ-Xe4" firstAttribute="centerY" secondItem="jay-dF-J3P" secondAttribute="centerY" id="Xkn-UF-wPz"/>
-                            <constraint firstItem="V1Q-ou-Ntt" firstAttribute="top" secondItem="tkV-q0-lDm" secondAttribute="bottom" constant="-22" id="aLp-35-B9I"/>
                             <constraint firstItem="PIZ-Ui-Qqh" firstAttribute="top" secondItem="jay-dF-J3P" secondAttribute="top" id="eYb-MA-WUI"/>
                             <constraint firstItem="0Fs-eb-77B" firstAttribute="top" secondItem="d7a-nW-nZ7" secondAttribute="bottom" constant="2" id="jHI-1f-XAZ"/>
                             <constraint firstItem="5hL-0J-7zp" firstAttribute="trailing" secondItem="d7a-nW-nZ7" secondAttribute="trailing" id="kA7-M4-LsF"/>
-                            <constraint firstItem="V1Q-ou-Ntt" firstAttribute="leading" secondItem="tkV-q0-lDm" secondAttribute="trailing" priority="999" constant="12" id="nIO-DQ-ZFl"/>
                             <constraint firstAttribute="bottom" secondItem="PIZ-Ui-Qqh" secondAttribute="bottom" id="sVO-G2-RPo"/>
-                            <constraint firstItem="V1Q-ou-Ntt" firstAttribute="leading" secondItem="jay-dF-J3P" secondAttribute="leading" priority="998" constant="16" id="x5O-6S-jS7"/>
-                            <constraint firstItem="tkV-q0-lDm" firstAttribute="leading" secondItem="jay-dF-J3P" secondAttribute="leading" constant="12" id="yDp-VX-fcR"/>
+                            <constraint firstItem="V1Q-ou-Ntt" firstAttribute="leading" secondItem="jay-dF-J3P" secondAttribute="leading" constant="16" id="x5O-6S-jS7"/>
                             <constraint firstItem="cpL-sX-CNe" firstAttribute="centerY" secondItem="jay-dF-J3P" secondAttribute="centerY" id="zUV-84-u5J"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -173,16 +133,12 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="btnMore" destination="PIZ-Ui-Qqh" id="y7A-Tx-Rxf"/>
-                <outlet property="consDisplayRadioButton" destination="nIO-DQ-ZFl" id="lho-Ck-UOc"/>
-                <outlet property="imgDot" destination="65B-oJ-Xe4" id="CnT-1W-HAH"/>
                 <outlet property="imgDue" destination="sTv-s2-t81" id="QMO-2H-HFo"/>
                 <outlet property="imgIcon" destination="V1Q-ou-Ntt" id="eA9-mz-UyD"/>
                 <outlet property="lblNickName" destination="5hL-0J-7zp" id="d9M-gU-FZw"/>
                 <outlet property="lblPrice" destination="j2V-XE-ecX" id="j4b-cC-lmV"/>
                 <outlet property="lblSubTitle" destination="0Fs-eb-77B" id="vly-Cv-TcH"/>
                 <outlet property="lblTitle" destination="d7a-nW-nZ7" id="M3g-9T-hhA"/>
-                <outlet property="viewRadio" destination="yx1-C1-yR9" id="FdN-gR-0Ca"/>
-                <outlet property="viewRadioContainer" destination="tkV-q0-lDm" id="Jb9-7j-Dg0"/>
             </connections>
             <point key="canvasLocation" x="14.492753623188406" y="97.433035714285708"/>
         </tableViewCell>
@@ -190,9 +146,6 @@
     <resources>
         <image name="ic_dot" width="7" height="35"/>
         <image name="ic_due" width="66" height="30"/>
-        <namedColor name="ThemeColor">
-            <color red="0.25099998712539673" green="0.72200000286102295" blue="0.58399999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

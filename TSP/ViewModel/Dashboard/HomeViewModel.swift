@@ -94,8 +94,6 @@ class HomeViewModel: NSObject {
     
     //Remain
     // MARK: - Call api to GET bill detail for autopay status
-    //            https://api1.usprojects.co/tsp/bill-details/v1/api/si/bill/126
-
     func getBillAutoPayDetailByBillID(billID:String, completion : @escaping (_ response:Bool) -> Void){
         let token = UserDefaults.standard.value(forKey: Constant.Access_Token)as! String
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",

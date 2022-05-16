@@ -10,7 +10,7 @@ import Foundation
 // MARK: - MyBills
 struct MyBills: Codable {
     let total: Int?
-    var content: [MyBillsContent]
+    let content: [MyBillsContent]
 }
 
 // MARK: - Content
@@ -29,8 +29,6 @@ struct MyBillsContent: Codable {
     let billerPayuId: String?
     let autoPay: Bool?
     var enableReminder: Bool?
-    var isSelected: Bool?
-    var isColleps: Bool?
 }
 
 // MARK: - MYBILL DETAIL BY BILL ID

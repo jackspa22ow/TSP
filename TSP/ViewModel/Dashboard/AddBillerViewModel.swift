@@ -28,7 +28,7 @@ class AddBillerViewModel: NSObject {
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
                                     HeaderValue.TenantName:HeaderValue.TenantValue]
         
-        let urlString = API.GET_BILLERS + name
+        let urlString = API.GET_BILLERS + name + "&page=0&size=10000&sortAscending=true&sortingField=name"
         let requestHelper = RequestHelper(url: urlString, method: .get, encoding: URLEncoding.queryString, headers: headers)
         TSPService.sharedInstance.request(with: requestHelper) { response in
             if response.error != nil{
@@ -207,28 +207,6 @@ class AddBillerViewModel: NSObject {
                                     HeaderValue.TenantName:HeaderValue.TenantValue]
         
         let requestHelper = RequestHelper(url: API.PREPARE_PAYMENT, method: .post, encoding: body, headers: headers)
-        TSPService.sharedInstance.request(with: requestHelper) { response in
-            if response.error != nil{
-                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
-            }else{
-                let json = try? JSONDecoder().decode(PreparePayment.self, from: response.responseData!)
-                self.dicOfPreparePayment = json
-                completion(true)
-            }
-        }
-    }
-    
-    // MARK: - Call api to Add Mobile Prepaid Bill
-    func preparePaymentForMultipleBillPayment(param:[[String : Any]], completion:@escaping(_ response:Bool) -> Void){
-        let data = try! JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
-        let body : ParameterEncoding = Utilities.MyCustomEncoding(data: data)
-        
-        let token = UserDefaults.standard.value(forKey: Constant.Access_Token)as! String
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
-                                    HeaderValue.ContentType:HeaderValue.ContentValue,
-                                    HeaderValue.TenantName:HeaderValue.TenantValue]
-        
-        let requestHelper = RequestHelper(url: API.PREPARE_PAYMENT_MULTIPLE_BILL_, method: .post, encoding: body, headers: headers)
         TSPService.sharedInstance.request(with: requestHelper) { response in
             if response.error != nil{
                 Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)

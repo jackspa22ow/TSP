@@ -34,6 +34,7 @@ class ForgetPasswordViewModel: NSObject {
                 Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
             }else{
                 let json = try? JSONDecoder().decode(ServerErrorModel.self, from: response.responseData!)
+                print(json as Any)
                 self.forgotPasswordMsg = json?.message ?? ""
                 if request.isDisplayAler ?? true {
                     Utilities.sharedInstance.showAlertView(title: "", message: json?.message ?? "")

@@ -87,10 +87,7 @@ class AddBillerDetailVC: UIViewController {
         }
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-    }
+    
     @IBAction func buttonBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -136,7 +133,7 @@ class AddBillerDetailVC: UIViewController {
         let sUrl = "https://payuresponse.firebaseapp.com/success"
         let fUrl = "https://payuresponse.firebaseapp.com/failure"
         let cUrl = "https://payuresponse.firebaseapp.com/cancel"
-        
+
         let productInfo = self.addBillerViewModel.dicOfAddedBill.billerName ?? ""
         let amount = self.addBillerViewModel.dicOfAddedBill.amount ?? 0
         let billerId = self.addBillerViewModel.dicOfAddedBill.billerPayuId ?? ""

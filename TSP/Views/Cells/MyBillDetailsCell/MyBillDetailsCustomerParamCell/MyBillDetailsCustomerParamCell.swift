@@ -14,9 +14,8 @@ class MyBillDetailsCustomerParamCell: UITableViewCell {
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var imgCopyIcon: UIImageView!
-    @IBOutlet weak var btnCopy: UIButton!
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

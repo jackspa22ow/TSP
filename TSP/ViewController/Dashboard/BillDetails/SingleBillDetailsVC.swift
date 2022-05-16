@@ -54,7 +54,6 @@ class SingleBillDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.isHidden = true
         self.setupUI(isShow: false)
         if self.isFromHomeDetail {
             self.lblRaiseComplaint.text = "Done"

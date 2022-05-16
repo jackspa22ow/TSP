@@ -10,33 +10,25 @@ import UIKit
 class MultipleBillPaymentVC: UIViewController {
     
     @IBOutlet weak var tblView: UITableView!
-    @IBOutlet weak var lblNoDataFound: UILabel!
-    @IBOutlet weak var btnProceed: UIButton!
     
-    let homeViewModel = HomeViewModel()
+    var aryOfTitle = ["Airtel Postpaid","TATA Power","my_home_bill\nMSEDCL CO LTD","Canara HSBC OBC Life Insurance","ICICI Bank","Life Insurance Corporation of India","Jio","My_TATA\nTATA SKY","HDFC Bank"]
+    
+    var aryOfSubTitle = ["9984328711","8435279521","432154789","432154789","8435 **** **** 9521","432154789","8435279521","9987568711","9984 **** **** 5711"]
+    
+    var aryOfTitleImage = ["Credit_card_Bill","loan repayment","insurance premium","municipal services","municipal services","Credit_card_Bill","loan repayment","insurance premium","municipal services"]
+    
+    var aryOfPrice = ["₹ 1250","₹ 800","₹ 1200","₹ 2500","₹ 6000","₹ 2000","₹ 250","₹ 350","₹ 8000"]
+    
+    var aryOfDue = [true,true,true,true,false,false,false,false,false]
+    
+    var aryOfRadio = [true,true,false,true,false,true,false,false,false]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tblView.register(MultipleBillCell.nib, forCellReuseIdentifier: MultipleBillCell.identifier)
-        self.tblView.register(MyBillsCell.nib, forCellReuseIdentifier: MyBillsCell.identifier)
         self.tblView.estimatedRowHeight = 70
 
-        self.btnProceed.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-        
-        self.homeViewModel.getMyBills { success in
-            Utilities.sharedInstance.dismissSVProgressHUD()
-            if self.homeViewModel.dicOfMyBillList.content.count > 0{
-                self.tblView.isHidden = false
-                self.tblView.dataSource = self
-                self.tblView.delegate = self
-                self.tblView.reloadData()
-                self.lblNoDataFound.isHidden = true
-            }else{
-                self.tblView.isHidden = true
-                self.lblNoDataFound.isHidden = false
-            }
-        }
         // Do any additional setup after loading the view.
     }
     
@@ -45,10 +37,7 @@ class MultipleBillPaymentVC: UIViewController {
     }
     
     @IBAction func buttonHandlerProceed(_ sender: Any) {
-        let myBills = self.homeViewModel.dicOfMyBillList.content.filter{ $0.isSelected == false && ($0.billDue == true || $0.billDue == nil) }
-
         let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "SelectedBillVC")as! SelectedBillVC
-        nextVC.selectedBills = myBills
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -58,7 +47,7 @@ class MultipleBillPaymentVC: UIViewController {
 
 extension MultipleBillPaymentVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.homeViewModel.dicOfMyBillList.content.count
+        self.aryOfTitle.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -66,45 +55,37 @@ extension MultipleBillPaymentVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillsCell.identifier, for: indexPath) as? MyBillsCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MultipleBillCell.identifier, for: indexPath) as? MultipleBillCell else {
             fatalError("XIB doesn't exist.")
         }
-        cell.consDisplayRadioButton.priority = UILayoutPriority(999)
         
-        let json = self.homeViewModel.dicOfMyBillList.content[indexPath.row]
-        
-//        let fileUrl = URL(string: json.customerParams)
-//        cell.imgIcon.sd_setImage(with: fileUrl)
-        cell.lblNickName.text = json.billNickName
-        cell.imgIcon.image = #imageLiteral(resourceName: "ic_bharatbillpay")
-        
-        cell.lblTitle.text = json.billerName
-        
-        for obj in json.customerParams{
-            let val = obj.primary
-            if val == true{
-                cell.lblSubTitle.text = obj.value
-                break
-            }
+        cell.imgIcon.image = UIImage(named: self.aryOfTitleImage[indexPath.row])
+        cell.lblTitle.text = self.aryOfTitle[indexPath.row]
+        cell.lblSubTitle.text = self.aryOfSubTitle[indexPath.row]
+        cell.lblPrice.text = self.aryOfPrice[indexPath.row]
+
+        if self.aryOfDue[indexPath.row]{
+            cell.imgDue.isHidden = false
+        }else{
+            cell.imgDue.isHidden = true
         }
         
-        cell.lblPrice.text = "₹ \(json.amount!)"
-
-        cell.imgDue.isHidden = (json.billDue == true || json.billDue == nil) ? false : true
-        cell.viewRadio.isHidden = json.isSelected ?? true
-
-        cell.imgDot.isHidden = true
-
-        cell.viewRadioContainer.isHidden = cell.imgDue.isHidden
+        if self.aryOfRadio[indexPath.row]{
+            cell.viewRadio.isHidden = false
+        }else{
+            cell.viewRadio.isHidden = true
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var json = self.homeViewModel.dicOfMyBillList.content[indexPath.row]
-        json.isSelected = !(json.isSelected ?? true)
-        self.homeViewModel.dicOfMyBillList.content[indexPath.row] = json
-        
-        self.tblView.reloadRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .none)
+        if self.aryOfRadio[indexPath.row]{
+            self.aryOfRadio[indexPath.row] = false
+        }else{
+            self.aryOfRadio[indexPath.row] = true
+        }
+        self.tblView.reloadData()
     }
     
    

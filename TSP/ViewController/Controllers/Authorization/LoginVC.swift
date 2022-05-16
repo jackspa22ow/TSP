@@ -38,6 +38,9 @@ class LoginVC: UIViewController {
 //        self.txtUsername.text = "Ankur.."
 //        self.txtPassword.text = "Pentagon@123"
         
+//        self.txtUsername.text = "ankurjack"
+//        self.txtPassword.text = "Pentagon@123"
+        
         
         //hide Keyboard on click of anywhere
         self.hideKeyboardWhenTappedAround()
@@ -57,7 +60,11 @@ class LoginVC: UIViewController {
         
         self.btnLogin.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
         
-        self.txtUsername.placeholder = TSP_Allow_Login.capitalized
+        if TSP_Allow_Login.isEmpty{
+            self.txtUsername.placeholder = "Username"
+        }else{
+            self.txtUsername.placeholder = TSP_Allow_Login.capitalized
+        }
         
         let value = "Don't have an account yet? Sign Up"
         let attrString = NSMutableAttributedString.init(string:value)
