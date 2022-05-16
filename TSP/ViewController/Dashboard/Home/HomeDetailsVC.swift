@@ -47,6 +47,7 @@ class HomeDetailsVC: UIViewController {
     let reminderListViewModel = ReminderListViewModel()
     var isReminderEdit : Bool = false
     var isAutoPayEdit : Bool = false
+    var isShortNameEdit : Bool = false
 
     var isReminderEditMode : Bool = false
     var selectedReminderOption : ReminderSubtype!
@@ -56,10 +57,14 @@ class HomeDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-       
         
-        self.myBillsViewModel.getBillDetailByID(billID: self.billID ?? "") { response in
+        self.myBillsViewModel.getBillDetailByID(billID: self.billID ?? "") { [self] response in
             self.json = self.myBillsViewModel.dicOfBillDetail
+            
+            let amountParam = MyBillsCustomerParam(value: "\(self.json.amount ?? 0)", paramName: "Amount", primary: false)
+            if !isShortNameEdit {
+                self.json.customerParams.append(amountParam)
+            }
             
             if self.isAutoPayHide == false && !self.isReminderEdit{
                 self.isAutoPay = self.json?.autoPay ?? false
@@ -88,12 +93,12 @@ class HomeDetailsVC: UIViewController {
         }
     }
     func autoPayAndReminderCOnfiguration(){
-        if TSP_Allow_Setting_Reminders != Constant.User {
+        if TSP_Allow_Setting_Reminders != "" && TSP_Allow_Setting_Reminders != Constant.User {
             self.isReminderSet = false
             self.isReminderHide = true
         }
         
-        if TSP_Allow_Setting_Autopay != Constant.User {
+        if TSP_Allow_Setting_Autopay != "" && TSP_Allow_Setting_Autopay != Constant.User {
             self.isAutoPay = false
             self.isAutoPayHide = true
         }
@@ -193,6 +198,10 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
         self.tblView.register(MyBillDetailsFooterCell.nib, forCellReuseIdentifier: MyBillDetailsFooterCell.identifier)
         
         self.tblView.register(MyBillAutoPayEditCell.nib, forCellReuseIdentifier: MyBillAutoPayEditCell.identifier)
+        
+        self.tblView.register(MyBillDetailShortNameCell.nib, forCellReuseIdentifier: MyBillDetailShortNameCell.identifier)
+
+        self.tblView.register(AddBillerDetailsTotalAmountCell.nib, forCellReuseIdentifier: AddBillerDetailsTotalAmountCell.identifier)
 
         self.tblView.delegate = self
         self.tblView.dataSource = self
@@ -206,16 +215,23 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0{
             return UITableView.automaticDimension
         }else if indexPath.row == self.json.customerParams.count + 1{
-            if isReminderEdit {
-                if (self.json.enableReminder ?? false) {
-                    return 204
+            if isShortNameEdit {
+                return 80
+            } else {
+                if isReminderEdit {
+                    if (self.json.enableReminder ?? false) {
+                        return 204
+                    }
+                    return 70
                 }
-                return 70
+                return CGFloat(self.reminderHeight)
             }
-            return CGFloat(self.reminderHeight)
         }else if indexPath.row == self.json.customerParams.count + 2{
             return 140
         }else{
+            if !isShortNameEdit && indexPath.row == self.json.customerParams.count {
+                return UITableView.automaticDimension
+            }
             return 64
         }
     }
@@ -231,157 +247,165 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
             
             return cell
         }else if indexPath.row == self.json.customerParams.count + 1{
-            if isReminderEdit {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillReminderEditCellTableViewCell.identifier, for: indexPath) as? MyBillReminderEditCellTableViewCell else {
-                    fatalError("XIB dosn't exist.")
+            if isShortNameEdit {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailShortNameCell.identifier, for: indexPath) as? MyBillDetailShortNameCell else {
+                    fatalError("XIB doesn't exist.")
                 }
-                cell.switchReminder.isOn = self.json.enableReminder ?? false
-                cell.switchReminder.addTarget(self, action: #selector(self.switchChangedWhileReminderEdit), for: UIControl.Event.valueChanged)
-
-                if isReminderEditMode {
-                    cell.btnEdit.isHidden = false
-                    if cell.switchReminder.isOn  == true{
-                        cell.consReminderValueViewHeight.priority = UILayoutPriority(250)
-                    } else {
-                        cell.consReminderValueViewHeight.priority = UILayoutPriority(999)
-                    }
-                    cell.consReminderEditViewHeight.priority = UILayoutPriority(999)
-                } else {
-                    cell.btnEdit.isHidden = true
-                    if cell.switchReminder.isOn {
-                        cell.consReminderEditViewHeight.priority = UILayoutPriority(250)
-                    } else {
-                        cell.consReminderEditViewHeight.priority = UILayoutPriority(999)
-                    }
-                    cell.consReminderValueViewHeight.priority = UILayoutPriority(999)
-                }
-                
-                
-                cell.btnEdit.addTarget(self, action: #selector(btnEditReminderAction(sender:)), for: .touchUpInside)
-                cell.btnReminderOption.addTarget(self, action: #selector(btnReminderOptionAction(sender: )), for: .touchUpInside)
-                
-                cell.txtReminderOption.text = selectedReminderOption.eventSubTypes ?? ""
-                cell.lblReminderOption.text = selectedReminderOption.eventSubTypes ?? ""
-                cell.txtReminderOptionValue.text = selectedReminderOptionValue
-                cell.lblReminderOptionValue.text = selectedReminderOptionValue
-                
-                cell.reminderOptionValue = { value in
-                    self.selectedReminderOptionValue = value
-                }
-                
-                return cell
-            } else if isAutoPayEdit {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillAutoPayEditCell.identifier, for: indexPath) as? MyBillAutoPayEditCell else {
-                    fatalError("XIB dosn't exist.")
-                }
-                cell.txtMaxAmount.text = self.autoPaymentMaxAmount
-                cell.txtPaymentMethod.text = self.selectedPaymentMethod
-                cell.lblMaxAmount.text = self.autoPaymentMaxAmount
-                cell.lblPaymentType.text = self.selectedPaymentMethod
-                cell.switchAutoPay.isOn = self.isAutoPay
-                cell.switchAutoPay.addTarget(self, action: #selector(autoPaySwitchChangedWithEidt), for: UIControl.Event.valueChanged)
-                
-                if isAutoPayFromHomeMore {
-                    if self.isAutoPay == false{
-                        cell.vwAutoPayEdit.isHidden = true
-                        cell.vwPaymentType.isHidden = true
-                        cell.vwAutopayAmount.isHidden = true
-                        cell.btnEdit.isHidden = true
-                    } else{
-                        cell.vwAutoPayEdit.isHidden = false
-                        cell.vwPaymentType.isHidden = true
-                        cell.vwAutopayAmount.isHidden = true
-                        cell.btnEdit.isHidden = true
-                    }
-                }
-//                if (self.json?.autoPay ?? false) {
-//                    cell.switchAutoPay.isUserInteractionEnabled = false
-//                    cell.vwAutoPayEdit.isHidden = true
-//                    cell.vwPaymentType.isHidden = true
-//                    cell.vwAutopayAmount.isHidden = true
-//                    cell.btnEdit.isHidden = true
-//                } else {
-//
-//                    if self.isAutoPay == false{
-//                        cell.vwAutoPayEdit.isHidden = true
-//                        cell.vwPaymentType.isHidden = true
-//                        cell.vwAutopayAmount.isHidden = true
-//                        cell.btnEdit.isHidden = true
-//                    } else{
-//                        cell.vwAutoPayEdit.isHidden = false
-//                        cell.vwPaymentType.isHidden = true
-//                        cell.vwAutopayAmount.isHidden = true
-//                        cell.btnEdit.isHidden = true
-//                    }
-//                }
-                cell.btnSelectPaymentMethod.addTarget(self, action: #selector(self.btnPaymentMethodAction), for: .touchUpInside)
-
-                cell.maxminAmountValue = { value in
-                    self.autoPaymentMaxAmount = value
-                }
-                cell.isAutoPayEditing = { value in
-                    self.isAutoPaymentEditing = value
-                    self.tblView.reloadRows(at: [IndexPath(row:self.json.customerParams.count + 2, section: 0)], with: .none)
-                }
-                
+                cell.txtShortNAme.text = self.json?.billNickName
                 return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsReminderCell.identifier, for: indexPath) as? MyBillDetailsReminderCell else {
-                    fatalError("XIB dosn't exist.")
-                }
-                if self.isReminderSet{
-                    cell.lblReminder.isHidden = false
-                    cell.reminderSwitch.isOn = true
-                }else{
-                    cell.lblReminder.isHidden = true
-                    cell.reminderSwitch.isOn = false
-                }
-            
-                if self.isAutoPay {
-                    cell.autoPaySwitch.isOn = true
-                    if isAutoPayOnForBill {
-                        cell.autoPaySwitch.isUserInteractionEnabled = false
-                        cell.consViewAutoPayToHide.priority = UILayoutPriority(999)
+                if isReminderEdit {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillReminderEditCellTableViewCell.identifier, for: indexPath) as? MyBillReminderEditCellTableViewCell else {
+                        fatalError("XIB dosn't exist.")
+                    }
+                    cell.switchReminder.isOn = self.json.enableReminder ?? false
+                    cell.switchReminder.addTarget(self, action: #selector(self.switchChangedWhileReminderEdit), for: UIControl.Event.valueChanged)
+                    
+                    if isReminderEditMode {
+                        cell.btnEdit.isHidden = false
+                        if cell.switchReminder.isOn  == true{
+                            cell.consReminderValueViewHeight.priority = UILayoutPriority(250)
+                        } else {
+                            cell.consReminderValueViewHeight.priority = UILayoutPriority(999)
+                        }
+                        cell.consReminderEditViewHeight.priority = UILayoutPriority(999)
                     } else {
-                        cell.consViewAutoPayToHide.priority = UILayoutPriority(250)
+                        cell.btnEdit.isHidden = true
+                        if cell.switchReminder.isOn {
+                            cell.consReminderEditViewHeight.priority = UILayoutPriority(250)
+                        } else {
+                            cell.consReminderEditViewHeight.priority = UILayoutPriority(999)
+                        }
+                        cell.consReminderValueViewHeight.priority = UILayoutPriority(999)
                     }
+                    
+                    
+                    cell.btnEdit.addTarget(self, action: #selector(btnEditReminderAction(sender:)), for: .touchUpInside)
+                    cell.btnReminderOption.addTarget(self, action: #selector(btnReminderOptionAction(sender: )), for: .touchUpInside)
+                    
+                    cell.txtReminderOption.text = selectedReminderOption.eventSubTypes ?? ""
+                    cell.lblReminderOption.text = selectedReminderOption.eventSubTypes ?? ""
+                    cell.txtReminderOptionValue.text = selectedReminderOptionValue
+                    cell.lblReminderOptionValue.text = selectedReminderOptionValue
+                    
+                    cell.reminderOptionValue = { value in
+                        self.selectedReminderOptionValue = value
+                    }
+                    
+                    return cell
+                } else if isAutoPayEdit {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillAutoPayEditCell.identifier, for: indexPath) as? MyBillAutoPayEditCell else {
+                        fatalError("XIB dosn't exist.")
+                    }
+                    cell.txtMaxAmount.text = self.autoPaymentMaxAmount
+                    cell.txtPaymentMethod.text = self.selectedPaymentMethod
+                    cell.lblMaxAmount.text = self.autoPaymentMaxAmount
+                    cell.lblPaymentType.text = self.selectedPaymentMethod
+                    cell.switchAutoPay.isOn = self.isAutoPay
+                    cell.switchAutoPay.addTarget(self, action: #selector(autoPaySwitchChangedWithEidt), for: UIControl.Event.valueChanged)
+                    
+                    if isAutoPayFromHomeMore {
+                        if self.isAutoPay == false{
+                            cell.vwAutoPayEdit.isHidden = true
+                            cell.vwPaymentType.isHidden = true
+                            cell.vwAutopayAmount.isHidden = true
+                            cell.btnEdit.isHidden = true
+                        } else{
+                            cell.vwAutoPayEdit.isHidden = false
+                            cell.vwPaymentType.isHidden = true
+                            cell.vwAutopayAmount.isHidden = true
+                            cell.btnEdit.isHidden = true
+                        }
+                    }
+                    //                if (self.json?.autoPay ?? false) {
+                    //                    cell.switchAutoPay.isUserInteractionEnabled = false
+                    //                    cell.vwAutoPayEdit.isHidden = true
+                    //                    cell.vwPaymentType.isHidden = true
+                    //                    cell.vwAutopayAmount.isHidden = true
+                    //                    cell.btnEdit.isHidden = true
+                    //                } else {
+                    //
+                    //                    if self.isAutoPay == false{
+                    //                        cell.vwAutoPayEdit.isHidden = true
+                    //                        cell.vwPaymentType.isHidden = true
+                    //                        cell.vwAutopayAmount.isHidden = true
+                    //                        cell.btnEdit.isHidden = true
+                    //                    } else{
+                    //                        cell.vwAutoPayEdit.isHidden = false
+                    //                        cell.vwPaymentType.isHidden = true
+                    //                        cell.vwAutopayAmount.isHidden = true
+                    //                        cell.btnEdit.isHidden = true
+                    //                    }
+                    //                }
+                    cell.btnSelectPaymentMethod.addTarget(self, action: #selector(self.btnPaymentMethodAction), for: .touchUpInside)
+                    
+                    cell.maxminAmountValue = { value in
+                        self.autoPaymentMaxAmount = value
+                    }
+                    cell.isAutoPayEditing = { value in
+                        self.isAutoPaymentEditing = value
+                        self.tblView.reloadRows(at: [IndexPath(row:self.json.customerParams.count + 2, section: 0)], with: .none)
+                    }
+                    
+                    return cell
                 } else {
-                    cell.autoPaySwitch.isOn = false
-                    cell.consViewAutoPayToHide.priority = UILayoutPriority(999)
-                }
-                
-                cell.reminderSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-                cell.reminderSwitch.onTintColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-                cell.reminderSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-                
-                cell.autoPaySwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-                cell.autoPaySwitch.onTintColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-                cell.autoPaySwitch.addTarget(self, action: #selector(autoPaySwitchChanged), for: UIControl.Event.valueChanged)
-                
-                cell.btnAutoPayConfirm.addTarget(self, action: #selector(btnAutoPayConfirmAction), for: .touchUpInside)
-                cell.btnReminderConfirm.addTarget(self, action: #selector(btnReminderConfirmAction), for: .touchUpInside)
-                cell.btnAutoPayConfirm.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-                cell.btnReminderConfirm.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-                
-                cell.btnPaymentMethod.addTarget(self, action: #selector(btnPaymentMethodAction), for: .touchUpInside)
-                
-                cell.txtPaymentMethod.text = self.selectedPaymentMethod
-                if let payload = self.reminderListViewModel.dicOfReminderSubtype.payload {
-                    cell.aryOfReminders = payload
-                    if isGetReminderAPICall {
-                        isGetReminderAPICall = false
-                        cell.isFirstTime = true
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsReminderCell.identifier, for: indexPath) as? MyBillDetailsReminderCell else {
+                        fatalError("XIB dosn't exist.")
                     }
-                    cell.aryOfRemindersValue = self.reminderListViewModel.dicOfReminderByBill.payload ?? []
-                    cell.tblView.reloadData()
+                    if self.isReminderSet{
+                        cell.lblReminder.isHidden = false
+                        cell.reminderSwitch.isOn = true
+                    }else{
+                        cell.lblReminder.isHidden = true
+                        cell.reminderSwitch.isOn = false
+                    }
+                    
+                    if self.isAutoPay {
+                        cell.autoPaySwitch.isOn = true
+                        if isAutoPayOnForBill {
+                            cell.autoPaySwitch.isUserInteractionEnabled = false
+                            cell.consViewAutoPayToHide.priority = UILayoutPriority(999)
+                        } else {
+                            cell.consViewAutoPayToHide.priority = UILayoutPriority(250)
+                        }
+                    } else {
+                        cell.autoPaySwitch.isOn = false
+                        cell.consViewAutoPayToHide.priority = UILayoutPriority(999)
+                    }
+                    
+                    cell.reminderSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+                    cell.reminderSwitch.onTintColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+                    cell.reminderSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+                    
+                    cell.autoPaySwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+                    cell.autoPaySwitch.onTintColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+                    cell.autoPaySwitch.addTarget(self, action: #selector(autoPaySwitchChanged), for: UIControl.Event.valueChanged)
+                    
+                    cell.btnAutoPayConfirm.addTarget(self, action: #selector(btnAutoPayConfirmAction), for: .touchUpInside)
+                    cell.btnReminderConfirm.addTarget(self, action: #selector(btnReminderConfirmAction), for: .touchUpInside)
+                    cell.btnAutoPayConfirm.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+                    cell.btnReminderConfirm.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+                    
+                    cell.btnPaymentMethod.addTarget(self, action: #selector(btnPaymentMethodAction), for: .touchUpInside)
+                    
+                    cell.txtPaymentMethod.text = self.selectedPaymentMethod
+                    if let payload = self.reminderListViewModel.dicOfReminderSubtype.payload {
+                        cell.aryOfReminders = payload
+                        if isGetReminderAPICall {
+                            isGetReminderAPICall = false
+                            cell.isFirstTime = true
+                        }
+                        cell.aryOfRemindersValue = self.reminderListViewModel.dicOfReminderByBill.payload ?? []
+                        cell.tblView.reloadData()
+                    }
+                    cell.autoPaySwitch.isHidden = isAutoPayHide
+                    cell.lblAutoPayTitle.isHidden = isAutoPayHide
+                    
+                    cell.reminderSwitch.isHidden = isReminderHide
+                    cell.lblReminderTitle.isHidden = isReminderHide
+                    
+                    return cell
                 }
-                cell.autoPaySwitch.isHidden = isAutoPayHide
-                cell.lblAutoPayTitle.isHidden = isAutoPayHide
-                
-                cell.reminderSwitch.isHidden = isReminderHide
-                cell.lblReminderTitle.isHidden = isReminderHide
-                
-                return cell
             }
         }else if indexPath.row == self.json.customerParams.count + 2{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsFooterCell.identifier, for: indexPath) as? MyBillDetailsFooterCell else {
@@ -390,6 +414,8 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
             
             if self.isAutoPayHide || self.isReminderHide{
                 cell.viewConfirm.isHidden = true
+            } else if isShortNameEdit {
+                cell.viewConfirm.isHidden = false
             }else{
                 cell.viewConfirm.isHidden = false
             }
@@ -408,13 +434,18 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                     }
                     cell.btnConfirm.setTitle("Done", for: .normal)
                 }
+            } else if isShortNameEdit {
+                cell.viewConfirm.isHidden = false
+
+                cell.btnConfirm.setTitle("Modify", for: .normal)
             } else {
                 cell.btnConfirm.setTitle("Pay", for: .normal)
             }
+            
             cell.btnConfirm.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
             
             cell.btnCancel.addTarget(self, action: #selector(buttonCancel), for: UIControl.Event.touchUpInside)
-            if self.isAutoPayHide || self.isReminderHide{
+            if self.isAutoPayHide || self.isReminderHide || isShortNameEdit{
                 cell.btnCancel.setTitle("Cancel", for: .normal)
             } else {
                 if isReminderEdit || isAutoPayEdit {
@@ -429,16 +460,39 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
 
             return cell
         }else{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsCustomerParamCell.identifier, for: indexPath) as? MyBillDetailsCustomerParamCell else {
-                fatalError("XIB doesn't exist.")
+            if !isShortNameEdit && indexPath.row == self.json.customerParams.count {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBillerDetailsTotalAmountCell.identifier, for: indexPath) as? AddBillerDetailsTotalAmountCell else {
+                    fatalError("XIB doesn't exist.")
+                }
+                let dic = self.json.customerParams[indexPath.row - 1]
+                cell.lblName.text = dic.paramName
+                
+                if let amount = dic.value {
+                    if let amountExact = self.json.paymentAmountExactness, amountExact != "Exact" {
+                        cell.vwTxtAmount.isHidden = false
+                        cell.vwTxtAmountHeight.constant = 40
+                    } else {
+                        cell.lblValue.text = dic.value
+                        cell.vwTxtAmount.isHidden = true
+                        cell.vwTxtAmountHeight.constant = 20
+                    }
+                } else {
+                    cell.vwTxtAmount.isHidden = false
+                    cell.vwTxtAmountHeight.constant = 40
+                }
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillDetailsCustomerParamCell.identifier, for: indexPath) as? MyBillDetailsCustomerParamCell else {
+                    fatalError("XIB doesn't exist.")
+                }
+                
+                let dic = self.json.customerParams[indexPath.row - 1]
+                
+                cell.lblName.text = dic.paramName
+                cell.lblDescription.text = dic.value
+                
+                return cell
             }
-            
-            let dic = self.json.customerParams[indexPath.row - 1]
-
-            cell.lblName.text = dic.paramName
-            cell.lblDescription.text = dic.value
-            
-            return cell
         }
     }
     
@@ -578,12 +632,138 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
             }
         } else if self.isAutoPayEdit {
             self.btnAutoPayConfirmAction()
+        } else if isShortNameEdit {
+            let cell = self.tblView.cellForRow(at: IndexPath(row: self.json.customerParams.count + 1, section: 0)) as! MyBillDetailShortNameCell
+
+            if (cell.txtShortNAme.text ?? "").count == 0{
+                Utilities.sharedInstance.showAlertView(title: "", message: "Please enter short name")
+            }else{
+                self.homeViewModel.updateBillShortNAme(billID: self.billID, billNickName: (cell.txtShortNAme.text ?? "")) { response in
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }else {
-            let cell = self.tblView.cellForRow(at: IndexPath(row: self.json.customerParams.count + 1, section: 0)) as! MyBillDetailsReminderCell
-            print(cell.aryOfReminders.count)
+            let cell = self.tblView.cellForRow(at: IndexPath(row: json.customerParams.count - 1, section: 0)) as! AddBillerDetailsTotalAmountCell
+            
+            var minimumValue : Int?
+            var maximumValue : Int?
+            if let arrayOfPaymentChannels = self.json.paymentChannelsAllowed {
+                let array = arrayOfPaymentChannels.filter{
+                    $0.paymentMode == "MOB"
+                }
+                if array.count > 0 {
+                    if let objPaymentChannel = array.first {
+                        if let minValue = objPaymentChannel.minLimit {
+                            minimumValue = Int(minValue)
+                        }
+                        
+                        if let maxValue = objPaymentChannel.maxLimit {
+                            maximumValue = Int(maxValue)
+                        }
+                    }
+                }
+            }
+            
+            if let amount = self.json.amount {
+                if let amountExact = self.json.paymentAmountExactness {
+                    if amountExact == "EXACT_AND_ABOVE" {
+                        let enteredAmount: Int? = Int(cell.txtAmount.text!)
+                        let actualAmount: Int? = Int(amount)
+                        if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let maxVal = maximumValue {
+                            if enteredAmt >= actualAmt && enteredAmt <= maxVal {
+                                self.preparePayment(amount: cell.txtAmount.text ?? "")
+                            } else {
+                                Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(actualAmt) and \(maxVal)")
+                            }
+                        }
+                    } else if amountExact == "EXACT_AND_BELOW" {
+                        let enteredAmount: Int? = Int(cell.txtAmount.text!)
+                        let actualAmount: Int? = Int(amount)
+                        if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let minVal = minimumValue {
+                            if enteredAmt <= actualAmt && enteredAmt >= minVal {
+                                self.preparePayment(amount: cell.txtAmount.text ?? "")
+                            } else {
+                                Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(actualAmt)")
+                            }
+                        }
+                    } else if (amountExact == "EXACT") {
+                        self.preparePayment(amount: "\(amount)")
+                    }
+                    print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
+                } else {
+                    print("Entered Amount: \(amount) , IsValueAmount: \("\(amount)".isNumber)")
+                }
+            } else {
+                let enteredAmount: Int? = Int(cell.txtAmount.text!)
+                if let enteredAmt = enteredAmount, let minVal = minimumValue, let maxVal = maximumValue {
+                    if enteredAmt >= minVal && enteredAmt <= maxVal {
+                        self.preparePayment(amount: cell.txtAmount.text ?? "")
+                    } else {
+                        Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(maxVal)")
+                    }
+                }
+                print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
+            }
         }
     }
     
+    func preparePayment(amount: String){
+        let firstName = dicOfUserProfile.firstName!
+        let phone = dicOfUserProfile.phoneNumber!
+        let email = dicOfUserProfile.email!
+        let lastName = dicOfUserProfile.lastName!
+        
+        let sUrl = "https://payuresponse.firebaseapp.com/success"
+        let fUrl = "https://payuresponse.firebaseapp.com/failure"
+        let cUrl = "https://payuresponse.firebaseapp.com/cancel"
+
+        let productInfo = self.addBillerViewModel.dicOfAddedBill.billerName ?? ""
+//        let amount = self.addBillerViewModel.dicOfAddedBill.amount ?? 0
+        let billerId = self.addBillerViewModel.dicOfAddedBill.billerPayuId ?? ""
+        let billId = self.addBillerViewModel.dicOfAddedBill.id ?? 0
+        
+        var param = [String : Any]()
+        
+        if (self.json.customerParams.filter{ $0.paramName == "Mobile Number" }).count > 0 {
+            param = ["userDetails":
+                        ["firstName":firstName,
+                         "phone": phone,
+                         "email": email,
+                         "lastName": lastName,
+                         "userId": "0"],
+                     "customerParams":["paramName":"Mobile Number",
+                                       "value":(self.json.customerParams.filter{ $0.paramName == "Mobile Number" }).first?.value],
+                     "sUrl": sUrl,
+                     "fUrl": fUrl,
+                     "cUrl": cUrl,
+                     "productInfo": productInfo,
+                     "amount": amount,
+                     "billerId": billerId,
+                     "billId": billId
+            ]
+        }else{
+            param = ["userDetails":
+                        ["firstName":firstName,
+                         "phone": phone,
+                         "email": email,
+                         "lastName": lastName,
+                         "userId": "0"],
+                     "sUrl": sUrl,
+                     "fUrl": fUrl,
+                     "cUrl": cUrl,
+                     "productInfo": productInfo,
+                     "amount": amount,
+                     "billerId": billerId,
+                     "billId": billId
+            ]
+        }
+        
+        print(param)
+                        
+        self.addBillerViewModel.preparePayment(param:param) { success in
+            PayUCheckoutPro.open(on: self, paymentParam: self.getPaymentParam(), delegate: self)
+        }
+    }
     @objc func btnAutoPayConfirmAction(){
         
         var maxAMountLimit = ""

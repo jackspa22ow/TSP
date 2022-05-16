@@ -132,7 +132,7 @@ class AddBillerDetailVC: UIViewController {
                     let actualAmount: Int? = Int(amount)
                     if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let maxVal = maximumValue {
                         if enteredAmt >= actualAmt && enteredAmt <= maxVal {
-                            
+                            self.preparePayment(amount: cell.txtAmount.text ?? "", isRechargeBill: isRecharge)
                         } else {
                             Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(actualAmt) and \(maxVal)")
                         }
@@ -142,13 +142,13 @@ class AddBillerDetailVC: UIViewController {
                     let actualAmount: Int? = Int(amount)
                     if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let minVal = minimumValue {
                         if enteredAmt <= actualAmt && enteredAmt >= minVal {
-                            
+                            self.preparePayment(amount: cell.txtAmount.text ?? "", isRechargeBill: isRecharge)
                         } else {
                             Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(actualAmt)")
                         }
                     }
                 } else if (amountExact == "EXACT") {
-                    
+                    self.preparePayment(amount: "\(amount)", isRechargeBill: isRecharge)
                 }
                 print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
             } else {
@@ -158,7 +158,7 @@ class AddBillerDetailVC: UIViewController {
             let enteredAmount: Int? = Int(cell.txtAmount.text!)
             if let enteredAmt = enteredAmount, let minVal = minimumValue, let maxVal = maximumValue {
                 if enteredAmt >= minVal && enteredAmt <= maxVal {
-                    
+                    self.preparePayment(amount: cell.txtAmount.text ?? "", isRechargeBill: isRecharge)
                 } else {
                     Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(maxVal)")
                 }
@@ -166,9 +166,6 @@ class AddBillerDetailVC: UIViewController {
             print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
             
         }
-//        self.preparePayment(isRechargeBill: isRecharge)
-
-//        self.addToMyBills()
     }
     
     @objc func buttonCancel(){
@@ -176,29 +173,29 @@ class AddBillerDetailVC: UIViewController {
     }
     
     
-    func addToMyBills(){
-        let name = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
-        let amount = self.addBillerViewModel.dicOfPlanDetailByPlanID.price ?? ""
-        let circleID = self.addBillerViewModel.dicOfPlanDetailByPlanID.circleId!
-        let operatorID = self.addBillerViewModel.dicOfPlanDetailByPlanID.operatorId!
-        let mobileNumber = dicOfUserProfile.phoneNumber!
-        let isUserBillValue = self.isUserBill == true ? "true" : "false"
-        
-        let param = ["accountHolderName":name,"amount":amount,"autoPay":true,"billDue":true,"customerParams":["CircleId":circleID,"Mobile Number":self.contactNumber,"Operator":operatorID],"customerPhoneNumber":mobileNumber,"enableReminder":false,"operatorId":operatorID] as [String : Any]
-        
-        self.addBillerViewModel.addMobilePrepeaidBill(isUserBill: isUserBillValue, param: param) { response in
-            var isRechargeBill = false
-            for j in self.addBillerViewModel.dicOfAddedBill.customerParams{
-                if j.paramName == "Mobile Number"{
-                    isRechargeBill = true
-                    break
-                }
-            }
-            self.preparePayment(isRechargeBill: isRechargeBill)
-        }
-    }
+//    func addToMyBills(){
+//        let name = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
+//        let amount = self.addBillerViewModel.dicOfPlanDetailByPlanID.price ?? ""
+//        let circleID = self.addBillerViewModel.dicOfPlanDetailByPlanID.circleId!
+//        let operatorID = self.addBillerViewModel.dicOfPlanDetailByPlanID.operatorId!
+//        let mobileNumber = dicOfUserProfile.phoneNumber!
+//        let isUserBillValue = self.isUserBill == true ? "true" : "false"
+//
+//        let param = ["accountHolderName":name,"amount":amount,"autoPay":true,"billDue":true,"customerParams":["CircleId":circleID,"Mobile Number":self.contactNumber,"Operator":operatorID],"customerPhoneNumber":mobileNumber,"enableReminder":false,"operatorId":operatorID] as [String : Any]
+//
+//        self.addBillerViewModel.addMobilePrepeaidBill(isUserBill: isUserBillValue, param: param) { response in
+//            var isRechargeBill = false
+//            for j in self.addBillerViewModel.dicOfAddedBill.customerParams{
+//                if j.paramName == "Mobile Number"{
+//                    isRechargeBill = true
+//                    break
+//                }
+//            }
+//            self.preparePayment(isRechargeBill: isRechargeBill)
+//        }
+//    }
     
-    func preparePayment(isRechargeBill:Bool){
+    func preparePayment(amount: String, isRechargeBill:Bool){
         
         let firstName = dicOfUserProfile.firstName!
         let phone = dicOfUserProfile.phoneNumber!
@@ -210,7 +207,7 @@ class AddBillerDetailVC: UIViewController {
         let cUrl = "https://payuresponse.firebaseapp.com/cancel"
 
         let productInfo = self.addBillerViewModel.dicOfAddedBill.billerName ?? ""
-        let amount = self.addBillerViewModel.dicOfAddedBill.amount ?? 0
+//        let amount = self.addBillerViewModel.dicOfAddedBill.amount ?? 0
         let billerId = self.addBillerViewModel.dicOfAddedBill.billerPayuId ?? ""
         let billId = self.addBillerViewModel.dicOfAddedBill.id ?? 0
         

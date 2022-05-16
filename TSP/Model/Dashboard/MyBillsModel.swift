@@ -35,7 +35,7 @@ struct MyBillsContent: Codable {
 struct BillDetailModel: Codable {
     let id: Int?
     let customerPhoneNumber: String?
-    let customerParams: [MyBillsCustomerParam]
+    var customerParams: [MyBillsCustomerParam]
     let amount: Double?
     let accountHolderName: String?
     let dueDate: String?
@@ -49,6 +49,8 @@ struct BillDetailModel: Codable {
     var enableReminder: Bool?
     let reminders: [MyBillDetailReminderModel]?
     let standingInstruction: AutopayListModel?
+    let paymentAmountExactness: String?
+    let paymentChannelsAllowed: [AddBillerModelPaymentSAllowed]?
 }
 
 struct MyBillDetailReminderModel: Codable {
@@ -110,4 +112,11 @@ struct MyBillDetailModel: Codable {
     let requestId: String?
     let status: String?
     let txnId: String?
+}
+
+
+// MARK: - BillShortNameResponse
+struct BillShortNameResponse: Codable {
+    let id, billId: Int?
+    let userId, active, billNickName, updatedAt: String?
 }

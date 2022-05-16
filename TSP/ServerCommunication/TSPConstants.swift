@@ -119,6 +119,9 @@ struct API {
     
     //Notification
     static let NOTIFICATION_LIST = baseURL + "tsp/bill-details/v1/api/dashboard/notifications/"
+    
+    //Uodate short name
+    static let PUT_BILL_NICK_NAME = baseURL + "tsp/bill-details/v1/api/bill/"
 
 }
 //=============end Struct========================

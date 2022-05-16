@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="MyBillDetailShortNameCell" customModule="TSP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="327" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRa-2e-992">
+                        <rect key="frame" x="16" y="8" width="295" height="64"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jiz-DE-Sur" customClass="TSPView" customModule="TSP" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="295" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Short Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XvR-lK-TjP" customClass="TSPTextField" customModule="TSP" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="0.0" width="279" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ev8-Gn-1jn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="XvR-lK-TjP" firstAttribute="leading" secondItem="Jiz-DE-Sur" secondAttribute="leading" constant="8" id="A2H-yb-tyD"/>
+                                    <constraint firstItem="XvR-lK-TjP" firstAttribute="top" secondItem="Jiz-DE-Sur" secondAttribute="top" id="JcD-t5-jjW"/>
+                                    <constraint firstAttribute="height" constant="40" id="hFV-xs-Mhg"/>
+                                    <constraint firstAttribute="trailing" secondItem="XvR-lK-TjP" secondAttribute="trailing" constant="8" id="jEq-pU-cSQ"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optional" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xar-4K-NYe">
+                                <rect key="frame" x="8" y="44" width="39.5" height="14"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
+                                <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jiz-DE-Sur" firstAttribute="top" secondItem="KRa-2e-992" secondAttribute="top" id="2hY-jK-LFW"/>
+                            <constraint firstItem="Xar-4K-NYe" firstAttribute="leading" secondItem="XvR-lK-TjP" secondAttribute="leading" id="7hJ-sb-Bbn"/>
+                            <constraint firstItem="Xar-4K-NYe" firstAttribute="top" secondItem="Jiz-DE-Sur" secondAttribute="bottom" constant="4" id="Ncn-Ad-Wry"/>
+                            <constraint firstAttribute="trailing" secondItem="Jiz-DE-Sur" secondAttribute="trailing" id="OCp-mM-AD4"/>
+                            <constraint firstItem="Jiz-DE-Sur" firstAttribute="leading" secondItem="KRa-2e-992" secondAttribute="leading" id="pjR-HH-YsY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KRa-2e-992" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="4L5-FC-q8b"/>
+                    <constraint firstItem="KRa-2e-992" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="FNm-6T-Swq"/>
+                    <constraint firstAttribute="trailing" secondItem="KRa-2e-992" secondAttribute="trailing" constant="16" id="LPf-Qd-Ii3"/>
+                    <constraint firstAttribute="bottom" secondItem="KRa-2e-992" secondAttribute="bottom" constant="8" id="QlA-NI-hQp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="txtShortNAme" destination="XvR-lK-TjP" id="BhT-3I-Apn"/>
+                <outlet property="vwTxtContainer" destination="Jiz-DE-Sur" id="J1Q-Mf-KTB"/>
+            </connections>
+            <point key="canvasLocation" x="142.75362318840581" y="73.660714285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

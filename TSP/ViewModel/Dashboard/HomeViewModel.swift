@@ -104,7 +104,9 @@ class HomeViewModel: NSObject {
         let requestHelper = RequestHelper(url: urlString, method: .get, headers: headers)
         TSPService.sharedInstance.request(with: requestHelper) { response in
             if response.error != nil{
-                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
+//                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
+                completion(true)
+
             }else{
                 let json = try? JSONDecoder().decode(AutopayListModel.self, from: response.responseData!)
                 self.dicOfMyBillAutoPayDetail = json!
@@ -159,6 +161,28 @@ class HomeViewModel: NSObject {
             }else{
                 let json = try? JSONDecoder().decode(AutoPayUpdatePreparePayment.self, from: response.responseData!)
                 self.dicAutoPayUpdatePrePayment = json!
+                completion(true)
+            }
+        }
+    }
+
+    //Remain
+    func updateBillShortNAme(billID: String, billNickName: String, completion : @escaping (_ response:Bool) -> Void){
+        let token = UserDefaults.standard.value(forKey: Constant.Access_Token)as! String
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
+                                    HeaderValue.TenantName:HeaderValue.TenantValue,
+                                    HeaderValue.ContentType:HeaderValue.ContentValue]
+        
+        let urlString = API.PUT_BILL_NICK_NAME + "\(billID)/billNickName?billNickName=\(billNickName.replacingOccurrences(of: "%20", with: " "))"
+        
+        let requestHelper = RequestHelper(url: urlString, method: .put, headers: headers)
+
+        TSPService.sharedInstance.request(with: requestHelper) { response in
+            if response.error != nil{
+                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
+            }else{
+                let json = try? JSONDecoder().decode(BillShortNameResponse.self, from: response.responseData!)
+//                self.dicAutoPayUpdatePrePayment = json!
                 completion(true)
             }
         }

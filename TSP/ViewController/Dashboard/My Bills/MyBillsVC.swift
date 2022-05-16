@@ -30,7 +30,12 @@ class MyBillsVC: UIViewController{
         
         self.tblView.register(MyBillsCell.nib, forCellReuseIdentifier: MyBillsCell.identifier)
         self.tblView.estimatedRowHeight = 70
-        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.homeViewModel.getMyBills { success in
             Utilities.sharedInstance.dismissSVProgressHUD()
             if self.homeViewModel.dicOfMyBillList.content.count > 0{
@@ -44,20 +49,17 @@ class MyBillsVC: UIViewController{
                 self.lblNoDataFound.isHidden = false
             }
         }
-
-        // Do any additional setup after loading the view.
     }
-    
     var selectedIndex = 0
     @objc func btnMore(sender : UIButton) {
         selectedIndex = sender.tag
         let apparray = Bundle.main.loadNibNamed("MyBillsVCPopView", owner: self, options: nil)
         let appview: UIView? = apparray?.first as! UIView?
-        if TSP_Allow_Setting_Autopay != Constant.User {
+        if TSP_Allow_Setting_Autopay != "" && TSP_Allow_Setting_Autopay != Constant.User {
             self.consBtnAutoPayHeight.constant = 0
             appview?.frame = CGRect(x: appview?.frame.origin.x ?? 0, y: appview?.frame.origin.y ?? 0, width: appview?.frame.size.width ?? 0, height: (appview?.frame.size.height ?? 0) - 30)
         }
-        if TSP_Allow_Setting_Reminders != Constant.User {
+        if TSP_Allow_Setting_Reminders != "" && TSP_Allow_Setting_Reminders != Constant.User {
             self.consBtnSetReminderHeight.constant = 0
             appview?.frame = CGRect(x: appview?.frame.origin.x ?? 0, y: appview?.frame.origin.y ?? 0, width: appview?.frame.size.width ?? 0, height: (appview?.frame.size.height ?? 0) - 30)
         }
@@ -83,6 +85,14 @@ class MyBillsVC: UIViewController{
                     popOver.dismiss()
                     if index == 1{
                         print("Edit")
+                        let json = self.homeViewModel.dicOfMyBillList.content[selectedIndex]
+                        let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "HomeDetailsVC")as! HomeDetailsVC
+                        nextVC.billID = "\(json.id ?? 0)"
+                        nextVC.isAutoPayHide = true
+                        nextVC.isAutoPayEdit = false
+                        nextVC.isReminderHide = true
+                        nextVC.isShortNameEdit = true
+                        self.navigationController?.pushViewController(nextVC, animated: true)
                     }else if index == 2{
                         print("Delete")
                         let json = self.homeViewModel.dicOfMyBillList.content[selectedIndex]

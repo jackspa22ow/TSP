@@ -240,11 +240,11 @@ class HomeVC: UIViewController {
         selectedIndex = sender.tag
         let apparray = Bundle.main.loadNibNamed("HomeVCPopView", owner: self, options: nil)
         let appview: UIView? = apparray?.first as! UIView?
-        if TSP_Allow_Setting_Autopay != Constant.User {
+        if TSP_Allow_Setting_Autopay != "" && TSP_Allow_Setting_Autopay != Constant.User {
             self.consBtnAutoPayHeight.constant = 0
             appview?.frame = CGRect(x: appview?.frame.origin.x ?? 0, y: appview?.frame.origin.y ?? 0, width: appview?.frame.size.width ?? 0, height: (appview?.frame.size.height ?? 0) - 30)
         }
-        if TSP_Allow_Setting_Reminders != Constant.User {
+        if TSP_Allow_Setting_Reminders != "" && TSP_Allow_Setting_Reminders != Constant.User {
             self.consBtnSetReminderHeight.constant = 0
             appview?.frame = CGRect(x: appview?.frame.origin.x ?? 0, y: appview?.frame.origin.y ?? 0, width: appview?.frame.size.width ?? 0, height: (appview?.frame.size.height ?? 0) - 30)
         }
@@ -267,6 +267,14 @@ class HomeVC: UIViewController {
                     popOver.dismiss()
                     if index == 1{
                         print("Edit")
+                        let json = self.homeViewModel.dicOfMyBillList.content[selectedIndex]
+                        let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "HomeDetailsVC")as! HomeDetailsVC
+                        nextVC.billID = "\(json.id ?? 0)"
+                        nextVC.isAutoPayHide = true
+                        nextVC.isAutoPayEdit = false
+                        nextVC.isReminderHide = true
+                        nextVC.isShortNameEdit = true
+                        self.navigationController?.pushViewController(nextVC, animated: true)
                     }else if index == 2{
                         print("Delete")
                         let json = self.homeViewModel.dicOfMyBillList.content[selectedIndex]
