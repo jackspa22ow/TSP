@@ -92,6 +92,7 @@ class HomeDetailsVC: UIViewController {
             }
         }
     }
+    
     func autoPayAndReminderCOnfiguration(){
         if TSP_Allow_Setting_Reminders != "" && TSP_Allow_Setting_Reminders != Constant.User {
             self.isReminderSet = false
@@ -466,7 +467,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                 }
                 let dic = self.json.customerParams[indexPath.row - 1]
                 cell.lblName.text = dic.paramName
-                
+                cell.txtAmount.text = dic.value
                 if let amount = dic.value {
                     if let amountExact = self.json.paymentAmountExactness, amountExact != "Exact" {
                         cell.vwTxtAmount.isHidden = false
@@ -643,7 +644,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                 }
             }
         }else {
-            let cell = self.tblView.cellForRow(at: IndexPath(row: json.customerParams.count - 1, section: 0)) as! AddBillerDetailsTotalAmountCell
+            let cell = self.tblView.cellForRow(at: IndexPath(row: json.customerParams.count, section: 0)) as! AddBillerDetailsTotalAmountCell
             
             var minimumValue : Int?
             var maximumValue : Int?
@@ -691,6 +692,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                     }
                     print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
                 } else {
+                    self.preparePayment(amount: "\(amount)")
                     print("Entered Amount: \(amount) , IsValueAmount: \("\(amount)".isNumber)")
                 }
             } else {

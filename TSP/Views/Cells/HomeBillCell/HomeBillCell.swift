@@ -27,6 +27,7 @@ class HomeBillCell: UICollectionViewCell {
     @IBOutlet weak var btnMore: UIButton!
     
     @IBOutlet weak var viewEmptyCell: UIView!
+    @IBOutlet weak var btnAutoPaySwitch: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

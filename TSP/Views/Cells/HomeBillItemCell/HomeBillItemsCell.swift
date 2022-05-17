@@ -10,6 +10,7 @@ import DXPopover
 
 protocol HomeBillItemsCellDelegate {
     func selectBillDetail(index:Int)
+    func switchAutoPAuAction(index:Int)
 }
 
 class HomeBillItemsCell: UITableViewCell {
@@ -103,6 +104,9 @@ class HomeBillItemsCell: UITableViewCell {
     @objc func btnPayNowAction(sender : UIButton) {
         self.delegate?.selectBillDetail(index: sender.tag)
     }
+    @objc func btnAutoPaySwitchAction(sender : UIButton) {
+        self.delegate?.switchAutoPAuAction(index: sender.tag)
+    }
 }
 
 extension HomeBillItemsCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -164,6 +168,8 @@ extension HomeBillItemsCell : UICollectionViewDelegate, UICollectionViewDataSour
             cell.btnMore.addTarget(self, action: #selector(self.btnMore), for: .touchUpInside)
             cell.btnPayNow.tag = indexPath.row
             cell.btnPayNow.addTarget(self, action: #selector(btnPayNowAction), for: .touchUpInside)
+            cell.btnAutoPaySwitch.addTarget(self, action: #selector(btnAutoPaySwitchAction), for: .touchUpInside)
+
         }
         return cell
     }

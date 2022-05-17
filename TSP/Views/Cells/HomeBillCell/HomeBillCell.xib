@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -199,6 +199,10 @@
                                     <constraint firstAttribute="height" constant="25" id="gxn-Nj-MF5"/>
                                 </constraints>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuR-Ed-dTb">
+                                <rect key="frame" x="8" y="144" width="91" height="25"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uou-aa-XEN">
                                 <rect key="frame" x="8" y="181" width="90" height="30"/>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.72156862745098038" blue="0.58431372549019611" alpha="0.095042907299638615" colorSpace="calibratedRGB"/>
@@ -249,12 +253,16 @@
                             <constraint firstItem="zkU-gv-ulD" firstAttribute="leading" secondItem="kc8-D3-E2U" secondAttribute="leading" constant="8" id="Re1-w5-DA8"/>
                             <constraint firstItem="eul-sh-QmP" firstAttribute="leading" secondItem="kc8-D3-E2U" secondAttribute="leading" constant="8" id="V7U-Hg-AZc"/>
                             <constraint firstItem="qfU-XY-feI" firstAttribute="leading" secondItem="kc8-D3-E2U" secondAttribute="leading" constant="77" id="bLr-fV-Z79"/>
+                            <constraint firstItem="MuR-Ed-dTb" firstAttribute="top" secondItem="5PH-JA-3c4" secondAttribute="top" id="bmm-tw-9c2"/>
                             <constraint firstItem="fjn-BR-wy1" firstAttribute="leading" secondItem="kc8-D3-E2U" secondAttribute="leading" constant="8" id="c3p-Yi-HbI"/>
                             <constraint firstAttribute="trailing" secondItem="e92-uf-Qrf" secondAttribute="trailing" id="cdq-3B-APF"/>
+                            <constraint firstItem="MuR-Ed-dTb" firstAttribute="trailing" secondItem="5PH-JA-3c4" secondAttribute="trailing" id="cuO-Sb-Baf"/>
                             <constraint firstItem="e92-uf-Qrf" firstAttribute="leading" secondItem="YMK-Ba-gM4" secondAttribute="trailing" id="eDS-rB-jMk"/>
                             <constraint firstItem="e92-uf-Qrf" firstAttribute="top" secondItem="kc8-D3-E2U" secondAttribute="top" constant="8" id="eaR-0A-g5P"/>
                             <constraint firstAttribute="trailing" secondItem="vOe-Mu-Vtt" secondAttribute="trailing" constant="8" id="ibc-hm-6vP"/>
+                            <constraint firstItem="MuR-Ed-dTb" firstAttribute="leading" secondItem="eul-sh-QmP" secondAttribute="leading" id="kZz-kc-0CR"/>
                             <constraint firstItem="Uou-aa-XEN" firstAttribute="top" secondItem="5PH-JA-3c4" secondAttribute="bottom" constant="12" id="kz2-hs-J48"/>
+                            <constraint firstItem="MuR-Ed-dTb" firstAttribute="bottom" secondItem="5PH-JA-3c4" secondAttribute="bottom" id="ocL-HF-A74"/>
                             <constraint firstItem="5TL-46-eJZ" firstAttribute="leading" secondItem="kc8-D3-E2U" secondAttribute="leading" constant="8" id="pU8-q7-2ru"/>
                             <constraint firstItem="vOe-Mu-Vtt" firstAttribute="top" secondItem="YMK-Ba-gM4" secondAttribute="bottom" constant="10" id="rcH-vx-aVP"/>
                             <constraint firstItem="zkU-gv-ulD" firstAttribute="top" secondItem="fjn-BR-wy1" secondAttribute="bottom" constant="8" symbolic="YES" id="rhZ-7x-cRT"/>
@@ -283,6 +291,7 @@
                 <outlet property="billerName" destination="SnW-zL-ien" id="jhl-pf-7zR"/>
                 <outlet property="billerPayuId" destination="bPa-2D-xvj" id="Qif-04-kom"/>
                 <outlet property="billerShortName" destination="gT2-o3-v4Y" id="PGS-qx-k3Y"/>
+                <outlet property="btnAutoPaySwitch" destination="MuR-Ed-dTb" id="flF-Bf-vxe"/>
                 <outlet property="btnMore" destination="AKf-AO-6JA" id="zMt-IR-mQj"/>
                 <outlet property="btnPayNow" destination="Uou-aa-XEN" id="8tg-x3-RB2"/>
                 <outlet property="imgPayNow" destination="qfU-XY-feI" id="krs-8J-zvS"/>

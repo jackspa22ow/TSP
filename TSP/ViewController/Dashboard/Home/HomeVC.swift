@@ -477,7 +477,15 @@ extension HomeVC : HomeBillItemsCellDelegate{
     func selectBillDetail(index:Int){
         let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "HomeDetailsVC")as! HomeDetailsVC
         nextVC.billID = "\(self.homeViewModel.dicOfMyBillList.content[index].id ?? 0)"
-
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func switchAutoPAuAction(index:Int){
+        let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "HomeDetailsVC") as! HomeDetailsVC
+        nextVC.billID = "\(self.homeViewModel.dicOfMyBillList.content[index].id ?? 0)"
+        nextVC.isAutoPayEdit = true
+        nextVC.isAutoPayFromHomeMore = true
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
+

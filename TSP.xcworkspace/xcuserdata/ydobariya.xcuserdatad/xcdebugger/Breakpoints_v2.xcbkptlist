@@ -134,8 +134,8 @@
             filePath = "TSP/ViewController/Dashboard/Home/HomeDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "971"
-            endingLineNumber = "971"
+            startingLineNumber = "973"
+            endingLineNumber = "973"
             landmarkName = "btnReminderConfirmAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -159,22 +159,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "87BF597E-1108-4625-83F9-5974787E5B7B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TSP/ViewController/Dashboard/Home/HomeDetailsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "616"
-            endingLineNumber = "616"
-            landmarkName = "buttonConfirm()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "088B3B97-8A1B-4A9F-A479-55CCA0525140"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -182,8 +166,8 @@
             filePath = "TSP/ViewController/Dashboard/Home/HomeDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "634"
-            endingLineNumber = "634"
+            startingLineNumber = "635"
+            endingLineNumber = "635"
             landmarkName = "buttonConfirm()"
             landmarkType = "7">
          </BreakpointContent>
@@ -191,16 +175,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EB6AB9EE-0899-442D-87F3-50F94239CEF7"
+            uuid = "DC952B1D-24DF-482D-95AA-4100A6FEF4D1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TSP/ViewController/Dashboard/Home/HomeDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
-            landmarkName = "btnAutoPayConfirmAction()"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
+            landmarkName = "buttonConfirm()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
