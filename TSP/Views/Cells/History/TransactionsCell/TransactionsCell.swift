@@ -24,7 +24,11 @@ class TransactionsCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialization code        
+        self.lblNickName.font = Utilities.AppFont.black.size(13)
+        self.lblTitle.font = Utilities.AppFont.black.size(13)
+        self.lblNickName.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        self.lblTitle.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

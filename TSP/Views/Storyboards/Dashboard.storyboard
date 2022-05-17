@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1895,7 +1895,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fws-ej-60Y">
                                                 <rect key="frame" x="64" y="10" width="263" height="115"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="nY1-vR-L8E"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="52" id="nY1-vR-L8E"/>
                                                 </constraints>
                                                 <string key="text"> fdh sjjghdfjgj gjf gdfhgjhfdjghjdfg jdfhgdfj hgj hfgjhdfj gjhg jdfhj gjf hgjfdhgjd fdh sjjghdfjgj gjf gdfhgjhfdjghjdfg jdfhgdfj hgj hfgjhdfj gjhg jdfhj gjf hgjfdhgjd fdh sjjghdfjgj gjf gdfhgjhfdjghjdfg jdfhgdfj hgj hfgjhdfj gjhg jdfhj gjf hgjfdhgjd fdh sjjghdfjgj gjf gdfhgjhfdjghjdfg jdfhgdfj hgj hfgjhdfj gjhg jdfhj gjf hgjfdhgjd</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
@@ -2103,7 +2103,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnRaiseTicket" destination="eHd-hj-TOq" id="b7A-U8-Egz"/>
+                        <outlet property="lblAmount" destination="Pyk-3E-1ID" id="a4y-At-zPk"/>
+                        <outlet property="lblBillerName" destination="fws-ej-60Y" id="aQq-2q-DCT"/>
                         <outlet property="lblDahsedLine" destination="VQW-73-je6" id="VbK-jC-k95"/>
+                        <outlet property="lblDate" destination="MJX-Oj-F3H" id="dce-R0-6iX"/>
                         <outlet property="txtIssueName" destination="Mc9-Q9-gWY" id="vGg-rg-ogb"/>
                         <outlet property="txtViewDescription" destination="y7a-bi-60C" id="Rfx-hz-tAw"/>
                     </connections>

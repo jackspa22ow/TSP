@@ -22,3 +22,15 @@ struct SingleBillDetails: Codable {
     let billerName: String?
     let paymentDate: String?
 }
+
+
+struct ComplaintInfoModel: Codable {
+    let message: String?
+    let payload: [ComplaintInfoPayloadModel]?
+}
+
+// MARK: - Payload
+struct ComplaintInfoPayloadModel: Codable {
+    let complaintStatus, disposition, complaintDate, userComplaintMessage: String?
+    let txnReferenceId: String?
+}

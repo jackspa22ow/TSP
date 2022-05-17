@@ -457,6 +457,7 @@ extension AddBillerVC : UITableViewDelegate, UITableViewDataSource{
                                     vc.contactNumber = self.contactsFiltered[self.selectedBillerIndex].telephone
                                     vc.isUserBill = self.isUserBill
                                 }
+                                vc.addBillerModelAfterValidation = self.addBillerViewModel.dicOfAddedBill
                                 self.isPushedToDetailScreen = true
                                 vc.isRecharge = true
                                 self.navigationController?.pushViewController(vc, animated: true)

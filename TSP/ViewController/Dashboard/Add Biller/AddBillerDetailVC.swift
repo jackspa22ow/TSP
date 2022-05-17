@@ -152,6 +152,8 @@ class AddBillerDetailVC: UIViewController {
                 }
                 print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
             } else {
+                self.preparePayment(amount: "\(amount)", isRechargeBill: isRecharge)
+
                 print("Entered Amount: \(amount) , IsValueAmount: \("\(amount)".isNumber)")
             }
         } else {
@@ -202,14 +204,14 @@ class AddBillerDetailVC: UIViewController {
         let email = dicOfUserProfile.email!
         let lastName = dicOfUserProfile.lastName!
         
-        let sUrl = "https://payuresponse.firebaseapp.com/success"
-        let fUrl = "https://payuresponse.firebaseapp.com/failure"
-        let cUrl = "https://payuresponse.firebaseapp.com/cancel"
+        let sUrl = "https://payu.herokuapp.com/ios_success"
+        let fUrl = "https://payu.herokuapp.com/ios_failure"
+        let cUrl = "https://payu.herokuapp.com/ios_cancel"
 
-        let productInfo = self.addBillerViewModel.dicOfAddedBill.billerName ?? ""
-//        let amount = self.addBillerViewModel.dicOfAddedBill.amount ?? 0
-        let billerId = self.addBillerViewModel.dicOfAddedBill.billerPayuId ?? ""
-        let billId = self.addBillerViewModel.dicOfAddedBill.id ?? 0
+        let productInfo = self.addBillerModelAfterValidation.billerName ?? ""
+//        let amount = self.addBillerModelAfterValidation.amount ?? 0
+        let billerId = self.addBillerModelAfterValidation.billerPayuId ?? ""
+        let billId = self.addBillerModelAfterValidation.id ?? 0
         
         var param = [String : Any]()
         

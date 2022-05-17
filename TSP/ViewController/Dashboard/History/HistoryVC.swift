@@ -293,7 +293,8 @@ extension HistoryVC: UITableViewDelegate,UITableViewDataSource{
             
             let obj = self.historyViewModel.aryOfTransactionsList[indexPath.row]
             
-            cell.lblTitle.text = obj.paymentMode
+            cell.lblNickName.text = obj.billNickName ?? ""
+            cell.lblTitle.text = obj.billerName ?? ""
             cell.lblTitle.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
             cell.lblSubTitle.text = obj.txnid
             cell.lblPrice.text = "₹ \(obj.amount ?? 0)"

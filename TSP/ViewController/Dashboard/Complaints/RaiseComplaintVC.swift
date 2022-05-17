@@ -21,14 +21,48 @@ class RaiseComplaintVC: UIViewController {
     var refID: String = ""
     var billerId: String = ""
     var complainTypeIndex : Int = 0
+    @IBOutlet weak var lblBillerName: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
+    @IBOutlet weak var lblAmount: UILabel!
+    @IBOutlet weak var btnRaiseTicket: UIButton!
+    var dicOfSingleBillDetails : SingleBillDetails!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.txtViewDescription.text = self.placeHolderText
         self.txtViewDescription.textColor = UIColor.lightGray
+        
+        self.lblBillerName.text = dicOfSingleBillDetails.billerName ?? ""
+        self.lblAmount.text = (String(format: "₹%.2f", dicOfSingleBillDetails.amount ?? 0))
         getComplaintTypes()
+        
+        self.lblBillerName.font = Utilities.AppFont.black.size(13)
+        self.lblAmount.font = Utilities.AppFont.black.size(20)
+        self.lblAmount.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        
+        self.btnRaiseTicket.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        
+        if let billDate = dicOfSingleBillDetails.paymentDate{
+            if billDate.contains("T"){
+                let val = billDate.components(separatedBy: "T")
+                let str = self.convertDateFormaterr(val[0])
+                self.lblDate.text = str
+            }else{
+                self.lblDate.text = ""
+            }
+        }else{
+            self.lblDate.text = ""
+        }
     }
     
+    func convertDateFormaterr(_ date: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "dd/MMM/yyyy"
+        return dateFormatter.string(from: date!)
+    }
     func getComplaintTypes(){
         self.raiseComplaintViewModel.getComplaintTypes { response in
             self.txtIssueName.text = self.raiseComplaintViewModel.aryOfComplaintTypeList[0].messageDeposition

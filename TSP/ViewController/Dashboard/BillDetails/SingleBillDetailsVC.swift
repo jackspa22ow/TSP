@@ -50,6 +50,16 @@ class SingleBillDetailsVC: UIViewController {
     var isFromAddBiller = Bool()
     var isFromHomeDetail = Bool()
 
+    @IBOutlet weak var vwComplainStatus: UIView!
+    @IBOutlet weak var vwComplainStatusLabel: UIView!
+    @IBOutlet weak var vwCompainInfo: UIView!
+    @IBOutlet weak var lblConpainInfo: UILabel!
+    @IBOutlet weak var lblCompainType: UILabel!
+    @IBOutlet weak var lblStatus: UILabel!
+    @IBOutlet weak var lblComplainStatus: UILabel!
+    @IBOutlet weak var lblCompainDate: UILabel!
+    @IBOutlet weak var lblComplainID: UILabel!
+    
     @IBOutlet weak var btnRaiseComplain: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +129,47 @@ class SingleBillDetailsVC: UIViewController {
             }
         }
         
+        self.singleBillDetailsViewModel.getComplainDetail(transactionID: self.transactionID) { response in
+            if let objComplainInfo = self.singleBillDetailsViewModel.complainInfo {
+                if let payload = objComplainInfo.payload {
+                    self.vwComplainStatus.isHidden = false
+                    if payload.count > 0 {
+                        let obj = payload.first
+                        DispatchQueue.main.async {
+                            self.lblComplainID.text = ""
+                            self.lblConpainInfo.text = obj?.disposition ?? ""
+                            self.lblCompainType.text = obj?.userComplaintMessage ?? ""
+                            self.lblComplainStatus.text = obj?.complaintStatus
+                            
+                            if let billDate = obj?.complaintDate{
+                                if billDate.contains("T"){
+                                    let val = billDate.components(separatedBy: "T")
+                                    let str = self.convertDateFormater(val[0])
+                                    self.lblCompainDate.text = str
+                                }else{
+                                    self.lblCompainDate.text = ""
+                                }
+                            }else{
+                                self.lblCompainDate.text = ""
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.vwComplainStatus.isHidden = true
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.vwComplainStatus.isHidden = true
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.vwComplainStatus.isHidden = true
+                }
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -176,6 +227,9 @@ class SingleBillDetailsVC: UIViewController {
             }
         } else {
             let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "RaiseComplaintVC")as! RaiseComplaintVC
+            let obj = self.singleBillDetailsViewModel.dicOfSingleBillDetails
+            nextVC.dicOfSingleBillDetails = obj
+            
             nextVC.refID = self.singleBillDetailsViewModel.dicOfSingleBillDetails.txnId ?? ""
             nextVC.billerId = self.singleBillDetailsViewModel.dicOfSingleBillDetails.billerId ?? ""
             self.navigationController?.pushViewController(nextVC, animated: true)
@@ -207,6 +261,15 @@ class SingleBillDetailsVC: UIViewController {
         self.viewRight.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor)
         self.viewDetails.layer.borderColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor).cgColor
         self.lblRaiseComplaint.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        
+        self.vwComplainStatusLabel.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor)
+        self.vwComplainStatusLabel.layer.cornerRadius = self.vwComplainStatusLabel.frame.size.height / 2
+        self.vwCompainInfo.layer.cornerRadius = 8
+        self.vwCompainInfo.layer.borderColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor).cgColor
+        self.vwCompainInfo.layer.borderWidth = 1
+        self.lblConpainInfo.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        self.lblStatus.textColor = UIColor.red
+        self.lblComplainStatus.textColor = UIColor.red
     }
     
     func setupDate(status:String,dateValue:String){
