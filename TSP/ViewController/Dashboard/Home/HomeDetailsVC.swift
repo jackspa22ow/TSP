@@ -644,7 +644,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                 }
             }
         }else {
-            let cell = self.tblView.cellForRow(at: IndexPath(row: json.customerParams.count, section: 0)) as! AddBillerDetailsTotalAmountCell
+            let cell = self.tblView.cellForRow(at: IndexPath(row: json.customerParams.count, section: 0)) as? AddBillerDetailsTotalAmountCell
             
             var minimumValue : Int?
             var maximumValue : Int?
@@ -668,21 +668,21 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
             if let amount = self.json.amount {
                 if let amountExact = self.json.paymentAmountExactness {
                     if amountExact == "EXACT_AND_ABOVE" {
-                        let enteredAmount: Int? = Int(cell.txtAmount.text!)
+                        let enteredAmount: Int? = Int(cell?.txtAmount.text! ?? "")
                         let actualAmount: Int? = Int(amount)
                         if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let maxVal = maximumValue {
                             if enteredAmt >= actualAmt && enteredAmt <= maxVal {
-                                self.preparePayment(amount: cell.txtAmount.text ?? "")
+                                self.preparePayment(amount: cell?.txtAmount.text ?? "")
                             } else {
                                 Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(actualAmt) and \(maxVal)")
                             }
                         }
                     } else if amountExact == "EXACT_AND_BELOW" {
-                        let enteredAmount: Int? = Int(cell.txtAmount.text!)
+                        let enteredAmount: Int? = Int(cell?.txtAmount.text ?? "")
                         let actualAmount: Int? = Int(amount)
                         if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let minVal = minimumValue {
                             if enteredAmt <= actualAmt && enteredAmt >= minVal {
-                                self.preparePayment(amount: cell.txtAmount.text ?? "")
+                                self.preparePayment(amount: cell?.txtAmount.text ?? "")
                             } else {
                                 Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(actualAmt)")
                             }
@@ -690,21 +690,21 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                     } else if (amountExact == "EXACT") {
                         self.preparePayment(amount: "\(amount)")
                     }
-                    print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
+                    print("Entered Amount: \(cell?.txtAmount.text ?? ""), IsValueAmount: \((cell?.txtAmount.text ?? "").isNumber)")
                 } else {
                     self.preparePayment(amount: "\(amount)")
                     print("Entered Amount: \(amount) , IsValueAmount: \("\(amount)".isNumber)")
                 }
             } else {
-                let enteredAmount: Int? = Int(cell.txtAmount.text!)
+                let enteredAmount: Int? = Int(cell?.txtAmount.text ?? "")
                 if let enteredAmt = enteredAmount, let minVal = minimumValue, let maxVal = maximumValue {
                     if enteredAmt >= minVal && enteredAmt <= maxVal {
-                        self.preparePayment(amount: cell.txtAmount.text ?? "")
+                        self.preparePayment(amount: cell?.txtAmount.text ?? "")
                     } else {
                         Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(maxVal)")
                     }
                 }
-                print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
+                print("Entered Amount: \(cell?.txtAmount.text ?? ""), IsValueAmount: \((cell?.txtAmount.text ?? "").isNumber)")
             }
         }
     }
@@ -719,10 +719,9 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
         let fUrl = "https://payuresponse.firebaseapp.com/failure"
         let cUrl = "https://payuresponse.firebaseapp.com/cancel"
 
-        let productInfo = self.addBillerViewModel.dicOfAddedBill.billerName ?? ""
-//        let amount = self.addBillerViewModel.dicOfAddedBill.amount ?? 0
-        let billerId = self.addBillerViewModel.dicOfAddedBill.billerPayuId ?? ""
-        let billId = self.addBillerViewModel.dicOfAddedBill.id ?? 0
+        let productInfo = self.json.billerName ?? ""
+        let billerId = self.json.billerPayuId ?? ""
+        let billId = self.json.id ?? 0
         
         var param = [String : Any]()
         
