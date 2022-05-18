@@ -32,20 +32,18 @@ class TSPService: NSObject {
                     
                     print("API:==> \(url)")
                     print("Body:==> \(requestData.encoding)")
-                    print("Headers:==> \(requestData.headers)")
-                    print("Status Code:==> \(response.response?.statusCode)")
+                    print("Headers:==> \(requestData.headers as Any)")
+                    print("Status Code:==> \(response.response?.statusCode as Any)")
                     print("Response is===>\(response.result)")
 
                     switch response.result {
                     case .success:
-                        
-                        print("Response:==> \(response.result as Any)")
-                        
+                                                
                         let responseData = ResponseHelper(responseData: response.data, error: response.error)
                         completion?(responseData)
                         break
                     case .failure(let error):
-                        //print(error)
+                        print(error)
                         if response.data != nil{
                             
                             if let encryptedData:Data = response.data {
@@ -63,20 +61,11 @@ class TSPService: NSObject {
                                 Utilities.sharedInstance.showAlertView(title: "", message: Constant.Error_SomethingWrong)
                             }
                         }else{
-                            let str = url.absoluteString
-                            if str.contains("https://api1.usprojects.co/tsp/bill-details/v1/api/si/bill/"){
-                                print("Autopay API is calling..")
-                                
-                                let responseData = ResponseHelper(responseData: response.data, error: response.error)
-                                completion?(responseData)
-                                
-                            }else{
-                                UserDefaults.standard.removeObject(forKey: Constant.Access_Token)
-                                let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                                let loginVC = AUTHORIZATION_STORYBOARD.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-                                let nav = UINavigationController(rootViewController: loginVC)
-                                appdelegate.window!.rootViewController = nav
-                            }
+                            UserDefaults.standard.removeObject(forKey: Constant.Access_Token)
+                            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                            let loginVC = AUTHORIZATION_STORYBOARD.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                            let nav = UINavigationController(rootViewController: loginVC)
+                            appdelegate.window!.rootViewController = nav
                         }
                         break
                     }

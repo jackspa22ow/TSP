@@ -104,9 +104,7 @@ class HomeViewModel: NSObject {
         let requestHelper = RequestHelper(url: urlString, method: .get, headers: headers)
         TSPService.sharedInstance.request(with: requestHelper) { response in
             if response.error != nil{
-//                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
-                completion(true)
-
+                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
             }else{
                 let json = try? JSONDecoder().decode(AutopayListModel.self, from: response.responseData!)
                 self.dicOfMyBillAutoPayDetail = json!

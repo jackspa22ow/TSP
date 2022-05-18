@@ -87,8 +87,7 @@ class HomeVC: UIViewController {
     
     func setupTheme(){
         self.btnHelp.setTitleColor(Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor), for: .normal)
-        
-        if TSP_Spend_Analysis != "Yes"{
+        if TSP_Spend_Analysis == "Yes"{
             if let tabBarController = self.tabBarController{
                 let indexToRemove = 4
                 if indexToRemove < tabBarController.viewControllers!.count {
