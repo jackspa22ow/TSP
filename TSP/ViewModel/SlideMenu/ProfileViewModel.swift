@@ -11,7 +11,9 @@ import Alamofire
 class ProfileViewModel: NSObject {
     
     var isChangePassword = Bool()
-    
+    var policyResonse : PolicyModel?
+    var aboutResonse : AboutModel?
+
     //Remain
     // MARK: - Call api to send Users Profile
     func hitUserProfileApi(request: UserProfile_Param,completion:@escaping() -> Void){
@@ -74,7 +76,45 @@ class ProfileViewModel: NSObject {
             }
         }
     }
+    // MARK: - Call api to send Users Profile
+    func hitPolicyApi(completion:@escaping() -> Void){
+        
+        let token = UserDefaults.standard.value(forKey: Constant.Access_Token)as! String
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
+                                    HeaderValue.ContentType:HeaderValue.ContentValue,
+                                    HeaderValue.TenantName:HeaderValue.TenantValue]
+        
+        let requestHelper = RequestHelper(url: API.GET_POLICY, method: .get, headers: headers)
+        TSPService.sharedInstance.request(with: requestHelper) { response in
+            if response.error != nil{
+                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
+            }else{
+                let json = try? JSONDecoder().decode(PolicyModel.self, from: response.responseData!)
+                self.policyResonse = json
+                completion()
+            }
+        }
+    }
     
+    // MARK: - Call api to send Users Profile
+    func hitAboutApi(completion:@escaping() -> Void){
+        
+        let token = UserDefaults.standard.value(forKey: Constant.Access_Token)as! String
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
+                                    HeaderValue.ContentType:HeaderValue.ContentValue,
+                                    HeaderValue.TenantName:HeaderValue.TenantValue]
+        
+        let requestHelper = RequestHelper(url: API.GET_ABOUTUS, method: .get, headers: headers)
+        TSPService.sharedInstance.request(with: requestHelper) { response in
+            if response.error != nil{
+                Utilities.sharedInstance.showAlertView(title: "", message: response.error!.localizedDescription)
+            }else{
+                let json = try? JSONDecoder().decode(AboutModel.self, from: response.responseData!)
+                self.aboutResonse = json
+                completion()
+            }
+        }
+    }
     
     
     //Remain

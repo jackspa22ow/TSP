@@ -55,6 +55,7 @@ extension HelpRecentOrderCell: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if aryOfTransactionsList.count > 3 {
             self.btnViewAll.isHidden = false
+            self.lblNoDataFound.isHidden = true
         } else {
             if aryOfTransactionsList.count == 0 {
                 self.lblNoDataFound.isHidden = false

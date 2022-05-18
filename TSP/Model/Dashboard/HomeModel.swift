@@ -54,3 +54,23 @@ struct BannerList: Codable{
     var updatedBy : String?
     var expiryDate : String?
 }
+
+
+// MARK: - PolicyModel
+struct PolicyModel: Codable {
+    let id: Int?
+    let policyText: String?
+    let clientId: Int?
+}
+
+// MARK: - AboutModel
+struct AboutModel: Codable {
+    let id: Int?
+    let aboutUsText: String?
+    let clientID: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id, aboutUsText
+        case clientID = "clientId"
+    }
+}

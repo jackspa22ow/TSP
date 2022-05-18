@@ -36,7 +36,9 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     
     @IBOutlet weak var changePasswordView: UIView!
     @IBOutlet weak var imageChangePasswordUpDownArrow: UIImageView!
-    
+    @IBOutlet weak var imagePolicyUpDownArrow: UIImageView!
+    @IBOutlet weak var imageAboutUpDownArrow: UIImageView!
+
     @IBOutlet weak var imageProfile: UIImageView!
     
     @IBOutlet weak var btnDone: UIButton!
@@ -46,14 +48,36 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     let profileViewModel = ProfileViewModel()
     let homeViewModel = HomeViewModel()
     var isProfileChanged = false
+    @IBOutlet weak var lblPolicyInfo: UILabel!
+    @IBOutlet weak var consLblPolicyHeight: NSLayoutConstraint!
+    @IBOutlet weak var consPolicyVwHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var lblAboutInfo: UILabel!
+    @IBOutlet weak var consLblAboutHeight: NSLayoutConstraint!
+    @IBOutlet weak var consAboutVwHeight: NSLayoutConstraint!
+    @IBOutlet weak var lblAboutTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.lblAboutTitle.text = "About \(TSP_ClientName)"
 //        DispatchQueue.main.async {
             self.setData()
 //        }
-
+        
+        let disgroup = DispatchGroup()
+        
+        disgroup.enter()
+        self.profileViewModel.hitPolicyApi {
+            disgroup.leave()
+            self.lblPolicyInfo.text = self.profileViewModel.policyResonse?.policyText ?? ""
+        }
+        
+        disgroup.enter()
+        self.profileViewModel.hitAboutApi {
+            disgroup.leave()
+            self.lblAboutInfo.text = self.profileViewModel.aboutResonse?.aboutUsText ?? ""
+        }
+       
         // Do any additional setup after loading the view.
     }
     
@@ -196,6 +220,37 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             self.imageChangePasswordUpDownArrow.image = #imageLiteral(resourceName: "ic_down")
         }
     }
+    @IBAction func btnHandlerPolicy(_ sender: UIButton) {
+        if sender.tag == 0{
+            sender.tag = 1
+            self.consLblPolicyHeight.constant = CGFloat(self.profileViewModel.policyResonse?.policyText?.height(withConstrainedWidth: self.lblPolicyInfo.frame.size.width, font: self.lblPolicyInfo.font) ?? 0 )
+            self.consPolicyVwHeight.constant = self.consPolicyVwHeight.constant + self.consLblPolicyHeight.constant
+            self.scrollViewHeight.constant = self.scrollViewHeight.constant + self.consLblPolicyHeight.constant
+            self.imagePolicyUpDownArrow.image = #imageLiteral(resourceName: "ic_up")
+        }else{
+            sender.tag = 0
+            self.scrollViewHeight.constant = self.scrollViewHeight.constant - self.consLblPolicyHeight.constant
+            self.consPolicyVwHeight.constant = 60
+            self.consLblPolicyHeight.constant = 0
+            self.imagePolicyUpDownArrow.image = #imageLiteral(resourceName: "ic_down")
+        }
+    }
+    
+    @IBAction func btnHandlerAbout(_ sender: UIButton) {
+        if sender.tag == 0{
+            sender.tag = 1
+            self.consLblAboutHeight.constant = CGFloat(self.profileViewModel.aboutResonse?.aboutUsText?.height(withConstrainedWidth: self.lblAboutInfo.frame.size.width, font: self.lblAboutInfo.font) ?? 0)
+            self.consAboutVwHeight.constant = self.consAboutVwHeight.constant + self.consLblAboutHeight.constant
+            self.scrollViewHeight.constant = self.scrollViewHeight.constant + self.consLblAboutHeight.constant
+            self.imageAboutUpDownArrow.image = #imageLiteral(resourceName: "ic_up")
+        }else{
+            sender.tag = 0
+            self.scrollViewHeight.constant = self.scrollViewHeight.constant - self.consLblAboutHeight.constant
+            self.consAboutVwHeight.constant = 60
+            self.consLblAboutHeight.constant = 0
+            self.imageAboutUpDownArrow.image = #imageLiteral(resourceName: "ic_down")
+        }
+    }
     
     @IBAction func buttonHandlerLogout(_ sender: Any) {
         
@@ -218,4 +273,21 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     }
    
     
+}
+
+
+extension String {
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+    
+        return ceil(boundingBox.height)
+    }
+
+    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+
+        return ceil(boundingBox.width)
+    }
 }

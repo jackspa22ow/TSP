@@ -105,13 +105,19 @@ extension AutoPayListVC: UITableViewDelegate,UITableViewDataSource{
         cell.lblNickName.text = json.billNickName
         cell.lblTitle.text = json.billerName
         cell.lblSubTitle.text = json.preferredPaymentMode
-        cell.lblPrice.text = "₹ \(json.billAmount!)"
+        cell.lblPrice.text = "₹ \(json.maxLimitAmount!)"
         
         cell.btnMore.tag = indexPath.row
         cell.btnMore.addTarget(self, action: #selector(self.btnMore), for: .touchUpInside)
         
         cell.imgDue.isHidden = json.billDue == true ? false : true
-        
+        if json.billDue == true || json.billDue == nil{
+            cell.lblDue.text = "DUE"
+            cell.lblDue.backgroundColor = UIColor.red
+        } else {
+            cell.lblDue.text = "PAID"
+            cell.lblDue.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        }
         return cell
     }
     

@@ -42,6 +42,9 @@ struct API {
     static let FORGOT_PASSWROD = baseURL + "tsp-auth/users/forgot"
     static let USER_PROFILE = baseURL + "tsp-auth/users/"
     static let PROFILE_UPLOAD = "https://9xcjjhqcg5.execute-api.us-east-2.amazonaws.com/default/getPresignedMediaURL"
+    static let GET_POLICY = baseURL + "tsp/user/v1/api/policy/"
+    static let GET_ABOUTUS = baseURL + "tsp/user/v1/api/aboutus/"
+
 
     //Banner
     static let GET_BANNER_LIST = baseURL + "tsp/user/v1/api/client-banner/client/"

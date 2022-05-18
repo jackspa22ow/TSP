@@ -31,7 +31,7 @@ class PopularHelpTopicsCell: UITableViewCell {
         tblView.delegate = self
         tblView.dataSource = self
         
-        self.btnViewAll.isHidden = self.aryOfServiceQuestionList.count > 4
+//        self.btnViewAll.isHidden = self.aryOfServiceQuestionList.count > 4
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

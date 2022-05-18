@@ -18,6 +18,9 @@ class SpendAnalysisCategoryFooterCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.lblPrice.font = Utilities.AppFont.black.size(18)
+        self.lblPrice.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

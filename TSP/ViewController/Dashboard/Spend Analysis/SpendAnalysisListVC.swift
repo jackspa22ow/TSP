@@ -85,8 +85,18 @@ extension SpendAnalysisListVC: UITableViewDelegate,UITableViewDataSource{
             
             let obj = self.spendAnalysisListViewModel.aryOfSpendAnalysisHistoryList[indexPath.row]
             
-            cell.lblTitle.text = obj.paymentMode
+            cell.lblBillerNickName.text = obj.billNickName ?? ""
+            cell.lblTitle.text = obj.billerName ?? ""
+            cell.lblSubTitle.text = obj.txnid ?? ""
             cell.lblPrice.text = (String(format: "₹%.2f", obj.amount ?? 0))
+            
+            if let str = obj.paymentDate{
+                let dateAry = str.components(separatedBy: "T")
+                let dateValue = dateAry[0]
+                cell.lblDate.text = self.convertDateFormater(dateValue)
+            }else{
+                cell.lblDate.text = ""
+            }
             
             return cell
         }
@@ -102,5 +112,11 @@ extension SpendAnalysisListVC: UITableViewDelegate,UITableViewDataSource{
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
-    
+    func convertDateFormater(_ date: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "dd/MMM/yyyy"
+        return dateFormatter.string(from: date!)
+    }
 }

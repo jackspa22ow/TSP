@@ -19,7 +19,8 @@ class MyBillsCell: UITableViewCell {
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var imgDue: UIImageView!
     @IBOutlet weak var btnMore: UIButton!
-
+    @IBOutlet weak var lblDue: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

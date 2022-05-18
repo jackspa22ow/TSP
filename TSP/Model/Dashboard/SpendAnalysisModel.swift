@@ -29,6 +29,9 @@ struct SpendAnalysisListElement: Codable {
     let paymentDate: String?
     let paymentMode: String?
     let txnid: String?
+    let billNickName: String?
+    let billerName: String?
+//    let billerId: String?
 }
 
 typealias SpendAnalysisList = [SpendAnalysisListElement]

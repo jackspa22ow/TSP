@@ -10,6 +10,7 @@ import UIKit
 class SpendAnalysisCategoryCell: UITableViewCell {
     
     @IBOutlet weak var imgIcon: UIImageView!
+    @IBOutlet weak var lblBillerNickName: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
@@ -20,6 +21,11 @@ class SpendAnalysisCategoryCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.lblBillerNickName.font = Utilities.AppFont.black.size(13)
+        self.lblTitle.font = Utilities.AppFont.black.size(13)
+        self.lblBillerNickName.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        self.lblTitle.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
         // Initialization code
     }
 
