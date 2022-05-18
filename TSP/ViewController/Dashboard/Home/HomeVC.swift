@@ -50,7 +50,10 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.lblUsername.text = "\(dicOfUserProfile.firstName!) \(dicOfUserProfile.lastName!)"
+        if (dicOfUserProfile != nil) {
+            self.lblUsername.text = "\(dicOfUserProfile.firstName!) \(dicOfUserProfile.lastName!)"
+        }
+        
 
         if IsMyBillDeleted {
             IsMyBillDeleted = false

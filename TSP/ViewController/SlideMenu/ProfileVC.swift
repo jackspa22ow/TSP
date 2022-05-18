@@ -131,6 +131,7 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
                 self.btnFirstNameEdit.isHidden = false
                 self.btnLastNameEdit.isHidden = false
                 self.setData()
+                self.btnDone.isHidden = true
                 print("Done")
             }
             
