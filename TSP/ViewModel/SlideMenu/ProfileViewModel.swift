@@ -59,6 +59,7 @@ class ProfileViewModel: NSObject {
                      "username":request.username!,
                      "password":request.password!,
                      "confirmPassword":request.confirmPassword!,
+                     "phoneNumber": request.phoneNumber!,
                      "profilePicUrl": request.profilePicUrl!]
                         
         let data = try! JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)

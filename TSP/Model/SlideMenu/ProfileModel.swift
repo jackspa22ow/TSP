@@ -14,5 +14,6 @@ struct UserProfile_Param: Codable{
     var username : String?
     var password : String?
     var confirmPassword : String?
+    var phoneNumber : String?
     var profilePicUrl : String?
 }

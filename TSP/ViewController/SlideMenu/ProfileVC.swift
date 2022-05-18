@@ -107,7 +107,7 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
                 }
             }
         }else{
-            self.putUserProfile(finalURL: "") {
+            self.putUserProfile(finalURL: dicOfUserProfile.profilePicUrl ?? "") {
                 print("Done")
             }
         }
@@ -117,8 +117,8 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
         
         let firstname = self.txtFirstName.text ?? ""
         let lastname = self.txtLastName.text ?? ""
-        
-        let request = UserProfile_Param(firstName: firstname, lastName: lastname, email: self.txtEmail.text!, username: self.txtUserName.text!, password: self.txtNewPassword.text!, confirmPassword: txtConfirmPassword.text!, profilePicUrl: finalURL)
+                
+        let request = UserProfile_Param(firstName: firstname, lastName: lastname, email: self.txtEmail.text!, username: self.txtUserName.text!, password: self.txtNewPassword.text!, confirmPassword: self.txtConfirmPassword.text!, phoneNumber: dicOfUserProfile.phoneNumber, profilePicUrl: finalURL)
         
         profileViewModel.hitUserProfileApi(request: request) {
             self.homeViewModel.getUserProfile { success in
