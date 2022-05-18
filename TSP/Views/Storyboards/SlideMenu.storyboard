@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -407,7 +407,7 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Jw-lw-eu1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="742"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uy5-b4-mJi">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
@@ -511,49 +511,105 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYm-kt-Q0a">
-                                                <rect key="frame" x="0.0" y="115" width="375" height="232"/>
+                                                <rect key="frame" x="0.0" y="115" width="375" height="320"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBK-xU-qys" customClass="TSPView" customModule="TSP" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaF-zL-rAR" customClass="TSPView" customModule="TSP" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="40" width="295" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hkj-0r-ejz" customClass="TSPTextField" customModule="TSP" customModuleProvider="target">
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Firstname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BXF-JK-B5b" customClass="TSPTextField" customModule="TSP" customModuleProvider="target">
                                                                 <rect key="frame" x="12" y="0.0" width="227" height="40"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                             </textField>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit" translatesAutoresizingMaskIntoConstraints="NO" id="q50-xl-cYK">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit" translatesAutoresizingMaskIntoConstraints="NO" id="BJ1-cu-8nG">
                                                                 <rect key="frame" x="264" y="12.5" width="15" height="15"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="15" id="qNe-Vm-sAg"/>
-                                                                    <constraint firstAttribute="height" constant="15" id="yvO-lM-QAD"/>
+                                                                    <constraint firstAttribute="height" constant="15" id="Tq6-Ne-I8a"/>
+                                                                    <constraint firstAttribute="width" constant="15" id="ev4-pf-MvL"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nL-xH-09A">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDl-pJ-zyy">
                                                                 <rect key="frame" x="247" y="0.0" width="48" height="40"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="48" id="kJn-yJ-rU8"/>
+                                                                    <constraint firstAttribute="width" constant="48" id="wpU-4O-paS"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="buttonEditUserName:" destination="yJB-Gf-yTS" eventType="touchUpInside" id="Fpc-Pq-RdV"/>
+                                                                    <action selector="buttonEditFirstName:" destination="yJB-Gf-yTS" eventType="touchUpInside" id="xn4-rx-tbg"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="BJ1-cu-8nG" secondAttribute="trailing" constant="16" id="0tD-jI-ATe"/>
+                                                            <constraint firstAttribute="trailing" secondItem="tDl-pJ-zyy" secondAttribute="trailing" id="3PP-g3-q5Z"/>
+                                                            <constraint firstAttribute="bottom" secondItem="BXF-JK-B5b" secondAttribute="bottom" id="9T1-ah-0Mo"/>
+                                                            <constraint firstItem="BXF-JK-B5b" firstAttribute="top" secondItem="WaF-zL-rAR" secondAttribute="top" id="IQ5-RC-AKH"/>
+                                                            <constraint firstAttribute="bottom" secondItem="tDl-pJ-zyy" secondAttribute="bottom" id="Ks9-yI-9gd"/>
+                                                            <constraint firstItem="BXF-JK-B5b" firstAttribute="leading" secondItem="WaF-zL-rAR" secondAttribute="leading" constant="12" id="Nux-sM-BiH"/>
+                                                            <constraint firstItem="BJ1-cu-8nG" firstAttribute="centerY" secondItem="WaF-zL-rAR" secondAttribute="centerY" id="PME-qU-ouI"/>
+                                                            <constraint firstAttribute="height" constant="40" id="V2i-Ke-0hX"/>
+                                                            <constraint firstItem="tDl-pJ-zyy" firstAttribute="leading" secondItem="BXF-JK-B5b" secondAttribute="trailing" constant="8" symbolic="YES" id="old-Ct-cmF"/>
+                                                            <constraint firstItem="tDl-pJ-zyy" firstAttribute="top" secondItem="WaF-zL-rAR" secondAttribute="top" id="use-u5-ojD"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEM-Up-7NC" customClass="TSPView" customModule="TSP" customModuleProvider="target">
+                                                        <rect key="frame" x="40" y="96" width="295" height="40"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lastname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AzP-fh-HOj" customClass="TSPTextField" customModule="TSP" customModuleProvider="target">
+                                                                <rect key="frame" x="12" y="0.0" width="227" height="40"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                            </textField>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit" translatesAutoresizingMaskIntoConstraints="NO" id="ehS-ul-ZOw">
+                                                                <rect key="frame" x="264" y="12.5" width="15" height="15"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="15" id="Plb-Kn-4IV"/>
+                                                                    <constraint firstAttribute="width" constant="15" id="lY0-pR-fNj"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-i5-FQe">
+                                                                <rect key="frame" x="247" y="0.0" width="48" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="48" id="r1n-p8-2hC"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <action selector="buttonEditLastName:" destination="yJB-Gf-yTS" eventType="touchUpInside" id="kJP-aN-6fd"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="AzP-fh-HOj" firstAttribute="leading" secondItem="MEM-Up-7NC" secondAttribute="leading" constant="12" id="5gY-zQ-rhe"/>
+                                                            <constraint firstAttribute="bottom" secondItem="jTU-i5-FQe" secondAttribute="bottom" id="5nv-as-sWX"/>
+                                                            <constraint firstAttribute="height" constant="40" id="Aje-Yd-b9K"/>
+                                                            <constraint firstItem="jTU-i5-FQe" firstAttribute="leading" secondItem="AzP-fh-HOj" secondAttribute="trailing" constant="8" symbolic="YES" id="M61-LH-Edf"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ehS-ul-ZOw" secondAttribute="trailing" constant="16" id="Mhy-vO-KJI"/>
+                                                            <constraint firstAttribute="bottom" secondItem="AzP-fh-HOj" secondAttribute="bottom" id="OVq-b8-DOy"/>
+                                                            <constraint firstItem="ehS-ul-ZOw" firstAttribute="centerY" secondItem="MEM-Up-7NC" secondAttribute="centerY" id="ZOw-la-0HF"/>
+                                                            <constraint firstItem="AzP-fh-HOj" firstAttribute="top" secondItem="MEM-Up-7NC" secondAttribute="top" id="mow-fW-4ig"/>
+                                                            <constraint firstItem="jTU-i5-FQe" firstAttribute="top" secondItem="MEM-Up-7NC" secondAttribute="top" id="sEJ-2J-17z"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jTU-i5-FQe" secondAttribute="trailing" id="sog-gs-mTM"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBK-xU-qys" customClass="TSPView" customModule="TSP" customModuleProvider="target">
+                                                        <rect key="frame" x="40" y="152" width="295" height="40"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hkj-0r-ejz" customClass="TSPTextField" customModule="TSP" customModuleProvider="target">
+                                                                <rect key="frame" x="12" y="0.0" width="70" height="40"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
                                                             <constraint firstItem="hkj-0r-ejz" firstAttribute="leading" secondItem="IBK-xU-qys" secondAttribute="leading" constant="12" id="AFx-g0-CB8"/>
-                                                            <constraint firstItem="q50-xl-cYK" firstAttribute="centerY" secondItem="IBK-xU-qys" secondAttribute="centerY" id="F6c-Xa-aYU"/>
-                                                            <constraint firstItem="8nL-xH-09A" firstAttribute="leading" secondItem="hkj-0r-ejz" secondAttribute="trailing" constant="8" symbolic="YES" id="G1z-42-8jH"/>
-                                                            <constraint firstItem="8nL-xH-09A" firstAttribute="top" secondItem="IBK-xU-qys" secondAttribute="top" id="G7m-r8-Ubb"/>
-                                                            <constraint firstAttribute="trailing" secondItem="q50-xl-cYK" secondAttribute="trailing" constant="16" id="J3d-2g-aIu"/>
-                                                            <constraint firstAttribute="trailing" secondItem="8nL-xH-09A" secondAttribute="trailing" id="JZ8-fZ-KAJ"/>
                                                             <constraint firstAttribute="height" constant="40" id="Wqh-tY-LGw"/>
-                                                            <constraint firstAttribute="bottom" secondItem="8nL-xH-09A" secondAttribute="bottom" id="X6y-iT-baa"/>
                                                             <constraint firstItem="hkj-0r-ejz" firstAttribute="top" secondItem="IBK-xU-qys" secondAttribute="top" id="XhJ-Xs-d1D"/>
                                                             <constraint firstAttribute="bottom" secondItem="hkj-0r-ejz" secondAttribute="bottom" id="Zh8-Hk-afa"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eu-dX-a8l" customClass="TSPView" customModule="TSP" customModuleProvider="target">
-                                                        <rect key="frame" x="40" y="96" width="295" height="40"/>
+                                                        <rect key="frame" x="40" y="208" width="295" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M8L-1o-5vg" customClass="TSPTextField" customModule="TSP" customModuleProvider="target">
                                                                 <rect key="frame" x="12" y="0.0" width="271" height="40"/>
@@ -571,7 +627,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbi-qn-qj3" customClass="TSPView" customModule="TSP" customModuleProvider="target">
-                                                        <rect key="frame" x="40" y="152" width="295" height="40"/>
+                                                        <rect key="frame" x="40" y="264" width="295" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lur-xD-Weo" customClass="TSPTextField" customModule="TSP" customModuleProvider="target">
                                                                 <rect key="frame" x="12" y="0.0" width="271" height="40"/>
@@ -591,20 +647,26 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="WaF-zL-rAR" firstAttribute="leading" secondItem="IBK-xU-qys" secondAttribute="leading" id="5wP-eM-uwG"/>
                                                     <constraint firstItem="hbi-qn-qj3" firstAttribute="top" secondItem="5eu-dX-a8l" secondAttribute="bottom" constant="16" id="7hl-t2-OXU"/>
                                                     <constraint firstAttribute="trailing" secondItem="IBK-xU-qys" secondAttribute="trailing" constant="40" id="7im-5O-ZqT"/>
+                                                    <constraint firstItem="MEM-Up-7NC" firstAttribute="trailing" secondItem="WaF-zL-rAR" secondAttribute="trailing" id="AGp-Kw-GFe"/>
+                                                    <constraint firstItem="WaF-zL-rAR" firstAttribute="trailing" secondItem="IBK-xU-qys" secondAttribute="trailing" id="Eam-WJ-5N7"/>
                                                     <constraint firstItem="hbi-qn-qj3" firstAttribute="leading" secondItem="tYm-kt-Q0a" secondAttribute="leading" constant="40" id="FB6-0R-0rd"/>
                                                     <constraint firstItem="5eu-dX-a8l" firstAttribute="top" secondItem="IBK-xU-qys" secondAttribute="bottom" constant="16" id="GNU-8t-YHD"/>
-                                                    <constraint firstItem="IBK-xU-qys" firstAttribute="top" secondItem="tYm-kt-Q0a" secondAttribute="top" constant="40" id="JyU-AD-cws"/>
-                                                    <constraint firstAttribute="height" constant="232" id="O5d-KK-J0U"/>
+                                                    <constraint firstAttribute="height" constant="320" id="O5d-KK-J0U"/>
                                                     <constraint firstAttribute="trailing" secondItem="hbi-qn-qj3" secondAttribute="trailing" constant="40" id="Q7A-x8-leK"/>
                                                     <constraint firstAttribute="trailing" secondItem="5eu-dX-a8l" secondAttribute="trailing" constant="40" id="RXd-4O-cv3"/>
+                                                    <constraint firstItem="MEM-Up-7NC" firstAttribute="top" secondItem="WaF-zL-rAR" secondAttribute="bottom" constant="16" id="SVR-9p-PwM"/>
+                                                    <constraint firstItem="WaF-zL-rAR" firstAttribute="top" secondItem="tYm-kt-Q0a" secondAttribute="top" constant="40" id="c5A-qo-e4E"/>
+                                                    <constraint firstItem="MEM-Up-7NC" firstAttribute="leading" secondItem="WaF-zL-rAR" secondAttribute="leading" id="dIq-tj-1zx"/>
                                                     <constraint firstItem="IBK-xU-qys" firstAttribute="leading" secondItem="tYm-kt-Q0a" secondAttribute="leading" constant="40" id="hsy-YN-HV6"/>
+                                                    <constraint firstItem="IBK-xU-qys" firstAttribute="top" secondItem="MEM-Up-7NC" secondAttribute="bottom" constant="16" id="j2D-u1-c4R"/>
                                                     <constraint firstItem="5eu-dX-a8l" firstAttribute="leading" secondItem="tYm-kt-Q0a" secondAttribute="leading" constant="40" id="mMP-0q-5p7"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GS2-0j-bE6">
-                                                <rect key="frame" x="0.0" y="347" width="375" height="283"/>
+                                                <rect key="frame" x="0.0" y="435" width="375" height="307"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3l-hN-noz">
                                                         <rect key="frame" x="0.0" y="8" width="375" height="60"/>
@@ -1013,7 +1075,7 @@
                                             <constraint firstItem="tYm-kt-Q0a" firstAttribute="leading" secondItem="8Jw-lw-eu1" secondAttribute="leading" id="cNi-FW-XKg"/>
                                             <constraint firstItem="GS2-0j-bE6" firstAttribute="top" secondItem="tYm-kt-Q0a" secondAttribute="bottom" id="eXX-qp-aRC"/>
                                             <constraint firstItem="GS2-0j-bE6" firstAttribute="leading" secondItem="8Jw-lw-eu1" secondAttribute="leading" id="k9p-Ln-mSD"/>
-                                            <constraint firstAttribute="height" constant="630" id="kl5-cd-vem"/>
+                                            <constraint firstAttribute="height" constant="742" id="kl5-cd-vem"/>
                                             <constraint firstItem="uy5-b4-mJi" firstAttribute="leading" secondItem="8Jw-lw-eu1" secondAttribute="leading" id="luC-8K-RXw"/>
                                         </constraints>
                                     </view>
@@ -1042,16 +1104,22 @@
                     </view>
                     <connections>
                         <outlet property="btnDone" destination="sHG-55-0iL" id="FlS-KS-1No"/>
+                        <outlet property="btnFirstNameEdit" destination="tDl-pJ-zyy" id="6P2-bh-emM"/>
+                        <outlet property="btnLastNameEdit" destination="jTU-i5-FQe" id="WOY-Lx-2Xc"/>
                         <outlet property="changePasswordHeight" destination="l00-Ya-03G" id="mdR-MM-eD8"/>
                         <outlet property="changePasswordView" destination="yo8-Cv-gTj" id="B3i-mT-mRf"/>
                         <outlet property="imageChangePasswordUpDownArrow" destination="zuG-X4-kv1" id="gZ0-by-Q74"/>
                         <outlet property="imageProfile" destination="Q95-Kl-LzV" id="GsR-VM-E3y"/>
+                        <outlet property="imgVwFirstNameEditIcon" destination="BJ1-cu-8nG" id="t9o-bk-FDn"/>
+                        <outlet property="imgVwLastNameEditIcon" destination="ehS-ul-ZOw" id="z7s-3F-EqU"/>
                         <outlet property="lblMobileNumber" destination="nId-yd-pTk" id="BAt-ro-MlV"/>
                         <outlet property="lblName" destination="HOv-hJ-zzX" id="fSf-ME-dXS"/>
                         <outlet property="scrollViewHeight" destination="kl5-cd-vem" id="GFl-du-BL7"/>
                         <outlet property="txtConfirmPassword" destination="fJy-HS-1vh" id="CuT-oK-goP"/>
                         <outlet property="txtCurrentPassword" destination="fjA-qr-dyd" id="ndd-0B-nyJ"/>
                         <outlet property="txtEmail" destination="Lur-xD-Weo" id="yu8-SR-xqb"/>
+                        <outlet property="txtFirstName" destination="BXF-JK-B5b" id="2Ql-9I-vpO"/>
+                        <outlet property="txtLastName" destination="AzP-fh-HOj" id="dwY-vA-ceS"/>
                         <outlet property="txtMobileNumber" destination="M8L-1o-5vg" id="MDt-YJ-z5y"/>
                         <outlet property="txtNewPassword" destination="VHb-fD-zc3" id="NrY-Xn-3bf"/>
                         <outlet property="txtUserName" destination="hkj-0r-ejz" id="yH5-I9-B5r"/>

@@ -297,6 +297,4 @@ class SingleBillDetailsVC: UIViewController {
             self.lblDate.attributedText = attributedString1
         }
     }
-    
-
 }

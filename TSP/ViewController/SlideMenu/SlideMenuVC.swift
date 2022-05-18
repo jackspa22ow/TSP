@@ -53,8 +53,6 @@ class SlideMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             self.data = [SlideMenuSection(title: "Billers", list: self.aryOfBillers, isColleps: false),SlideMenuSection(title: "History", list: ["Transaction History", "Complaints"], isColleps: false),SlideMenuSection(title: "Reminders", list: nil, isColleps: false),SlideMenuSection(title: "Auto Pay", list: nil, isColleps: false),SlideMenuSection(title: "Contact Us", list: nil, isColleps: false),SlideMenuSection(title: "Spend Analysis", list: nil, isColleps: false),SlideMenuSection(title: "Help", list: nil, isColleps: false)]
         }
         
-        self.lblName.text = "\(dicOfUserProfile.firstName!) \(dicOfUserProfile.lastName!)"
-        self.lblMobileNumber.text = dicOfUserProfile.phoneNumber
         
         //setup theme based app
         self.setupTheme()
@@ -64,6 +62,12 @@ class SlideMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.lblName.text = "\(dicOfUserProfile.firstName!) \(dicOfUserProfile.lastName!)"
+        self.lblMobileNumber.text = dicOfUserProfile.phoneNumber
+        
+    }
     func setupTheme(){
         self.view.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
     }

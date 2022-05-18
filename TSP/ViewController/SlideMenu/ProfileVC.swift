@@ -16,6 +16,13 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     @IBOutlet weak var viewMobileNumber: UIView!
     @IBOutlet weak var viewEmail: UIView!
     
+    @IBOutlet weak var txtLastName: UITextField!
+    @IBOutlet weak var imgVwFirstNameEditIcon: UIImageView!
+    @IBOutlet weak var imgVwLastNameEditIcon: UIImageView!
+    @IBOutlet weak var btnFirstNameEdit: UIButton!
+    @IBOutlet weak var btnLastNameEdit: UIButton!
+    
+    @IBOutlet weak var txtFirstName: UITextField!
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var txtMobileNumber: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
@@ -37,6 +44,7 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     var imagePicker = UIImagePickerController()
 
     let profileViewModel = ProfileViewModel()
+    let homeViewModel = HomeViewModel()
     var isProfileChanged = false
     
     override func viewDidLoad() {
@@ -53,18 +61,35 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func buttonEditUserName(_ sender: Any) {
-        self.txtUserName.becomeFirstResponder()
+    @IBAction func buttonEditFirstName(_ sender: UIButton) {
+        self.txtFirstName.isUserInteractionEnabled = true
+        self.txtFirstName.becomeFirstResponder()
         self.btnDone.isHidden = false
+        sender.isHidden = true
+        self.imgVwFirstNameEditIcon.isHidden = true
+    }
+    
+    @IBAction func buttonEditLastName(_ sender: UIButton) {
+        self.txtLastName.isUserInteractionEnabled = true
+        self.txtLastName.becomeFirstResponder()
+        self.btnDone.isHidden = false
+        sender.isHidden = true
+        self.imgVwLastNameEditIcon.isHidden = true
     }
     
     
     func setData(){
         self.lblName.text = dicOfUserProfile.firstName
         self.lblMobileNumber.text = dicOfUserProfile.username
-        self.txtUserName.text = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
-        self.txtMobileNumber.text = dicOfUserProfile.username
+        self.txtUserName.text = dicOfUserProfile.username
+        self.txtFirstName.text = "\(dicOfUserProfile.firstName ?? "")"
+        self.txtLastName.text = "\(dicOfUserProfile.lastName ?? "")"
+
+        self.txtMobileNumber.text = dicOfUserProfile.phoneNumber
         self.txtEmail.text = dicOfUserProfile.email
+        
+        btnDone.setTitleColor(Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor), for: .normal)
+        self.navigationController?.navigationItem.titleView?.tintColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
     }
         
     @IBAction func buttonHandlerDone(_ sender: Any) {
@@ -91,23 +116,24 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     
     private func putUserProfile(finalURL:String,complition:(() -> Void)?) {
         
-        let name = self.txtMobileNumber.text!
         
-        var firstname = ""
-        var lastname = ""
-        
-        if name.contains(" "){
-            let ary = name.components(separatedBy: " ")
-            firstname = ary[0]
-            lastname = ary[1]
-        }else{
-            firstname = name
-        }
+        let firstname = self.txtFirstName.text ?? ""
+        let lastname = self.txtLastName.text ?? ""
         
         let request = UserProfile_Param(firstName: firstname, lastName: lastname, email: self.txtEmail.text!, username: self.txtUserName.text!, password: self.txtNewPassword.text!, confirmPassword: txtConfirmPassword.text!, role: "Customer", profilePicUrl: finalURL)
         
         profileViewModel.hitUserProfileApi(request: request) {
-            print("Done")
+            self.homeViewModel.getUserProfile { success in
+                self.txtFirstName.isUserInteractionEnabled = false
+                self.txtLastName.isUserInteractionEnabled = false
+                self.imgVwFirstNameEditIcon.isHidden = false
+                self.imgVwLastNameEditIcon.isHidden = false
+                self.btnFirstNameEdit.isHidden = false
+                self.btnLastNameEdit.isHidden = false
+                self.setData()
+                print("Done")
+            }
+            
         }
         
     }
@@ -160,14 +186,14 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             profileViewModel.isChangePassword = true
             self.changePasswordView.isHidden = false
             self.changePasswordHeight.constant = 300
-            self.scrollViewHeight.constant = 870
+            self.scrollViewHeight.constant = self.scrollViewHeight.constant + 240
             self.imageChangePasswordUpDownArrow.image = #imageLiteral(resourceName: "ic_up")
         }else{
             sender.tag = 0
             profileViewModel.isChangePassword = false
             self.changePasswordView.isHidden = true
             self.changePasswordHeight.constant = 60
-            self.scrollViewHeight.constant = 630
+            self.scrollViewHeight.constant = self.scrollViewHeight.constant - 240
             self.imageChangePasswordUpDownArrow.image = #imageLiteral(resourceName: "ic_down")
         }
     }
