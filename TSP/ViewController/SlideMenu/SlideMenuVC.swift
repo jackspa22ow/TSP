@@ -64,7 +64,7 @@ class SlideMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.lblName.text = "\(dicOfUserProfile.firstName!) \(dicOfUserProfile.lastName!)"
+        self.lblName.text = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
         self.lblMobileNumber.text = dicOfUserProfile.phoneNumber
         
     }

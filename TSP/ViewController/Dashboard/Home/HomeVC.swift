@@ -51,7 +51,7 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (dicOfUserProfile != nil) {
-            self.lblUsername.text = "\(dicOfUserProfile.firstName!) \(dicOfUserProfile.lastName!)"
+            self.lblUsername.text = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
         }
         
 

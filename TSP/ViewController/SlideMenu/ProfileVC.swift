@@ -79,12 +79,11 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     
     
     func setData(){
-        self.lblName.text = dicOfUserProfile.firstName
-        self.lblMobileNumber.text = dicOfUserProfile.username
+        self.lblName.text = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
+        self.lblMobileNumber.text = dicOfUserProfile.phoneNumber
         self.txtUserName.text = dicOfUserProfile.username
         self.txtFirstName.text = "\(dicOfUserProfile.firstName ?? "")"
         self.txtLastName.text = "\(dicOfUserProfile.lastName ?? "")"
-
         self.txtMobileNumber.text = dicOfUserProfile.phoneNumber
         self.txtEmail.text = dicOfUserProfile.email
         
@@ -116,11 +115,10 @@ class ProfileVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     
     private func putUserProfile(finalURL:String,complition:(() -> Void)?) {
         
-        
         let firstname = self.txtFirstName.text ?? ""
         let lastname = self.txtLastName.text ?? ""
         
-        let request = UserProfile_Param(firstName: firstname, lastName: lastname, email: self.txtEmail.text!, username: self.txtUserName.text!, password: self.txtNewPassword.text!, confirmPassword: txtConfirmPassword.text!, role: "Customer", profilePicUrl: finalURL)
+        let request = UserProfile_Param(firstName: firstname, lastName: lastname, email: self.txtEmail.text!, username: self.txtUserName.text!, password: self.txtNewPassword.text!, confirmPassword: txtConfirmPassword.text!, profilePicUrl: finalURL)
         
         profileViewModel.hitUserProfileApi(request: request) {
             self.homeViewModel.getUserProfile { success in
