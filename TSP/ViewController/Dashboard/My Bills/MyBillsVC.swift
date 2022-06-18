@@ -110,6 +110,7 @@ class MyBillsVC: UIViewController{
                         let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "HomeDetailsVC")as! HomeDetailsVC
                         nextVC.billID = "\(json.id ?? 0)"
                         nextVC.isAutoPayEdit = true
+                        nextVC.isAutoPayFromHomeMore = true
                         self.navigationController?.pushViewController(nextVC, animated: true)
                     }
                 }

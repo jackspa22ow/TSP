@@ -52,10 +52,6 @@
 		5E217B2C268EE6770092FE27 /* TSPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E217B2B268EE6770092FE27 /* TSPUITests.swift */; };
 		5E217B43268EF6410092FE27 /* TSPConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E217B42268EF6410092FE27 /* TSPConstants.swift */; };
 		5E217B4E268F08A90092FE27 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E217B4D268F08A90092FE27 /* Authorization.storyboard */; };
-		5E217B50268F09110092FE27 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E217B4F268F09110092FE27 /* LoginVC.swift */; };
-		5E217B52268F091F0092FE27 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E217B51268F091F0092FE27 /* SignupVC.swift */; };
-		5E217B54268F092B0092FE27 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E217B53268F092B0092FE27 /* ForgetPasswordVC.swift */; };
-		5E217B65268F155B0092FE27 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E217B64268F155B0092FE27 /* SplashVC.swift */; };
 		5E706C34268F5DCC008CDE3A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E706C33268F5DCC008CDE3A /* Extensions.swift */; };
 		864FDFEB78C612BFBA28AACB /* Pods_TSPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F291BEB743FEABA8D2AA8AF5 /* Pods_TSPTests.framework */; };
 		A16BBE5326986F5E0083A8D1 /* HomeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16BBE5126986F5E0083A8D1 /* HomeSliderCell.swift */; };
@@ -86,6 +82,10 @@
 		D970388627422D3C0073CD3A /* BillerCategoryStep2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970387827422D3C0073CD3A /* BillerCategoryStep2Cell.swift */; };
 		D970388727422D3C0073CD3A /* BillerCategoryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970387927422D3C0073CD3A /* BillerCategoryListCell.swift */; };
 		D970388827422D3C0073CD3A /* BillerCategoryStep2ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D970387A27422D3C0073CD3A /* BillerCategoryStep2ItemCell.xib */; };
+		D9AAE182285DE4E0008753D2 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAE17E285DE4E0008753D2 /* ForgetPasswordVC.swift */; };
+		D9AAE183285DE4E0008753D2 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAE17F285DE4E0008753D2 /* SplashVC.swift */; };
+		D9AAE184285DE4E0008753D2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAE180285DE4E0008753D2 /* LoginVC.swift */; };
+		D9AAE185285DE4E0008753D2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAE181285DE4E0008753D2 /* SignupVC.swift */; };
 		D9C03811274CB1DB0092B897 /* ForgetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C03810274CB1DB0092B897 /* ForgetPasswordModel.swift */; };
 		D9C03813274CB2ED0092B897 /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C03812274CB2ED0092B897 /* ForgetPasswordViewModel.swift */; };
 		D9C03815274CCE4A0092B897 /* AutoPayPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C03814274CCE4A0092B897 /* AutoPayPopView.xib */; };
@@ -269,10 +269,6 @@
 		5E217B39268EEA900092FE27 /* TSP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSP-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E217B42268EF6410092FE27 /* TSPConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSPConstants.swift; sourceTree = "<group>"; };
 		5E217B4D268F08A90092FE27 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
-		5E217B4F268F09110092FE27 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		5E217B51268F091F0092FE27 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
-		5E217B53268F092B0092FE27 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
-		5E217B64268F155B0092FE27 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		5E706C33268F5DCC008CDE3A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9C91DF946616A3A4EDAE5140 /* Pods-TSP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSP.release.xcconfig"; path = "Target Support Files/Pods-TSP/Pods-TSP.release.xcconfig"; sourceTree = "<group>"; };
 		A16BBE5126986F5E0083A8D1 /* HomeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSliderCell.swift; sourceTree = "<group>"; };
@@ -304,6 +300,10 @@
 		D970387827422D3C0073CD3A /* BillerCategoryStep2Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillerCategoryStep2Cell.swift; sourceTree = "<group>"; };
 		D970387927422D3C0073CD3A /* BillerCategoryListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillerCategoryListCell.swift; sourceTree = "<group>"; };
 		D970387A27422D3C0073CD3A /* BillerCategoryStep2ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillerCategoryStep2ItemCell.xib; sourceTree = "<group>"; };
+		D9AAE17E285DE4E0008753D2 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
+		D9AAE17F285DE4E0008753D2 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		D9AAE180285DE4E0008753D2 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		D9AAE181285DE4E0008753D2 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		D9C03810274CB1DB0092B897 /* ForgetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordModel.swift; sourceTree = "<group>"; };
 		D9C03812274CB2ED0092B897 /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
 		D9C03814274CCE4A0092B897 /* AutoPayPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoPayPopView.xib; sourceTree = "<group>"; };
@@ -551,7 +551,6 @@
 			isa = PBXGroup;
 			children = (
 				FC3E094226937451006113A4 /* AppDelegate */,
-				5E217B48268EFA030092FE27 /* Authorization */,
 				FC3E094126937437006113A4 /* Dashboard */,
 				FCE304E126958AC300584C9F /* SlideMenu */,
 				FCFDF4FA269F039E0099C044 /* Help */,
@@ -590,18 +589,6 @@
 				D9E530E0279054A900D38A7E /* ValidationService.swift */,
 			);
 			path = Configurations;
-			sourceTree = "<group>";
-		};
-		5E217B48268EFA030092FE27 /* Authorization */ = {
-			isa = PBXGroup;
-			children = (
-				5E217B64268F155B0092FE27 /* SplashVC.swift */,
-				5E217B4F268F09110092FE27 /* LoginVC.swift */,
-				5E217B51268F091F0092FE27 /* SignupVC.swift */,
-				5E217B53268F092B0092FE27 /* ForgetPasswordVC.swift */,
-			);
-			name = Authorization;
-			path = Controllers/Authorization;
 			sourceTree = "<group>";
 		};
 		D916B40F273FBCF200F341EA /* Complaints */ = {
@@ -655,6 +642,18 @@
 			);
 			path = Cell;
 			sourceTree = "<group>";
+		};
+		D9AAE17D285DE4E0008753D2 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				D9AAE17F285DE4E0008753D2 /* SplashVC.swift */,
+				D9AAE180285DE4E0008753D2 /* LoginVC.swift */,
+				D9AAE181285DE4E0008753D2 /* SignupVC.swift */,
+				D9AAE17E285DE4E0008753D2 /* ForgetPasswordVC.swift */,
+			);
+			name = Authorization;
+			path = TSP/ViewController/Authorization;
+			sourceTree = SOURCE_ROOT;
 		};
 		D9DF594C273EFDD100796515 /* Libraries */ = {
 			isa = PBXGroup;
@@ -805,6 +804,7 @@
 			isa = PBXGroup;
 			children = (
 				FCD06A8826AAB7F7004E0A0E /* TabBar */,
+				D9AAE17D285DE4E0008753D2 /* Authorization */,
 				FCD06A8926AAB806004E0A0E /* Home */,
 				FCD06A8A26AAB80E004E0A0E /* My Bills */,
 				FCD06A8B26AAB81F004E0A0E /* Add Biller */,
@@ -1457,6 +1457,7 @@
 				20BA4E64274E8C3B00040E3B /* MyBillDetailsReminderItemCell.swift in Sources */,
 				D970387E27422D3C0073CD3A /* BillerCategoryStep3ItemCell.swift in Sources */,
 				FC6A376026E11D9000DD4DEC /* PNPieChartDataItem.swift in Sources */,
+				D9AAE182285DE4E0008753D2 /* ForgetPasswordVC.swift in Sources */,
 				FC29B99426933B8D000098F5 /* SignupViewModel.swift in Sources */,
 				FC6A376326E11D9000DD4DEC /* PNChartLabel.swift in Sources */,
 				FC3C7AF826A1C69F00F7C7AD /* HomeDetailsCell.swift in Sources */,
@@ -1468,7 +1469,6 @@
 				FC3E80A826AE777A009F2A1B /* HomeCategoryCell.swift in Sources */,
 				FC60F07926BC2850008D7395 /* ProfileModel.swift in Sources */,
 				FC3E809A26AE7252009F2A1B /* HomeCategoryItemCell.swift in Sources */,
-				5E217B52268F091F0092FE27 /* SignupVC.swift in Sources */,
 				D970388427422D3C0073CD3A /* BillerStepHeaderCell.swift in Sources */,
 				205A228127455D0D0005782B /* AddBillerDetailsTotalAmountCell.swift in Sources */,
 				FC3C7AFA26A1C95E00F7C7AD /* HomeDetailsItemCell.swift in Sources */,
@@ -1479,6 +1479,7 @@
 				FC14DCC42707029C005734E6 /* ReminderListViewModel.swift in Sources */,
 				FCE676FC269E03A700168FDA /* ProfileViewModel.swift in Sources */,
 				FC0A47562726D77F00620070 /* TSPView.swift in Sources */,
+				D9AAE183285DE4E0008753D2 /* SplashVC.swift in Sources */,
 				FC7756F126A8284F003A80A6 /* MyBillsCell.swift in Sources */,
 				FC2E79FC27032DDD00A2CC62 /* SingleBillDetailsVC.swift in Sources */,
 				20E09F05274FD5BA00BC92E9 /* HelpChoosServiceCell.swift in Sources */,
@@ -1487,17 +1488,17 @@
 				FC3E094826945AA6006113A4 /* AddBillerVC.swift in Sources */,
 				20E6490A27435F090060AE3C /* MobileOperatorOrCircleVC.swift in Sources */,
 				FC14DCC027062082005734E6 /* RemindersListVC.swift in Sources */,
-				5E217B50268F09110092FE27 /* LoginVC.swift in Sources */,
 				A16BBE5326986F5E0083A8D1 /* HomeSliderCell.swift in Sources */,
 				FC71414A26DFC40F006F5A64 /* HistoryPDFViewerVC.swift in Sources */,
 				FC0A47582726D77F00620070 /* TSPTextField.swift in Sources */,
+				D9AAE185285DE4E0008753D2 /* SignupVC.swift in Sources */,
 				D932E3FD27CCAE930057A477 /* NotificationListVC.swift in Sources */,
 				FC29B98A26933AF6000098F5 /* SplashViewModel.swift in Sources */,
 				FCA50C6326FEE0B90087A3F6 /* SpendAnalysisCategoryFooterCell.swift in Sources */,
 				FC14DCC6270702B3005734E6 /* AutopayListViewModel.swift in Sources */,
 				FC14DCC8270702D1005734E6 /* ReminderListModel.swift in Sources */,
 				D916B411273FEBC500F341EA /* RaiseComplaintVC.swift in Sources */,
-				5E217B54268F092B0092FE27 /* ForgetPasswordVC.swift in Sources */,
+				D9AAE184285DE4E0008753D2 /* LoginVC.swift in Sources */,
 				FCE304EC2695D1FF00584C9F /* SlideMenuHeaderCell.swift in Sources */,
 				20E09F11274FE00500BC92E9 /* PopularHelpTopicsCell.swift in Sources */,
 				FC050CD827037C6800F5E4A1 /* SingleBillDetailsModel.swift in Sources */,
@@ -1506,7 +1507,6 @@
 				D932E40427CCE54B0057A477 /* NotificationListModel.swift in Sources */,
 				FC6A376226E11D9000DD4DEC /* PNValue.swift in Sources */,
 				FC29EB4F26F3544400553758 /* PaymentUtils.swift in Sources */,
-				5E217B65268F155B0092FE27 /* SplashVC.swift in Sources */,
 				FC3E094626945A99006113A4 /* MyBillsVC.swift in Sources */,
 				205A227A2745448A0005782B /* AddBillerDetailVC.swift in Sources */,
 				FC2E79FE27032DF300A2CC62 /* MultipleBillDetailsVC.swift in Sources */,
