@@ -155,12 +155,21 @@ extension HomeBillItemsCell : UICollectionViewDelegate, UICollectionViewDataSour
             cell.switchAutoPay.isOn = json.autoPay == true ? true : false
             cell.switchAutoPay.onTintColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
             
-            cell.billerPayuId.text = json.billerPayuId
+            let customerIDArray = json.customerParams.filter{ $0.primary == true}
+            if customerIDArray.count > 0 {
+                cell.billerPayuId.text = customerIDArray[0].value
+            } else {
+                cell.billerPayuId.text = ""
+            }
             
             cell.lblDueDate.text = json.dueDate
             
-            cell.lblAmount.text = "₹ \(json.amount!)"
-            
+            if let amount = json.amount {
+                cell.lblAmount.text = "₹ \(amount)"
+            } else {
+                cell.lblAmount.text = "₹ 0.00"
+
+            }
             cell.switchAutoPay.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
             cell.switchAutoPay.onTintColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
             

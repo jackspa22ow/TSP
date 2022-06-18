@@ -37,7 +37,7 @@ class SlideMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if TSP_Allow_Multiple_Billpay != "true"{
+        if TSP_Allow_Multiple_Billpay == "false"{
             self.aryOfBillers = ["My Bills", "Add Biller"]
         }else{
             self.aryOfBillers = ["My Bills", "Add Biller", "Multiple Bill Payment"]

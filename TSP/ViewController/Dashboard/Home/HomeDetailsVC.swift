@@ -60,12 +60,33 @@ class HomeDetailsVC: UIViewController {
         
         self.myBillsViewModel.getBillDetailByID(billID: self.billID ?? "") { [self] response in
             self.json = self.myBillsViewModel.dicOfBillDetail
+                        
+            if let accountHolderName = self.json.accountHolderName, accountHolderName.count > 0 {
+                let accountHolderObj = MyBillsCustomerParam(value: accountHolderName, paramName: "Consumer Name:", primary: false)
+                self.json.customerParams.append(accountHolderObj)
+            }
+            
+            if let noOfInstallment = self.json.noOfInstallation, noOfInstallment > 0 {
+                let accountHolderObj = MyBillsCustomerParam(value: "\(noOfInstallment)", paramName: "No. of Installment:", primary: false)
+                self.json.customerParams.append(accountHolderObj)
+            }
+            
+            
+            if let billDate = self.json.billDate, billDate.count > 0 {
+                let billDateObj = MyBillsCustomerParam(value: billDate, paramName: "Bill Date:", primary: false)
+                self.json.customerParams.append(billDateObj)
+            }
+            
+            if let billDueDate = self.json.dueDate, billDueDate.count > 0 {
+                let billDueDateObj = MyBillsCustomerParam(value: billDueDate, paramName: "Due Date:", primary: false)
+                self.json.customerParams.append(billDueDateObj)
+            }
             
             let amountParam = MyBillsCustomerParam(value: "\(self.json.amount ?? 0)", paramName: "Amount", primary: false)
             if !isShortNameEdit {
                 self.json.customerParams.append(amountParam)
             }
-            
+                    
             if self.isAutoPayHide == false && !self.isReminderEdit{
                 self.isAutoPay = self.json?.autoPay ?? false
                 self.isAutoPayOnForBill = self.json?.autoPay ?? false
@@ -298,6 +319,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillAutoPayEditCell.identifier, for: indexPath) as? MyBillAutoPayEditCell else {
                         fatalError("XIB dosn't exist.")
                     }
+//                    cell.btnEdit.isHidden = true
                     cell.txtMaxAmount.text = self.autoPaymentMaxAmount
                     cell.txtPaymentMethod.text = self.selectedPaymentMethod
                     cell.lblMaxAmount.text = self.autoPaymentMaxAmount
@@ -469,11 +491,11 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                 cell.lblName.text = dic.paramName
                 cell.txtAmount.text = dic.value
                 if let amount = dic.value {
-                    if let amountExact = self.json.paymentAmountExactness, amountExact != "Exact" {
+                    if let amountExact = self.json.paymentAmountExactness, amountExact.lowercased() != "exact" {
                         cell.vwTxtAmount.isHidden = false
                         cell.vwTxtAmountHeight.constant = 40
                     } else {
-                        cell.lblValue.text = dic.value
+                        cell.lblValue.text = "₹ " + (dic.value ?? "")
                         cell.vwTxtAmount.isHidden = true
                         cell.vwTxtAmountHeight.constant = 20
                     }
@@ -667,7 +689,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
             
             if let amount = self.json.amount {
                 if let amountExact = self.json.paymentAmountExactness {
-                    if amountExact == "EXACT_AND_ABOVE" {
+                    if amountExact.lowercased() == "EXACT_AND_ABOVE".lowercased() {
                         let enteredAmount: Int? = Int(cell?.txtAmount.text! ?? "")
                         let actualAmount: Int? = Int(amount)
                         if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let maxVal = maximumValue {
@@ -677,7 +699,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                                 Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(actualAmt) and \(maxVal)")
                             }
                         }
-                    } else if amountExact == "EXACT_AND_BELOW" {
+                    } else if amountExact.lowercased() == "EXACT_AND_BELOW".lowercased() {
                         let enteredAmount: Int? = Int(cell?.txtAmount.text ?? "")
                         let actualAmount: Int? = Int(amount)
                         if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let minVal = minimumValue {
@@ -687,7 +709,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                                 Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(actualAmt)")
                             }
                         }
-                    } else if (amountExact == "EXACT") {
+                    } else if (amountExact.lowercased() == "EXACT".lowercased()) {
                         self.preparePayment(amount: "\(amount)")
                     }
                     print("Entered Amount: \(cell?.txtAmount.text ?? ""), IsValueAmount: \((cell?.txtAmount.text ?? "").isNumber)")

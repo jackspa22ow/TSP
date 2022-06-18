@@ -34,6 +34,7 @@ struct MyBillsContent: Codable {
 // MARK: - MYBILL DETAIL BY BILL ID
 struct BillDetailModel: Codable {
     let id: Int?
+    let noOfInstallation: Int?
     let customerPhoneNumber: String?
     var customerParams: [MyBillsCustomerParam]
     let amount: Double?

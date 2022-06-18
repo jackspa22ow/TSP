@@ -189,8 +189,11 @@ extension MyBillsVC: UITableViewDelegate,UITableViewDataSource{
             }
         }
         
-        cell.lblPrice.text = "₹ \(json.amount!)"
-        
+        if let amount = json.amount {
+            cell.lblPrice.text = "₹ \(amount)"
+        } else {
+            cell.lblPrice.text = "₹ 0.00"
+        }
         cell.btnMore.tag = indexPath.row
         cell.btnMore.addTarget(self, action: #selector(self.btnMore), for: .touchUpInside)
         

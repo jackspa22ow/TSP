@@ -215,8 +215,11 @@ struct AddBillModel: Codable {
     let customerPhoneNumber: String?
     let customerParams: [AddBillCustomerParam]
     let amount: Int?
+    let noOfInstallation: Int?
     let accountHolderName: String?
     let billDue: Bool?
+    let billDate: String?
+    let dueDate: String?
     let billerName: String?
     let billerShortName: String?
     let billerPayuId: String?

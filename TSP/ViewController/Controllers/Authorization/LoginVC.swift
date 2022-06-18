@@ -26,8 +26,11 @@ class LoginVC: UIViewController {
 //        self.txtUsername.text = "jack"
 //        self.txtPassword.text = "Pentagon@123"
         
-        self.txtUsername.text = "TusharG"
-        self.txtPassword.text = "!Tushar@25890"
+//        self.txtUsername.text = "TusharG"
+//        self.txtPassword.text = "!Tushar@25890"
+        
+        self.txtUsername.text = "KalpeshM"
+        self.txtPassword.text = "!Kalpesh@2807"
 //        
 //        self.txtUsername.text = "tushargabani@gmail.com"
 //        self.txtPassword.text = "!Tushar@25890"

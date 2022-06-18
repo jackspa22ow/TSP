@@ -41,26 +41,40 @@ class AddBillerDetailVC: UIViewController {
         if let planID = self.planID {
             addBillerViewModel.getPlanDetailByPlanID(planId: "\(planID)") { response in
                 
-                let operatorName = PlanInfo(itemName: "OperatorName", itemValue: self.addBillerViewModel.dicOfPlanDetailByPlanID.operatorName)
-                self.arrayOfPlanDetail.append(operatorName)
+                if let operatorName = self.addBillerViewModel.dicOfPlanDetailByPlanID.operatorName, !operatorName.isEmpty {
+                    let operatorNameObj = PlanInfo(itemName: "OperatorName", itemValue: operatorName)
+                    self.arrayOfPlanDetail.append(operatorNameObj)
+                }
                 
-                let talkTime = PlanInfo(itemName: "Talk Time", itemValue: self.addBillerViewModel.dicOfPlanDetailByPlanID.price)
-                self.arrayOfPlanDetail.append(talkTime)
+                if let talkTime = self.addBillerViewModel.dicOfPlanDetailByPlanID.price, !talkTime.isEmpty {
+                    let talkTimeObj = PlanInfo(itemName: "Talk Time", itemValue: talkTime)
+                    self.arrayOfPlanDetail.append(talkTimeObj)
+                }
                 
-                let planData = PlanInfo(itemName: "Data", itemValue: self.addBillerViewModel.dicOfPlanDetailByPlanID.data)
-                self.arrayOfPlanDetail.append(planData)
+                if let planData = self.addBillerViewModel.dicOfPlanDetailByPlanID.data, !planData.isEmpty {
+                    let planDataObj = PlanInfo(itemName: "Data", itemValue: planData)
+                    self.arrayOfPlanDetail.append(planDataObj)
+                }
                 
-                let planCalls = PlanInfo(itemName: "Calls", itemValue: self.addBillerViewModel.dicOfPlanDetailByPlanID.calls)
-                self.arrayOfPlanDetail.append(planCalls)
+                if let planCalls = self.addBillerViewModel.dicOfPlanDetailByPlanID.calls, !planCalls.isEmpty {
+                    let planCallsObj = PlanInfo(itemName: "Calls", itemValue: planCalls)
+                    self.arrayOfPlanDetail.append(planCallsObj)
+                }
                 
-                let planValidity = PlanInfo(itemName: "Validity", itemValue: self.addBillerViewModel.dicOfPlanDetailByPlanID.validity)
-                self.arrayOfPlanDetail.append(planValidity)
+                if let planValidity = self.addBillerViewModel.dicOfPlanDetailByPlanID.validity, !planValidity.isEmpty {
+                    let planValidityObj = PlanInfo(itemName: "Validity", itemValue: planValidity)
+                    self.arrayOfPlanDetail.append(planValidityObj)
+                }
                 
-                let planSMS = PlanInfo(itemName: "SMS", itemValue: self.addBillerViewModel.dicOfPlanDetailByPlanID.sms)
-                self.arrayOfPlanDetail.append(planSMS)
+                if let planSMS = self.addBillerViewModel.dicOfPlanDetailByPlanID.sms, !planSMS.isEmpty {
+                    let planSMSObj = PlanInfo(itemName: "SMS", itemValue: planSMS)
+                    self.arrayOfPlanDetail.append(planSMSObj)
+                }
                 
-                let planDetails = PlanInfo(itemName: "Details", itemValue: self.addBillerViewModel.dicOfPlanDetailByPlanID.packageDescription)
-                self.arrayOfPlanDetail.append(planDetails)
+                if let planDetails = self.addBillerViewModel.dicOfPlanDetailByPlanID.packageDescription, !planDetails.isEmpty {
+                    let planDetailsObj = PlanInfo(itemName: "Details", itemValue: planDetails)
+                    self.arrayOfPlanDetail.append(planDetailsObj)
+                }
                 
                 let planBillAmount = PlanInfo(itemName: "Bill Amount", itemValue: self.addBillerViewModel.dicOfPlanDetailByPlanID.price)
                 self.arrayOfPlanDetail.append(planBillAmount)
@@ -82,6 +96,26 @@ class AddBillerDetailVC: UIViewController {
             if shortName.count > 0 {
                 let shortNameObj = PlanInfo(itemName: "Short Name", itemValue: self.shortName)
                 self.arrayOfPlanDetail.append(shortNameObj)
+            }
+            
+            if let accountHolderName = self.addBillerModelAfterValidation.accountHolderName, accountHolderName.count > 0 {
+                let accountHolderObj = PlanInfo(itemName: "Consumer Name:", itemValue: accountHolderName)
+                self.arrayOfPlanDetail.append(accountHolderObj)
+            }
+            
+            if let noOfInstallment = self.addBillerModelAfterValidation.noOfInstallation, noOfInstallment > 0 {
+                let noOfInstallmentObj = PlanInfo(itemName: "No. of Installment:", itemValue: "\(noOfInstallment)")
+                self.arrayOfPlanDetail.append(noOfInstallmentObj)
+            }
+            
+            if let billDate = self.addBillerModelAfterValidation.billDate, billDate.count > 0 {
+                let billDateObj = PlanInfo(itemName: "Bill Date:", itemValue: billDate)
+                self.arrayOfPlanDetail.append(billDateObj)
+            }
+            
+            if let billDueDate = self.addBillerModelAfterValidation.dueDate, billDueDate.count > 0 {
+                let billDueDateObj = PlanInfo(itemName: "Due Date:", itemValue: billDueDate)
+                self.arrayOfPlanDetail.append(billDueDateObj)
             }
             
             if let amount = self.addBillerModelAfterValidation.amount {
@@ -127,7 +161,7 @@ class AddBillerDetailVC: UIViewController {
         
         if let amount = addBillerModelAfterValidation.amount {
             if let amountExact = addBillerModelAfterValidation.paymentAmountExactness {
-                if amountExact == "EXACT_AND_ABOVE" {
+                if amountExact.lowercased() == "EXACT_AND_ABOVE".lowercased() {
                     let enteredAmount: Int? = Int(cell.txtAmount.text!)
                     let actualAmount: Int? = Int(amount)
                     if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let maxVal = maximumValue {
@@ -137,7 +171,7 @@ class AddBillerDetailVC: UIViewController {
                             Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(actualAmt) and \(maxVal)")
                         }
                     }
-                } else if amountExact == "EXACT_AND_BELOW" {
+                } else if amountExact.lowercased() == "EXACT_AND_BELOW".lowercased() {
                     let enteredAmount: Int? = Int(cell.txtAmount.text!)
                     let actualAmount: Int? = Int(amount)
                     if let enteredAmt = enteredAmount, let actualAmt = actualAmount, let minVal = minimumValue {
@@ -147,7 +181,7 @@ class AddBillerDetailVC: UIViewController {
                             Utilities.sharedInstance.showAlertView(title: "", message: "Entered amount must be in between \(minVal) and \(actualAmt)")
                         }
                     }
-                } else if (amountExact == "EXACT") {
+                } else if (amountExact.lowercased() == "EXACT".lowercased()) {
                     self.preparePayment(amount: "\(amount)", isRechargeBill: isRecharge)
                 }
                 print("Entered Amount: \(cell.txtAmount.text!), IsValueAmount: \((cell.txtAmount.text!).isNumber)")
@@ -403,7 +437,7 @@ extension AddBillerDetailVC: UITableViewDelegate,UITableViewDataSource{
             cell.lblName.text = arrayOfPlanDetail[indexPath.row].name
             
             if let amount = addBillerModelAfterValidation.amount {
-                if let amountExact = addBillerModelAfterValidation.paymentAmountExactness, amountExact != "Exact" {
+                if let amountExact = addBillerModelAfterValidation.paymentAmountExactness, amountExact.lowercased() != "Exact".lowercased() {
                     cell.vwTxtAmount.isHidden = false
                     cell.vwTxtAmountHeight.constant = 40
                 } else {
