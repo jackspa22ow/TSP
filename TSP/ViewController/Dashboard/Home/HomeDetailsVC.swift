@@ -445,7 +445,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                         
             cell.btnConfirm.addTarget(self, action: #selector(buttonConfirm), for: UIControl.Event.touchUpInside)
             if isReminderEdit || isAutoPayEdit{
-                if isReminderEditMode {
+                if isReminderEditMode || self.isAutoPay == false{
                     cell.viewConfirm.isHidden = true
                 } else {
                     if (self.json.enableReminder ?? false) {
@@ -455,7 +455,7 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
                     } else {
                         cell.viewConfirm.isHidden = true
                     }
-                    cell.btnConfirm.setTitle("Done", for: .normal)
+                    cell.btnConfirm.setTitle("Confirm", for: .normal)
                 }
             } else if isShortNameEdit {
                 cell.viewConfirm.isHidden = false
@@ -468,10 +468,10 @@ extension HomeDetailsVC: UITableViewDelegate,UITableViewDataSource{
             cell.btnConfirm.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
             
             cell.btnCancel.addTarget(self, action: #selector(buttonCancel), for: UIControl.Event.touchUpInside)
-            if self.isAutoPayHide || self.isReminderHide || isShortNameEdit{
+            if self.isAutoPayHide || self.isReminderHide || isShortNameEdit || isAutoPayEdit{
                 cell.btnCancel.setTitle("Cancel", for: .normal)
             } else {
-                if isReminderEdit || isAutoPayEdit {
+                if isReminderEdit {
                     cell.btnCancel.setTitle("Back", for: .normal)
                 } else {
                     cell.btnCancel.setTitle("Done", for: .normal)

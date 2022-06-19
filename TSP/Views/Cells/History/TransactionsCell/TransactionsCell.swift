@@ -27,7 +27,7 @@ class TransactionsCell: UITableViewCell {
         // Initialization code        
         self.lblNickName.font = Utilities.AppFont.black.size(13)
         self.lblTitle.font = Utilities.AppFont.black.size(13)
-        self.lblNickName.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        self.lblNickName.textColor = .black
         self.lblTitle.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
     }
 

@@ -16,6 +16,7 @@ class SpendAnalysisVC: UIViewController {
     @IBOutlet weak var historyView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var lblExpenses: UILabel!
+    @IBOutlet weak var btnHelp: UIButton!
     
     var aryOfColors = ["ED963E","46B5BA","3299E4","ED5F7F","ECC154","FFBF00","FF7F50","DE3163","9FE2BF","9FE2BF","6495ED","CCCCFF"]
     
@@ -46,7 +47,8 @@ class SpendAnalysisVC: UIViewController {
         self.selectedToDate = Date().string(format: Utilities.sharedInstance.historyDateFormate)
         let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date())
         self.selectedFromDate = sevenDaysAgo!.string(format: Utilities.sharedInstance.historyDateFormate)
-        
+        self.btnHelp.setTitleColor(Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor), for: .normal)
+
         self.fetchSpendAnalysisHistory()
         
         // Do any additional setup after loading the view.
@@ -123,6 +125,21 @@ class SpendAnalysisVC: UIViewController {
         self.pieChartView.addSubview(pieChart)
     }
     
+    @IBAction func buttonHandlerOpenMenuBar(_ sender: UIButton) {
+        let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "SlideMenuVC")as! SlideMenuVC
+        self.navigationController?.pushViewController(nextVC, animated: false)
+    }
+    
+    @IBAction func buttonHandlerHelp(_ sender: UIButton) {
+        let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @IBAction func buttonHandlerPushNotification(_ sender: Any) {
+        let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "NotificationListVC")as! NotificationListVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
 }
 
 
@@ -148,7 +165,7 @@ extension SpendAnalysisVC: UITableViewDelegate,UITableViewDataSource{
         
         cell.lblTitle.text = obj.categoryName
         cell.lblPrice.text = (String(format: "₹%.2f", obj.totalAmount ?? 0))
-        
+        cell.lblCount.text = "\(obj.txnCount ?? 0)"
         return cell
     }
     

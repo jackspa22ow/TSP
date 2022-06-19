@@ -13,6 +13,7 @@ class HelpChoosServiceCell: UITableViewCell {
     
     @IBOutlet weak var collectionView
     : UICollectionView!
+    @IBOutlet weak var lblNoData: UILabel!
     
     var aryOfServiceGroupList : [ServiceGroupModel] = []
     var selectedGroup:((_ groupName : String) -> ())?

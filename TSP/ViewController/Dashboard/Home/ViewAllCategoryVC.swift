@@ -59,8 +59,8 @@ extension ViewAllCategoryVC : UICollectionViewDelegate, UICollectionViewDataSour
         cell.lblItemName.text = obj.name
         
         let fileUrl = URL(string: (obj.iconUrl ?? ""))
-        cell.imgItem.sd_setImage(with: fileUrl)
-        
+        cell.imgItem.sd_setImage(with: fileUrl, placeholderImage: UIImage(named: "ic_logo"))
+
         return cell
     }
     

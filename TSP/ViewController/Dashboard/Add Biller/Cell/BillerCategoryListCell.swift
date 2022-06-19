@@ -57,7 +57,7 @@ extension BillerCategoryListCell : UICollectionViewDelegate, UICollectionViewDat
 
         if let str = obj.iconUrl{
             let fileUrl = URL(string: str)
-            cell.imgItem.sd_setImage(with: fileUrl)
+            cell.imgItem.sd_setImage(with: fileUrl, placeholderImage: UIImage(named: "ic_logo"))
         }
 
         return cell

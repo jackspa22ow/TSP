@@ -133,7 +133,7 @@
                     <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-dp-RgB">
                         <rect key="frame" x="16" y="116" width="345" height="127"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Max Limit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhE-lg-PiF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Max Limit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhE-lg-PiF" customClass="TSPPedingTextField" customModule="TSP" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="16" width="345" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="KPV-Vb-cMo"/>
@@ -162,7 +162,7 @@
                                 <color key="textColor" red="0.56470588239999997" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Payment Method" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CeL-iW-Uuw">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Payment Method" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CeL-iW-Uuw" customClass="TSPPedingTextField" customModule="TSP" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="87" width="345" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="v4G-oY-a7r"/>

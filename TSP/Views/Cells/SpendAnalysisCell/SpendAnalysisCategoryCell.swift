@@ -24,7 +24,7 @@ class SpendAnalysisCategoryCell: UITableViewCell {
         
         self.lblBillerNickName.font = Utilities.AppFont.black.size(13)
         self.lblTitle.font = Utilities.AppFont.black.size(13)
-        self.lblBillerNickName.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
+        self.lblBillerNickName.textColor = .black
         self.lblTitle.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
         // Initialization code
     }

@@ -1,26 +1,23 @@
 //
-//  SpendAnalysisCategoryFooterCell.swift
+//  MultipleBilllTrasactionTitleCell.swift
 //  TSP
 //
-//  Created by Ankur Kathiriya on 25/09/21.
+//  Created by Yagnesh Dobariya on 19/04/22.
 //
 
 import UIKit
 
-class SpendAnalysisCategoryFooterCell: UITableViewCell {
-    
-    @IBOutlet weak var lblBillCount: UILabel!
-    @IBOutlet weak var lblPrice: UILabel!
-    
+class MultipleBilllTrasactionTitleCell: UITableViewCell {
+
     class var identifier : String { return String(describing: self) }
     class var nib: UINib { return  UINib(nibName: identifier, bundle: nil) }
-
+    @IBOutlet weak var lblTransactionMsg: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        self.lblPrice.font = Utilities.AppFont.black.size(18)
-        self.lblPrice.textColor = .black
+        self.lblTransactionMsg.font = Utilities.AppFont.black.size(14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -19,7 +19,9 @@ class MyBillsVC: UIViewController{
     
     let homeViewModel = HomeViewModel()
     let myBillsViewModel = MyBillsViewModel()
-           
+    @IBOutlet weak var lblMyBill: UILabel!
+    @IBOutlet weak var btnHelp: UIButton!
+
     @IBOutlet weak var consBtnAutoPayHeight: NSLayoutConstraint!
     @IBOutlet weak var consBtnSetReminderHeight: NSLayoutConstraint!
 
@@ -28,9 +30,11 @@ class MyBillsVC: UIViewController{
                 
         Utilities.sharedInstance.showSVProgressHUD()
         
+        self.btnHelp.setTitleColor(Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor), for: .normal)
+
         self.tblView.register(MyBillsCell.nib, forCellReuseIdentifier: MyBillsCell.identifier)
         self.tblView.estimatedRowHeight = 70
-
+        self.lblMyBill.textColor = .black
         // Do any additional setup after loading the view.
     }
     
@@ -155,7 +159,21 @@ class MyBillsVC: UIViewController{
         }
     }
     
-                                                                                
+    @IBAction func buttonHandlerOpenMenuBar(_ sender: UIButton) {
+        let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "SlideMenuVC")as! SlideMenuVC
+        self.navigationController?.pushViewController(nextVC, animated: false)
+    }
+    
+    @IBAction func buttonHandlerHelp(_ sender: UIButton) {
+        let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @IBAction func buttonHandlerPushNotification(_ sender: Any) {
+        let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "NotificationListVC")as! NotificationListVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
 }
 
 
@@ -172,6 +190,9 @@ extension MyBillsVC: UITableViewDelegate,UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyBillsCell.identifier, for: indexPath) as? MyBillsCell else {
             fatalError("XIB doesn't exist.")
         }
+        
+        cell.consDisplayRadioButton.priority = UILayoutPriority(250)
+        cell.viewRadioContainer.isHidden = true
         
         let json = self.homeViewModel.dicOfMyBillList.content[indexPath.row]
         
@@ -203,6 +224,10 @@ extension MyBillsVC: UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "HomeDetailsVC")as! HomeDetailsVC
+        nextVC.billID = "\(self.homeViewModel.dicOfMyBillList.content[indexPath.row].id ?? 0)"
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
         

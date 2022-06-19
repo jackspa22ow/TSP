@@ -57,7 +57,7 @@ class LoginVC: UIViewController {
     func setupTheme(){
                 
         let fileUrl = URL(string: TSP_ClientLogo)
-        self.imgLogo.sd_setImage(with: fileUrl)
+        self.imgLogo.sd_setImage(with: fileUrl, placeholderImage: UIImage(named: "ic_logo"))
         
         self.btnForgotPassword.setTitleColor(Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor), for: .normal)
         

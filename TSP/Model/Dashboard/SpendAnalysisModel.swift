@@ -12,6 +12,7 @@ struct SpendAnalysisElement: Codable {
     let categoryId: Int?
     let categoryName: String?
     let totalAmount: Double?
+    let txnCount: Int?
 }
 
 typealias SpendAnalysis = [SpendAnalysisElement]

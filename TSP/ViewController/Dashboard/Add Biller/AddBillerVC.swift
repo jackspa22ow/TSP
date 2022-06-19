@@ -27,7 +27,8 @@ class AddBillerVC: UIViewController {
     
     @IBOutlet weak var tblBiller: UITableView!
     @IBOutlet weak var lblAddBiller: UILabel!
-    
+    @IBOutlet weak var btnHelp: UIButton!
+
     var heights = [Int: CGFloat]()
     
     let homeViewModel = HomeViewModel()
@@ -81,6 +82,8 @@ class AddBillerVC: UIViewController {
         tblBiller.register(BillerCategoryListCell.nib, forCellReuseIdentifier: BillerCategoryListCell.identifier)
         tblBiller.register(BillerCategoryStep3Cell.nib, forCellReuseIdentifier: BillerCategoryStep3Cell.identifier)
         tblBiller.register(MobileRechargeCell.nib, forCellReuseIdentifier: MobileRechargeCell.identifier)
+        self.btnHelp.setTitleColor(Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor), for: .normal)
+        self.lblAddBiller.textColor = .black
         self.fetchGroups()
         self.fetchContacts()
     }
@@ -305,6 +308,21 @@ class AddBillerVC: UIViewController {
                 self.tblBiller.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .none)
             }
         }
+    }
+    
+    @IBAction func buttonHandlerOpenMenuBar(_ sender: UIButton) {
+        let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "SlideMenuVC")as! SlideMenuVC
+        self.navigationController?.pushViewController(nextVC, animated: false)
+    }
+    
+    @IBAction func buttonHandlerHelp(_ sender: UIButton) {
+        let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @IBAction func buttonHandlerPushNotification(_ sender: Any) {
+        let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "NotificationListVC")as! NotificationListVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -625,14 +643,14 @@ extension AddBillerVC : UITableViewDelegate, UITableViewDataSource{
             if (SelectedCategoryForBillerFromHomeVC != nil) {
                 if let str = SelectedCategoryForBillerFromHomeVC.iconUrl{
                     let fileUrl = URL(string: str)
-                    header.imgCategory.sd_setImage(with: fileUrl)
+                    header.imgCategory.sd_setImage(with: fileUrl, placeholderImage: UIImage(named: "ic_logo"))
                 }
                 
                 header.setupHeader(stepsText: "Step 1", selectedHeaderText: "Select Biller Category", title: SelectedCategoryForBillerFromHomeVC.name ?? "", titleFontSize: 24)
             } else {
                 if let str = self.displayFilteredCategories[selectedCategoryIndex].iconUrl{
                     let fileUrl = URL(string: str)
-                    header.imgCategory.sd_setImage(with: fileUrl)
+                    header.imgCategory.sd_setImage(with: fileUrl, placeholderImage: UIImage(named: "ic_logo"))
                 }
                 
                 header.setupHeader(stepsText: "Step 1", selectedHeaderText: "Select Biller Category", title: self.displayFilteredCategories[selectedCategoryIndex].name ?? "", titleFontSize: 24)

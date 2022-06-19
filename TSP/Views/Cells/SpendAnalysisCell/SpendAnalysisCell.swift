@@ -16,6 +16,7 @@ class SpendAnalysisCell: UITableViewCell {
     @IBOutlet weak var viewLeftBorder: UIView!
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblCount: UILabel!
     
     
     override func awakeFromNib() {

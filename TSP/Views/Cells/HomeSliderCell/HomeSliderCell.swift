@@ -61,7 +61,7 @@ extension HomeSliderCell : FSPagerViewDataSource, FSPagerViewDelegate {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
        
         let fileUrl = URL(string: self.imageArray?[index].logo ?? "")
-        cell.imageView?.sd_setImage(with: fileUrl)
+        cell.imageView?.sd_setImage(with: fileUrl, placeholderImage: UIImage(named: "ic_logo"))
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         

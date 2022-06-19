@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -29,18 +29,25 @@
                                     <constraint firstAttribute="width" constant="5" id="wrD-gg-ErV"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insurance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzd-Xz-Wmp">
-                                <rect key="frame" x="15" y="18" width="211" height="25"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insurance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzd-Xz-Wmp">
+                                <rect key="frame" x="15" y="22" width="114" height="17"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCE-av-gu9">
+                                <rect key="frame" x="139" y="22" width="26" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="h0y-S9-y8t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15,500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-cQ-TDm">
-                                <rect key="frame" x="234" y="17.5" width="60" height="25"/>
+                                <rect key="frame" x="175" y="17.5" width="119" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="YOF-yR-C4o"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="lxv-pv-2Iz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -49,10 +56,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="OCE-av-gu9" firstAttribute="centerY" secondItem="dNf-lH-ckH" secondAttribute="centerY" id="2ou-oD-FVY"/>
+                            <constraint firstItem="qzd-Xz-Wmp" firstAttribute="centerY" secondItem="dNf-lH-ckH" secondAttribute="centerY" id="KwD-cA-thB"/>
                             <constraint firstItem="II0-WN-nyy" firstAttribute="top" secondItem="dNf-lH-ckH" secondAttribute="top" id="LhN-Gh-dfG"/>
                             <constraint firstItem="II0-WN-nyy" firstAttribute="leading" secondItem="dNf-lH-ckH" secondAttribute="leading" id="Mag-3Q-gBE"/>
+                            <constraint firstItem="OCE-av-gu9" firstAttribute="centerX" secondItem="dNf-lH-ckH" secondAttribute="centerX" id="PCn-bQ-FnC"/>
+                            <constraint firstItem="eHf-cQ-TDm" firstAttribute="leading" secondItem="OCE-av-gu9" secondAttribute="trailing" constant="10" id="QTp-3f-U6j"/>
+                            <constraint firstItem="OCE-av-gu9" firstAttribute="leading" secondItem="qzd-Xz-Wmp" secondAttribute="trailing" constant="10" id="hhy-Qj-b6N"/>
                             <constraint firstAttribute="bottom" secondItem="II0-WN-nyy" secondAttribute="bottom" id="nu9-oZ-pXl"/>
                             <constraint firstItem="eHf-cQ-TDm" firstAttribute="centerY" secondItem="dNf-lH-ckH" secondAttribute="centerY" id="qKg-7K-TBD"/>
+                            <constraint firstItem="qzd-Xz-Wmp" firstAttribute="leading" secondItem="II0-WN-nyy" secondAttribute="trailing" constant="10" id="uXu-ix-oNf"/>
                             <constraint firstAttribute="trailing" secondItem="eHf-cQ-TDm" secondAttribute="trailing" constant="10" id="vw7-MX-tdT"/>
                         </constraints>
                     </view>
@@ -68,6 +81,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="bgView" destination="dNf-lH-ckH" id="JZM-02-vxO"/>
+                <outlet property="lblCount" destination="OCE-av-gu9" id="XjJ-bx-75r"/>
                 <outlet property="lblPrice" destination="eHf-cQ-TDm" id="KnE-aS-k9i"/>
                 <outlet property="lblTitle" destination="qzd-Xz-Wmp" id="oxC-Gj-yrN"/>
                 <outlet property="viewLeftBorder" destination="II0-WN-nyy" id="XzA-5p-EWM"/>

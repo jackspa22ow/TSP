@@ -64,6 +64,8 @@ class SingleBillDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = true
+
         self.setupUI(isShow: false)
         if self.isFromHomeDetail {
             self.lblRaiseComplaint.text = "Done"
@@ -92,7 +94,7 @@ class SingleBillDetailsVC: UIViewController {
             self.lblPopViewPaymentMode.text = obj?.paymentMode
             self.lblPopViewPayTo.text = obj?.billerName
             
-            self.lblBillTitle.text = ""
+            self.lblBillTitle.text = obj?.billNickName
             self.lblBillSubTitle.text = obj?.billerName
             
             let status = obj?.status
@@ -262,7 +264,7 @@ class SingleBillDetailsVC: UIViewController {
         self.viewDetails.layer.borderColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor).cgColor
         self.lblRaiseComplaint.textColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
         
-        self.vwComplainStatusLabel.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor)
+        self.vwComplainStatusLabel.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor).withAlphaComponent(0.1)
         self.vwComplainStatusLabel.layer.cornerRadius = self.vwComplainStatusLabel.frame.size.height / 2
         self.vwCompainInfo.layer.cornerRadius = 8
         self.vwCompainInfo.layer.borderColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor).cgColor

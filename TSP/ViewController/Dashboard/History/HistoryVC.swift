@@ -38,7 +38,8 @@ class HistoryVC: UIViewController {
     @IBOutlet weak var popViewBorder: UILabel!
     @IBOutlet weak var popViewIcon: UIView!
     @IBOutlet weak var popViewOpenbtn: UIButton!
-    
+    @IBOutlet weak var btnHelp: UIButton!
+
     var selectedCategoryID = String()
     var selectedFromDate = String()
     var selectedStatus = String()
@@ -57,7 +58,8 @@ class HistoryVC: UIViewController {
         self.tblView.register(ComplaintsCell.nib, forCellReuseIdentifier: ComplaintsCell.identifier)
         
         self.transactionsBottomView.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
-        
+        self.btnHelp.setTitleColor(Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor), for: .normal)
+
         self.setupMonth()
         self.setupStatus()
         
@@ -267,6 +269,21 @@ class HistoryVC: UIViewController {
         })
     }
     
+    @IBAction func buttonHandlerOpenMenuBar(_ sender: UIButton) {
+        let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "SlideMenuVC")as! SlideMenuVC
+        self.navigationController?.pushViewController(nextVC, animated: false)
+    }
+    
+    @IBAction func buttonHandlerHelp(_ sender: UIButton) {
+        let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @IBAction func buttonHandlerPushNotification(_ sender: Any) {
+        let nextVC = DASHBOARD_STORYBOARD.instantiateViewController(withIdentifier: "NotificationListVC")as! NotificationListVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
 }
 
 
@@ -352,4 +369,18 @@ extension HistoryVC: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isTransaction {
+            let nextVC = BILLDETAILS_STORYBOARD.instantiateViewController(withIdentifier: "SingleBillDetailsVC")as! SingleBillDetailsVC
+            let obj = self.historyViewModel.aryOfTransactionsList[indexPath.row]
+            nextVC.transactionID = obj.txnid ?? ""
+            nextVC.isFromHomeDetail = true
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        } else {
+            let nextVC = BILLDETAILS_STORYBOARD.instantiateViewController(withIdentifier: "SingleBillDetailsVC")as! SingleBillDetailsVC
+            nextVC.transactionID = self.historyViewModel.dicOfComplaintsList?.payload?[indexPath.row].txnId ?? ""
+            nextVC.isFromHomeDetail = true
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
 }

@@ -32,6 +32,9 @@ class HomeBillCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         btnPayNow.layer.cornerRadius = 4
+        
+        self.btnPayNow.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_SecondaryColor).withAlphaComponent(0.1)
+
     }
 
 }

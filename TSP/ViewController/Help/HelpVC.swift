@@ -183,7 +183,11 @@ class HelpVC: UIViewController {
 extension HelpVC: UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        if self.historyViewModel.aryOfServiceGroupList.count > 0 {
+            return 3
+        } else {
+            return 2
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1; //self.historyViewModel.aryOfTransactionsList.count
@@ -224,6 +228,11 @@ extension HelpVC: UITableViewDelegate,UITableViewDataSource{
                 fatalError("XIB doesn't exist.")
             }
             cell.aryOfServiceGroupList = self.historyViewModel.aryOfServiceGroupList
+            if (self.historyViewModel.aryOfServiceGroupList.count > 0) {
+                cell.lblNoData.isHidden = true
+            } else {
+                cell.lblNoData.isHidden = false
+            }
             cell.selectedGroup = { groupName in
                 self.fetchServiceQuestion(groupName: groupName)
             }
