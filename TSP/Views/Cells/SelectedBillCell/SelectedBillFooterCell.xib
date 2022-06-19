@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -62,11 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 4550" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDj-qU-R7u">
-                                <rect key="frame" x="25" y="28" width="100" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="75g-qf-G5D"/>
-                                    <constraint firstAttribute="height" constant="25" id="FB2-4g-VE9"/>
-                                </constraints>
+                                <rect key="frame" x="25" y="28" width="246" height="25"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
                                 <color key="textColor" red="0.0078431372550000003" green="0.0078431372550000003" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -74,12 +70,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="0.20233073460000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="jDj-qU-R7u" firstAttribute="leading" secondItem="hAL-pS-YRC" secondAttribute="leading" constant="25" id="ALY-XA-eof"/>
+                            <constraint firstItem="2YJ-hG-l9B" firstAttribute="top" secondItem="jDj-qU-R7u" secondAttribute="bottom" constant="6" id="B1k-rf-ZZZ"/>
                             <constraint firstAttribute="trailing" secondItem="2YJ-hG-l9B" secondAttribute="trailing" id="ItI-Gv-whJ"/>
+                            <constraint firstItem="jDj-qU-R7u" firstAttribute="top" secondItem="a0a-x3-AJf" secondAttribute="bottom" constant="2" id="LHa-2c-N63"/>
                             <constraint firstItem="a0a-x3-AJf" firstAttribute="leading" secondItem="hAL-pS-YRC" secondAttribute="leading" constant="25" id="LHa-S3-2dg"/>
                             <constraint firstItem="a0a-x3-AJf" firstAttribute="top" secondItem="YI1-ls-Bin" secondAttribute="bottom" constant="10" id="PIc-Kq-Cqg"/>
+                            <constraint firstAttribute="trailing" secondItem="jDj-qU-R7u" secondAttribute="trailing" constant="25" id="SoX-TQ-otk"/>
                             <constraint firstAttribute="trailing" secondItem="YI1-ls-Bin" secondAttribute="trailing" id="UWl-s3-aMi"/>
-                            <constraint firstItem="jDj-qU-R7u" firstAttribute="leading" secondItem="hAL-pS-YRC" secondAttribute="leading" constant="25" id="UYk-fY-X9J"/>
-                            <constraint firstItem="jDj-qU-R7u" firstAttribute="top" secondItem="a0a-x3-AJf" secondAttribute="bottom" constant="2" id="WR1-Aw-MHE"/>
                             <constraint firstItem="YI1-ls-Bin" firstAttribute="leading" secondItem="hAL-pS-YRC" secondAttribute="leading" id="cyQ-fb-Drv"/>
                             <constraint firstAttribute="bottom" secondItem="2YJ-hG-l9B" secondAttribute="bottom" id="em2-GZ-bwU"/>
                             <constraint firstAttribute="height" constant="60" id="oHP-rr-0FC"/>
@@ -159,6 +157,16 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnCancel" destination="Jbl-wG-E1m" id="0bs-cL-j4n"/>
+                <outlet property="btnPay" destination="9qx-JZ-Tbn" id="rui-7C-Eu3"/>
+                <outlet property="lblFooter" destination="2YJ-hG-l9B" id="gXY-HQ-51O"/>
+                <outlet property="lblHeader" destination="YI1-ls-Bin" id="mGC-vt-QIv"/>
+                <outlet property="lblTotalBillAcount" destination="EiR-Rn-j9t" id="okL-te-Wmb"/>
+                <outlet property="lblTotalBillAmount" destination="jDj-qU-R7u" id="rdt-PQ-lEq"/>
+                <outlet property="viewCancel" destination="YRx-sg-rNG" id="x9U-nz-nDi"/>
+                <outlet property="viewPay" destination="G6l-DM-oNF" id="ohj-Vx-Edf"/>
+            </connections>
             <point key="canvasLocation" x="15.942028985507248" y="140.625"/>
         </tableViewCell>
     </objects>

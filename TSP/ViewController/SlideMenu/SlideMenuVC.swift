@@ -53,6 +53,8 @@ class SlideMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             self.data = [SlideMenuSection(title: "Billers", list: self.aryOfBillers, isColleps: false),SlideMenuSection(title: "History", list: ["Transaction History", "Complaints"], isColleps: false),SlideMenuSection(title: "Reminders", list: nil, isColleps: false),SlideMenuSection(title: "Auto Pay", list: nil, isColleps: false),SlideMenuSection(title: "Contact Us", list: nil, isColleps: false),SlideMenuSection(title: "Spend Analysis", list: nil, isColleps: false),SlideMenuSection(title: "Help", list: nil, isColleps: false)]
         }
         
+        self.lblName.text = "\(dicOfUserProfile.firstName!) \(dicOfUserProfile.lastName!)"
+        self.lblMobileNumber.text = dicOfUserProfile.phoneNumber
         
         //setup theme based app
         self.setupTheme()
@@ -62,12 +64,6 @@ class SlideMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.lblName.text = "\(dicOfUserProfile.firstName ?? "") \(dicOfUserProfile.lastName ?? "")"
-        self.lblMobileNumber.text = dicOfUserProfile.phoneNumber
-        
-    }
     func setupTheme(){
         self.view.backgroundColor = Utilities.sharedInstance.hexStringToUIColor(hex: TSP_PrimaryColor)
     }
@@ -190,23 +186,80 @@ class SlideMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             let sectionData = data[sender.tag]
             sectionData.isColleps = !sectionData.isColleps!
             self.tblView.reloadSections(IndexSet(integer: sender.tag), with: .automatic)
-        }else if indexpath == 2{
-            let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "RemindersListVC")as! RemindersListVC
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if indexpath == 3{
-            let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "AutoPayListVC")as! AutoPayListVC
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }else if indexpath == 4{
-            
-        }else if indexpath == 5{
-            self.navigationController?.popViewController(animated: false)
-            guard let tabbarController = UIApplication.shared.tabbarController() as? TabBarVC else { return }
-            tabbarController.selectedIndex = 4
-        }else if indexpath == 6 {
-            let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        } else {
-            
+        }else {
+            if TSP_Allow_Setting_Reminders == Constant.Client && TSP_Allow_Setting_Autopay == Constant.Client{
+                // no reminder no autopay
+                if indexpath == 2{
+                    
+                }else if indexpath == 3{
+                    self.navigationController?.popViewController(animated: false)
+                    guard let tabbarController = UIApplication.shared.tabbarController() as? TabBarVC else { return }
+                    tabbarController.selectedIndex = 4
+                }else if indexpath == 4 {
+                    let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                } else {
+                    
+                }
+            }else if TSP_Allow_Setting_Reminders == Constant.User && TSP_Allow_Setting_Autopay == Constant.Client{
+                //reminder but no autopay
+                
+                if indexpath == 2{
+                    let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "RemindersListVC")as! RemindersListVC
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                } else if indexpath == 3{
+                    
+                }else if indexpath == 4{
+                    self.navigationController?.popViewController(animated: false)
+                    guard let tabbarController = UIApplication.shared.tabbarController() as? TabBarVC else { return }
+                    tabbarController.selectedIndex = 4
+                }else if indexpath == 5 {
+                    let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                } else {
+                    
+                }
+            }else if TSP_Allow_Setting_Reminders == Constant.Client && TSP_Allow_Setting_Autopay == Constant.User{
+                //no reminder but autopay
+                
+                if indexpath == 2{
+                    let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "AutoPayListVC")as! AutoPayListVC
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                }else if indexpath == 3{
+                    
+                }else if indexpath == 4{
+                    self.navigationController?.popViewController(animated: false)
+                    guard let tabbarController = UIApplication.shared.tabbarController() as? TabBarVC else { return }
+                    tabbarController.selectedIndex = 4
+                }else if indexpath == 5 {
+                    let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                } else {
+                    
+                }
+            }else{
+                //Reminder and autopay
+                
+                // no reminder autopay
+                if indexpath == 2{
+                    let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "RemindersListVC")as! RemindersListVC
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                }else if indexpath == 3{
+                    let nextVC = SLIDEMENU_STORYBOARD.instantiateViewController(withIdentifier: "AutoPayListVC")as! AutoPayListVC
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                }else if indexpath == 4{
+                    
+                }else if indexpath == 5{
+                    self.navigationController?.popViewController(animated: false)
+                    guard let tabbarController = UIApplication.shared.tabbarController() as? TabBarVC else { return }
+                    tabbarController.selectedIndex = 4
+                }else if indexpath == 6 {
+                    let nextVC = HELP_STORYBOARD.instantiateViewController(withIdentifier: "HelpVC")as! HelpVC
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                } else {
+                    
+                }
+            }
         }
     }
     
