@@ -545,7 +545,7 @@
                             <constraint firstItem="8yT-Ph-2Rt" firstAttribute="top" secondItem="0YJ-r0-iws" secondAttribute="top" id="fsM-X1-mQz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="ic_addBiller" selectedImage="ic_addBiller" id="m54-ed-jOU"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="ic_home" selectedImage="ic_home" id="m54-ed-jOU"/>
                     <connections>
                         <outlet property="btnHelp" destination="XlH-RZ-H0G" id="OHQ-8J-uWO"/>
                         <outlet property="lblHello" destination="Aa7-8h-Xv9" id="hUu-Sa-C83"/>
@@ -3071,6 +3071,7 @@
         <image name="ic_download" width="38" height="36"/>
         <image name="ic_grayclose" width="64" height="64"/>
         <image name="ic_history" width="18" height="18.5"/>
+        <image name="ic_home" width="21" height="21"/>
         <image name="ic_menu" width="34" height="32"/>
         <image name="ic_myBills" width="19.5" height="17.5"/>
         <image name="ic_pdf" width="512" height="512"/>
