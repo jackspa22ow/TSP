@@ -2,7 +2,7 @@
 //  MyBillDetailShortNameCell.swift
 //  TSP
 //
-//  Created by Yagnesh Dobariya on 16/05/22.
+//  Created by Ankur Kathiriya on 16/05/22.
 //
 
 import UIKit

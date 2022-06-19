@@ -2,7 +2,7 @@
 //  HomeBillItemsCell.swift
 //  TSP
 //
-//  Created by Pratik Mavani on 09/07/21.
+//  Created by Ankur Kathiriya on 09/07/21.
 //
 
 import UIKit

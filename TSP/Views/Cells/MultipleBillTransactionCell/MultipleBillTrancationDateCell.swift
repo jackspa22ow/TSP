@@ -2,7 +2,7 @@
 //  MultipleBillTrancationDateCell.swift
 //  TSP
 //
-//  Created by Yagnesh Dobariya on 21/04/22.
+//  Created by Ankur Kathiriya on 21/04/22.
 //
 
 import UIKit
